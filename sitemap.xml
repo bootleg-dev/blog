@@ -2,39 +2,39 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://bootleg-dev.github.io/posts/convolutional-neural-networks/</loc>
+    <loc>https://bootleg-dev.github.io/blog/posts/convolutional-neural-networks/</loc>
     <lastmod>2024-06-02T03:55:49+05:00</lastmod>
   </url><url>
-    <loc>https://bootleg-dev.github.io/posts/convolutional-neural-networks2/</loc>
+    <loc>https://bootleg-dev.github.io/blog/posts/convolutional-neural-networks2/</loc>
     <lastmod>2024-06-02T03:55:49+05:00</lastmod>
   </url><url>
-    <loc>https://bootleg-dev.github.io/</loc>
+    <loc>https://bootleg-dev.github.io/blog/</loc>
     <lastmod>2024-06-02T03:55:49+05:00</lastmod>
   </url><url>
-    <loc>https://bootleg-dev.github.io/tags/beginner/</loc>
+    <loc>https://bootleg-dev.github.io/blog/tags/beginner/</loc>
     <lastmod>2024-06-02T03:55:49+05:00</lastmod>
   </url><url>
-    <loc>https://bootleg-dev.github.io/tags/cnn/</loc>
+    <loc>https://bootleg-dev.github.io/blog/tags/cnn/</loc>
     <lastmod>2024-06-02T03:55:49+05:00</lastmod>
   </url><url>
-    <loc>https://bootleg-dev.github.io/tags/convolution/</loc>
+    <loc>https://bootleg-dev.github.io/blog/tags/convolution/</loc>
     <lastmod>2024-06-02T03:55:49+05:00</lastmod>
   </url><url>
-    <loc>https://bootleg-dev.github.io/tags/neural-networks/</loc>
+    <loc>https://bootleg-dev.github.io/blog/tags/neural-networks/</loc>
     <lastmod>2024-06-02T03:55:49+05:00</lastmod>
   </url><url>
-    <loc>https://bootleg-dev.github.io/posts/</loc>
+    <loc>https://bootleg-dev.github.io/blog/posts/</loc>
     <lastmod>2024-06-02T03:55:49+05:00</lastmod>
   </url><url>
-    <loc>https://bootleg-dev.github.io/tags/</loc>
+    <loc>https://bootleg-dev.github.io/blog/tags/</loc>
     <lastmod>2024-06-02T03:55:49+05:00</lastmod>
   </url><url>
-    <loc>https://bootleg-dev.github.io/posts/face-landmarks-detection/</loc>
+    <loc>https://bootleg-dev.github.io/blog/posts/face-landmarks-detection/</loc>
   </url><url>
-    <loc>https://bootleg-dev.github.io/archives/</loc>
+    <loc>https://bootleg-dev.github.io/blog/archives/</loc>
   </url><url>
-    <loc>https://bootleg-dev.github.io/categories/</loc>
+    <loc>https://bootleg-dev.github.io/blog/categories/</loc>
   </url><url>
-    <loc>https://bootleg-dev.github.io/search/</loc>
+    <loc>https://bootleg-dev.github.io/blog/search/</loc>
   </url>
 </urlset>

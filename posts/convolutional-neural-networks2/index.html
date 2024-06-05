@@ -9,15 +9,15 @@
 <meta name="keywords" content="Beginner, Neural Networks, CNN, Convolution">
 <meta name="description" content="What is the convolutional neural network?">
 <meta name="author" content="">
-<link rel="canonical" href="https://bootleg-dev.github.io/posts/convolutional-neural-networks2/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.a72801f0f40a8d7f71aa1cafd1c2f2a993a1f26ca1cfd38fdba65d5b9b0f08a0.css" integrity="sha256-pygB8PQKjX9xqhyv0cLyqZOh8myhz9OP26ZdW5sPCKA=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.min.b95bacdc39e37a332a9f883b1e78be4abc1fdca2bc1f2641f55e3cd3dabd4d61.js" integrity="sha256-uVus3DnjejMqn4g7Hni&#43;Srwf3KK8HyZB9V4809q9TWE="
+<link rel="canonical" href="https://bootleg-dev.github.io/blog/posts/convolutional-neural-networks2/">
+<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.min.a72801f0f40a8d7f71aa1cafd1c2f2a993a1f26ca1cfd38fdba65d5b9b0f08a0.css" integrity="sha256-pygB8PQKjX9xqhyv0cLyqZOh8myhz9OP26ZdW5sPCKA=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/blog/assets/js/highlight.min.b95bacdc39e37a332a9f883b1e78be4abc1fdca2bc1f2641f55e3cd3dabd4d61.js" integrity="sha256-uVus3DnjejMqn4g7Hni&#43;Srwf3KK8HyZB9V4809q9TWE="
     onload="hljs.initHighlightingOnLoad();"></script>
-<link rel="icon" href="https://bootleg-dev.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://bootleg-dev.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://bootleg-dev.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://bootleg-dev.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://bootleg-dev.github.io/safari-pinned-tab.svg">
+<link rel="icon" href="https://bootleg-dev.github.io/blog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://bootleg-dev.github.io/blog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://bootleg-dev.github.io/blog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://bootleg-dev.github.io/blog/apple-touch-icon.png">
+<link rel="mask-icon" href="https://bootleg-dev.github.io/blog/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <noscript>
@@ -59,7 +59,7 @@
 </noscript><meta property="og:title" content="Convolutional Neural Networks - CNNs" />
 <meta property="og:description" content="What is the convolutional neural network?" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://bootleg-dev.github.io/posts/convolutional-neural-networks2/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://bootleg-dev.github.io/blog/posts/convolutional-neural-networks2/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-06-02T03:55:49&#43;05:00" />
 <meta property="article:modified_time" content="2024-06-02T03:55:49&#43;05:00" />
 
@@ -72,18 +72,18 @@
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://bootleg-dev.github.io/posts/"
-    }, 
+  "itemListElement": [, 
     {
       "@type": "ListItem",
       "position":  2 ,
+      "name": "Posts",
+      "item": "https://bootleg-dev.github.io/blog/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
       "name": "Convolutional Neural Networks - CNNs",
-      "item": "https://bootleg-dev.github.io/posts/convolutional-neural-networks2/"
+      "item": "https://bootleg-dev.github.io/blog/posts/convolutional-neural-networks2/"
     }
   ]
 }
@@ -105,14 +105,14 @@
   "dateModified": "2024-06-02T03:55:49.337541+05:00",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://bootleg-dev.github.io/posts/convolutional-neural-networks2/"
+    "@id": "https://bootleg-dev.github.io/blog/posts/convolutional-neural-networks2/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Adil's Notes",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://bootleg-dev.github.io/favicon.ico"
+      "url": "https://bootleg-dev.github.io/blog/favicon.ico"
     }
   }
 }
@@ -134,7 +134,7 @@
 <header class="header sticky-header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://bootleg-dev.github.io/" accesskey="h" title="Adil&#39;s Notes (Alt + H)">Adil&#39;s Notes</a>
+            <a href="https://bootleg-dev.github.io/blog" accesskey="h" title="Adil&#39;s Notes (Alt + H)">Adil&#39;s Notes</a>
             <span class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -160,27 +160,27 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://bootleg-dev.github.io/" title="Home">
+                <a href="https://bootleg-dev.github.io/blog/" title="Home">
                     <span>Home</span>
                 </a>
             </li>
             <li>
-                <a href="https://bootleg-dev.github.io/posts" title="Posts">
+                <a href="https://bootleg-dev.github.io/blog/posts" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
             <li>
-                <a href="https://bootleg-dev.github.io/archives" title="Archive">
+                <a href="https://bootleg-dev.github.io/blog/archives" title="Archive">
                     <span>Archive</span>
                 </a>
             </li>
             <li>
-                <a href="https://bootleg-dev.github.io/search" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="https://bootleg-dev.github.io/blog/search" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
             <li>
-                <a href="https://bootleg-dev.github.io/tags" title="Tags">
+                <a href="https://bootleg-dev.github.io/blog/tags" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
@@ -191,7 +191,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://bootleg-dev.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://bootleg-dev.github.io/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://bootleg-dev.github.io/blog">Home</a>&nbsp;»&nbsp;<a href="https://bootleg-dev.github.io/blog/posts/">Posts</a></div>
     <h1 class="post-title">
       Convolutional Neural Networks - CNNs
     </h1>
@@ -545,17 +545,17 @@ Date: 02 June, 2024
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://bootleg-dev.github.io/tags/beginner/">Beginner</a></li>
-      <li><a href="https://bootleg-dev.github.io/tags/neural-networks/">Neural Networks</a></li>
-      <li><a href="https://bootleg-dev.github.io/tags/cnn/">CNN</a></li>
-      <li><a href="https://bootleg-dev.github.io/tags/convolution/">Convolution</a></li>
+      <li><a href="https://bootleg-dev.github.io/blog/tags/beginner/">Beginner</a></li>
+      <li><a href="https://bootleg-dev.github.io/blog/tags/neural-networks/">Neural Networks</a></li>
+      <li><a href="https://bootleg-dev.github.io/blog/tags/cnn/">CNN</a></li>
+      <li><a href="https://bootleg-dev.github.io/blog/tags/convolution/">Convolution</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="https://bootleg-dev.github.io/">Adil&#39;s Notes</a></span>
+    <span>&copy; 2024 <a href="https://bootleg-dev.github.io/blog">Adil&#39;s Notes</a></span>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">

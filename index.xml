@@ -2,35 +2,35 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Adil&#39;s Notes</title>
-    <link>https://bootleg-dev.github.io/</link>
+    <link>https://bootleg-dev.github.io/blog/</link>
     <description>Recent content on Adil&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 02 Jun 2024 03:55:49 +0500</lastBuildDate><atom:link href="https://bootleg-dev.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 02 Jun 2024 03:55:49 +0500</lastBuildDate><atom:link href="https://bootleg-dev.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Convolutional Neural Networks - CNNs</title>
-      <link>https://bootleg-dev.github.io/posts/convolutional-neural-networks/</link>
+      <link>https://bootleg-dev.github.io/blog/posts/convolutional-neural-networks/</link>
       <pubDate>Sun, 02 Jun 2024 03:55:49 +0500</pubDate>
       
-      <guid>https://bootleg-dev.github.io/posts/convolutional-neural-networks/</guid>
+      <guid>https://bootleg-dev.github.io/blog/posts/convolutional-neural-networks/</guid>
       <description>What is the convolutional neural network?</description>
     </item>
     
     <item>
       <title>Convolutional Neural Networks - CNNs</title>
-      <link>https://bootleg-dev.github.io/posts/convolutional-neural-networks2/</link>
+      <link>https://bootleg-dev.github.io/blog/posts/convolutional-neural-networks2/</link>
       <pubDate>Sun, 02 Jun 2024 03:55:49 +0500</pubDate>
       
-      <guid>https://bootleg-dev.github.io/posts/convolutional-neural-networks2/</guid>
+      <guid>https://bootleg-dev.github.io/blog/posts/convolutional-neural-networks2/</guid>
       <description>What is the convolutional neural network?</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://bootleg-dev.github.io/posts/face-landmarks-detection/</link>
+      <link>https://bootleg-dev.github.io/blog/posts/face-landmarks-detection/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://bootleg-dev.github.io/posts/face-landmarks-detection/</guid>
+      <guid>https://bootleg-dev.github.io/blog/posts/face-landmarks-detection/</guid>
       <description></description>
     </item>
     
