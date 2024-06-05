@@ -1,0 +1,97 @@
+#use my own domain name
+baseURL: "https://bootleg-dev.github.io/"
+languageCode: en-us
+title: Adil's Notes
+
+
+theme: PaperMod
+
+menu:
+  main:
+    - identifier: home
+      name: Home
+      url: /
+      weight: 10
+    - identifier: posts
+      name: Posts
+      url: /posts
+      weight: 20
+    - identifier: archives
+      name: Archive
+      url: /archives
+      weight: 30
+    - identifier: search
+      name: Search
+      url: /search
+      weight: 40
+    - identifier: tags
+      name: Tags
+      url: /tags
+      weight: 50
+
+
+params:
+  # theme
+  showToc: true
+  TocOpen: false
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  hideMeta: false
+
+  # for enchanced SEO
+  env: production
+
+  # Home Page
+  profileMode:
+    enabled: true
+    title: "👋 Welcome to Adil's Notes"
+    subtitle: Hey there, I'm Adil! Thanks for dropping by my digital nook. Here, I share everything I've learned so far and continue to discover as a Machine Learning Engineer. Enjoy! 😉
+
+
+    imageUrl: "home/casual.jpg"
+    imageWidth: 220
+    imageHeight: 220
+    buttons:
+       - name: Resume
+         url: "https://drive.google.com/file/d/1IUJ_TAIUAy6q2D2f78RUv54DwuWMbJOf/view?usp=drive_link"
+
+  # List View
+  # description of a posts
+  hideDescriptionInList: false
+
+  # cover image for posts
+  cover:
+    hiddenInList: true # hide on list pages and home
+    hiddenInSingle: false # hide on single page
+
+  socialIcons:
+    - name: "email"
+      url: "mailto:trygrep@gmail.com"
+    - name: "linkedin"
+      url: "https://www.linkedin.com/in/adil-sarsenov/"
+    - name: "github"
+      url: "https://github.com/bootleg-dev"
+
+
+  # text search
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+
+# for search using Fuse.js
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+# allow HTML in MD
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
