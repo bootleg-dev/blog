@@ -1,4 +1,3 @@
-#use my own domain name
 baseURL: "https://bootleg-dev.github.io/blog"
 languageCode: en-us
 title: Adil's Notes
@@ -53,7 +52,7 @@ params:
     imageHeight: 220
     buttons:
        - name: Resume
-         url: "https://drive.google.com/file/d/1W1_gXjxrt7bgqZnR64FEvH3yBCSmJOqR/view?usp=drive_link"
+         url: "https://drive.google.com/file/d/1kJ4p0tbZlQOMUGTpPCCnAo5fHcag0fuE/view?usp=drive_link"
 
   # List View
   # description of a posts
