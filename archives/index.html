@@ -70,10 +70,10 @@
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [, 
+  "itemListElement": [
     {
       "@type": "ListItem",
-      "position":  2 ,
+      "position":  1 ,
       "name": "Archive",
       "item": "https://bootleg-dev.github.io/blog/archives/"
     }
@@ -111,7 +111,20 @@
 </script>
 </head>
 
-<body class="list" id="top">
+<body class="list" id="top"><script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>
     if (localStorage.getItem("pref-theme") === "dark") {
         document.body.classList.add('dark');
@@ -126,7 +139,7 @@
 <header class="header sticky-header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://bootleg-dev.github.io/blog" accesskey="h" title="Adil&#39;s Notes (Alt + H)">Adil&#39;s Notes</a>
+            <a href="https://bootleg-dev.github.io/blog/" accesskey="h" title="Adil&#39;s Notes (Alt + H)">Adil&#39;s Notes</a>
             <span class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -185,19 +198,46 @@
   <h1>Archive</h1>
 </header>
 <div class="archive-year">
-  <h2 class="archive-year-header">2024<sup class="archive-count">&nbsp;&nbsp;2</sup>
+  <h2 class="archive-year-header">2024<sup class="archive-count">&nbsp;&nbsp;5</sup>
   </h2>
   <div class="archive-month">
-    <h3 class="archive-month-header">June<sup class="archive-count">&nbsp;&nbsp;2</sup></h3>
+    <h3 class="archive-month-header">March<sup class="archive-count">&nbsp;&nbsp;5</sup></h3>
     <div class="archive-posts">
       <div class="archive-entry">
-        <h3 class="archive-entry-title">Convolutional Neural Networks - CNNs
+        <h3 class="archive-entry-title">Understanding Transfer Learning
         </h3>
         <div class="archive-meta">
 
 
-Date: 02 June, 2024</div>
-        <a class="entry-link" aria-label="post link to Convolutional Neural Networks - CNNs" href="https://bootleg-dev.github.io/blog/posts/convolutional-neural-networks/"></a>
+Date: 24 March, 2024</div>
+        <a class="entry-link" aria-label="post link to Understanding Transfer Learning" href="https://bootleg-dev.github.io/blog/posts/transfer-learning/"></a>
+      </div>
+      <div class="archive-entry">
+        <h3 class="archive-entry-title">Understanding EfficientNet
+        </h3>
+        <div class="archive-meta">
+
+
+Date: 23 March, 2024</div>
+        <a class="entry-link" aria-label="post link to Understanding EfficientNet" href="https://bootleg-dev.github.io/blog/posts/effnet/"></a>
+      </div>
+      <div class="archive-entry">
+        <h3 class="archive-entry-title">Understanding ResNet
+        </h3>
+        <div class="archive-meta">
+
+
+Date: 22 March, 2024</div>
+        <a class="entry-link" aria-label="post link to Understanding ResNet" href="https://bootleg-dev.github.io/blog/posts/resnet/"></a>
+      </div>
+      <div class="archive-entry">
+        <h3 class="archive-entry-title">Visual Geometry Group - VGG Architecture
+        </h3>
+        <div class="archive-meta">
+
+
+Date: 19 March, 2024</div>
+        <a class="entry-link" aria-label="post link to Visual Geometry Group - VGG Architecture" href="https://bootleg-dev.github.io/blog/posts/vgg/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title">Convolutional Neural Networks - CNNs
@@ -205,8 +245,8 @@ Date: 02 June, 2024</div>
         <div class="archive-meta">
 
 
-Date: 02 June, 2024</div>
-        <a class="entry-link" aria-label="post link to Convolutional Neural Networks - CNNs" href="https://bootleg-dev.github.io/blog/posts/convolutional-neural-networks2/"></a>
+Date: 17 March, 2024</div>
+        <a class="entry-link" aria-label="post link to Convolutional Neural Networks - CNNs" href="https://bootleg-dev.github.io/blog/posts/convolutional-neural-networks/"></a>
       </div>
     </div>
   </div>
@@ -214,7 +254,7 @@ Date: 02 June, 2024</div>
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="https://bootleg-dev.github.io/blog">Adil&#39;s Notes</a></span>
+    <span>&copy; 2024 <a href="https://bootleg-dev.github.io/blog/">Adil&#39;s Notes</a></span>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">

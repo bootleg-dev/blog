@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Understanding EfficientNet | Adil&#39;s Notes</title>
+<meta name="keywords" content="Deep Learning, Neural Networks, CNN, EfficientNet">
+<meta name="description" content="Explore the EfficientNet architecture and its innovative compound scaling.">
+<meta name="author" content="">
+<link rel="canonical" href="https://bootleg-dev.github.io/blog/posts/effnet/">
+<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.min.a72801f0f40a8d7f71aa1cafd1c2f2a993a1f26ca1cfd38fdba65d5b9b0f08a0.css" integrity="sha256-pygB8PQKjX9xqhyv0cLyqZOh8myhz9OP26ZdW5sPCKA=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/blog/assets/js/highlight.min.b95bacdc39e37a332a9f883b1e78be4abc1fdca2bc1f2641f55e3cd3dabd4d61.js" integrity="sha256-uVus3DnjejMqn4g7Hni&#43;Srwf3KK8HyZB9V4809q9TWE="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://bootleg-dev.github.io/blog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://bootleg-dev.github.io/blog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://bootleg-dev.github.io/blog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://bootleg-dev.github.io/blog/apple-touch-icon.png">
+<link rel="mask-icon" href="https://bootleg-dev.github.io/blog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Understanding EfficientNet" />
+<meta property="og:description" content="Explore the EfficientNet architecture and its innovative compound scaling." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bootleg-dev.github.io/blog/posts/effnet/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-03-23T18:34:44&#43;05:00" />
+<meta property="article:modified_time" content="2024-03-23T18:34:44&#43;05:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Understanding EfficientNet"/>
+<meta name="twitter:description" content="Explore the EfficientNet architecture and its innovative compound scaling."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://bootleg-dev.github.io/blog/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Understanding EfficientNet",
+      "item": "https://bootleg-dev.github.io/blog/posts/effnet/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Understanding EfficientNet",
+  "name": "Understanding EfficientNet",
+  "description": "Explore the EfficientNet architecture and its innovative compound scaling.",
+  "keywords": [
+    "Deep Learning", "Neural Networks", "CNN", "EfficientNet"
+  ],
+  "articleBody": "Introduction EfficientNet is an advanced deep learning model introduced by Mingxing Tan and Quoc V. Le from Google Research, Brain team, in their paper “EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks.” EfficientNet solves the common problem of balancing accuracy and resource consumption in deep learning models by using a novel technique called compound scaling.\nWhy EfficientNet? The Challenge of Traditional Models Traditional deep learning models often face a trade-off between accuracy and resource use. Making a model more accurate usually means making it larger, which requires more computational power and memory. EfficientNet tackles this challenge effectively.\nThe Solution: Compound Scaling EfficientNet introduces compound scaling, which scales three critical dimensions of a neural network: width, depth, and resolution. This scaling method ensures that the model is both efficient and accurate.\nWidth Scaling Width scaling refers to the number of channels in each layer of the neural network. Increasing the width helps the model capture more complex patterns and features, leading to improved accuracy. Conversely, decreasing the width results in a more lightweight model suitable for environments with limited resources.\nDepth Scaling Depth scaling involves the total number of layers in the network. Deeper models can capture more intricate data representations but require more computational resources. Shallower models are computationally efficient but might sacrifice accuracy.\nResolution Scaling Resolution scaling adjusts the size of the input images. Higher-resolution images provide more detailed information, potentially improving performance. However, they also need more memory and computational power. Lower-resolution images consume fewer resources but may lose fine-grained details.\nMathematical Explanation of Compound Scaling EfficientNet uses a simple yet effective method to scale up models. The scaling method is guided by a compound coefficient $( \\phi )$ which uniformly scales network width, depth, and resolution:\n$[ \\text{depth:} \\quad d = \\alpha^\\phi ]$\n$[ \\text{width:} \\quad w = \\beta^\\phi ]$\n$[ \\text{resolution:} \\quad r = \\gamma^\\phi ]$\nwhere $( \\alpha )$, $( \\beta )$, and $( \\gamma )$ are constants determined through a small grid search and $( \\phi )$ is a user-specified coefficient that controls how much to scale each dimension. The idea is to balance all three dimensions rather than scaling one aspect alone.\nGrid Search for EfficientNet The process of determining the constants $( \\alpha )$, $( \\beta )$, and $( \\gamma )$ involves two main steps:\nStep 1: Baseline Network Assume twice the resources are available and set $( \\phi = 1 )$. Perform a small grid search for $( \\alpha )$, $( \\beta )$, and $( \\gamma )$ based on equations 2 and 3 from the original paper. Specifically, the best values for EfficientNet-B0 are found to be $( \\alpha = 1.2 )$, $( \\beta = 1.1 )$, and $( \\gamma = 1.15 )$ under the constraint:\n$[ \\alpha \\cdot \\beta^2 \\cdot \\gamma^2 \\approx 2 ]$\nStep 2: Compound Scaling Fix $( \\alpha )$, $( \\beta )$, and $( \\gamma )$ as constants and scale up the baseline network with different $( \\phi )$ values using the equation:\n$[ \\text{New Depth} = \\alpha^\\phi \\times \\text{Baseline Depth} ]$\n$[ \\text{New Width} = \\beta^\\phi \\times \\text{Baseline Width} ]$\n$[ \\text{New Resolution} = \\gamma^\\phi \\times \\text{Baseline Resolution} ]$\nThis method is used to obtain EfficientNet-B1 to B7 models.\nEfficientNet Architecture EfficientNet uses Mobile Inverted Bottleneck (MBConv) layers, which combine depth-wise separable convolutions and inverted residual blocks. This architecture helps achieve high performance with fewer resources.\nKey Components MBConv Layers: EfficientNet uses these layers for efficient feature extraction. Compound Scaling: Scales width, depth, and resolution uniformly. Inverted Residual Blocks: Help in maintaining efficiency and performance. Achievements of EfficientNet EfficientNet models have set new benchmarks for accuracy while being more resource-efficient than previous models. They are widely used for various computer vision tasks due to their balanced approach to scaling.\nPractical Applications of EfficientNet Image Classification EfficientNet models are highly effective for image classification tasks. Their architectures, such as EfficientNet-B0 to EfficientNet-B7, provide a range of options depending on the required accuracy and available computational resources.\nObject Detection EfficientNet serves as a backbone for many object detection frameworks, offering robust feature extraction capabilities that enhance detection accuracy.\nMedical Image Analysis EfficientNet models are used in medical imaging to detect anomalies in MRI scans, CT scans, and X-rays, aiding in diagnosis and treatment planning.\nTransfer Learning EfficientNet’s pre-trained models are often used for transfer learning. A model trained on a large dataset like ImageNet can be fine-tuned for specific tasks with smaller datasets, significantly reducing training time and improving performance.\nSummary EfficientNet’s innovative architecture has revolutionized deep learning by providing a method to balance model accuracy and resource efficiency. Its success in practical applications highlights its robustness and versatility. By introducing compound scaling, EfficientNet addresses significant challenges associated with traditional deep learning models, paving the way for further advancements in neural network design.\n",
+  "wordCount" : "795",
+  "inLanguage": "en",
+  "datePublished": "2024-03-23T18:34:44.165668+05:00",
+  "dateModified": "2024-03-23T18:34:44.165668+05:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://bootleg-dev.github.io/blog/posts/effnet/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Adil's Notes",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://bootleg-dev.github.io/blog/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top"><script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header sticky-header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://bootleg-dev.github.io/blog/" accesskey="h" title="Adil&#39;s Notes (Alt + H)">Adil&#39;s Notes</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://bootleg-dev.github.io/blog/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://bootleg-dev.github.io/blog/posts" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://bootleg-dev.github.io/blog/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://bootleg-dev.github.io/blog/search" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://bootleg-dev.github.io/blog/tags" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://bootleg-dev.github.io/blog/">Home</a>&nbsp;»&nbsp;<a href="https://bootleg-dev.github.io/blog/posts/">Posts</a></div>
+    <h1 class="post-title">
+      Understanding EfficientNet
+    </h1>
+    <div class="post-description">
+      Explore the EfficientNet architecture and its innovative compound scaling.
+    </div>
+    <div class="post-meta">
+
+
+Date: 23 March, 2024
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">‎ Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+                <li>
+                    <a href="#why-efficientnet" aria-label="Why EfficientNet?">Why EfficientNet?</a><ul>
+                        
+                <li>
+                    <a href="#the-challenge-of-traditional-models" aria-label="The Challenge of Traditional Models">The Challenge of Traditional Models</a></li></ul>
+                </li>
+                <li>
+                    <a href="#the-solution-compound-scaling" aria-label="The Solution: Compound Scaling">The Solution: Compound Scaling</a><ul>
+                        
+                <li>
+                    <a href="#width-scaling" aria-label="Width Scaling">Width Scaling</a></li>
+                <li>
+                    <a href="#depth-scaling" aria-label="Depth Scaling">Depth Scaling</a></li>
+                <li>
+                    <a href="#resolution-scaling" aria-label="Resolution Scaling">Resolution Scaling</a></li></ul>
+                </li>
+                <li>
+                    <a href="#mathematical-explanation-of-compound-scaling" aria-label="Mathematical Explanation of Compound Scaling">Mathematical Explanation of Compound Scaling</a><ul>
+                        
+                <li>
+                    <a href="#grid-search-for-efficientnet" aria-label="Grid Search for EfficientNet">Grid Search for EfficientNet</a><ul>
+                        
+                <li>
+                    <a href="#step-1-baseline-network" aria-label="Step 1: Baseline Network">Step 1: Baseline Network</a></li>
+                <li>
+                    <a href="#step-2-compound-scaling" aria-label="Step 2: Compound Scaling">Step 2: Compound Scaling</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#efficientnet-architecture" aria-label="EfficientNet Architecture">EfficientNet Architecture</a><ul>
+                        
+                <li>
+                    <a href="#key-components" aria-label="Key Components">Key Components</a></li></ul>
+                </li>
+                <li>
+                    <a href="#achievements-of-efficientnet" aria-label="Achievements of EfficientNet">Achievements of EfficientNet</a></li>
+                <li>
+                    <a href="#practical-applications-of-efficientnet" aria-label="Practical Applications of EfficientNet">Practical Applications of EfficientNet</a><ul>
+                        
+                <li>
+                    <a href="#image-classification" aria-label="Image Classification">Image Classification</a></li>
+                <li>
+                    <a href="#object-detection" aria-label="Object Detection">Object Detection</a></li>
+                <li>
+                    <a href="#medical-image-analysis" aria-label="Medical Image Analysis">Medical Image Analysis</a></li>
+                <li>
+                    <a href="#transfer-learning" aria-label="Transfer Learning">Transfer Learning</a></li></ul>
+                </li>
+                <li>
+                    <a href="#summary" aria-label="Summary">Summary</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h2>
+<p>EfficientNet is an advanced deep learning model introduced by Mingxing Tan and Quoc V. Le from Google Research, Brain team, in their paper &ldquo;EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks.&rdquo; EfficientNet solves the common problem of balancing accuracy and resource consumption in deep learning models by using a novel technique called compound scaling.</p>
+<h2 id="why-efficientnet">Why EfficientNet?<a hidden class="anchor" aria-hidden="true" href="#why-efficientnet">#</a></h2>
+<h3 id="the-challenge-of-traditional-models">The Challenge of Traditional Models<a hidden class="anchor" aria-hidden="true" href="#the-challenge-of-traditional-models">#</a></h3>
+<p>Traditional deep learning models often face a trade-off between accuracy and resource use. Making a model more accurate usually means making it larger, which requires more computational power and memory. EfficientNet tackles this challenge effectively.</p>
+<h2 id="the-solution-compound-scaling">The Solution: Compound Scaling<a hidden class="anchor" aria-hidden="true" href="#the-solution-compound-scaling">#</a></h2>
+<p>EfficientNet introduces compound scaling, which scales three critical dimensions of a neural network: width, depth, and resolution. This scaling method ensures that the model is both efficient and accurate.</p>
+<p><img loading="lazy" src="/blog/posts/effnet/img1.png" alt="EfficientNet"  />
+</p>
+<h3 id="width-scaling">Width Scaling<a hidden class="anchor" aria-hidden="true" href="#width-scaling">#</a></h3>
+<p>Width scaling refers to the number of channels in each layer of the neural network. Increasing the width helps the model capture more complex patterns and features, leading to improved accuracy. Conversely, decreasing the width results in a more lightweight model suitable for environments with limited resources.</p>
+<h3 id="depth-scaling">Depth Scaling<a hidden class="anchor" aria-hidden="true" href="#depth-scaling">#</a></h3>
+<p>Depth scaling involves the total number of layers in the network. Deeper models can capture more intricate data representations but require more computational resources. Shallower models are computationally efficient but might sacrifice accuracy.</p>
+<h3 id="resolution-scaling">Resolution Scaling<a hidden class="anchor" aria-hidden="true" href="#resolution-scaling">#</a></h3>
+<p>Resolution scaling adjusts the size of the input images. Higher-resolution images provide more detailed information, potentially improving performance. However, they also need more memory and computational power. Lower-resolution images consume fewer resources but may lose fine-grained details.</p>
+<h2 id="mathematical-explanation-of-compound-scaling">Mathematical Explanation of Compound Scaling<a hidden class="anchor" aria-hidden="true" href="#mathematical-explanation-of-compound-scaling">#</a></h2>
+<p>EfficientNet uses a simple yet effective method to scale up models. The scaling method is guided by a compound coefficient $( \phi )$ which uniformly scales network width, depth, and resolution:</p>
+<p>$[
+\text{depth:} \quad d = \alpha^\phi
+]$</p>
+<p>$[
+\text{width:} \quad w = \beta^\phi
+]$</p>
+<p>$[
+\text{resolution:} \quad r = \gamma^\phi
+]$</p>
+<p>where $( \alpha )$, $( \beta )$, and $( \gamma )$ are constants determined through a small grid search and $( \phi )$ is a user-specified coefficient that controls how much to scale each dimension. The idea is to balance all three dimensions rather than scaling one aspect alone.</p>
+<h3 id="grid-search-for-efficientnet">Grid Search for EfficientNet<a hidden class="anchor" aria-hidden="true" href="#grid-search-for-efficientnet">#</a></h3>
+<p>The process of determining the constants $( \alpha )$, $( \beta )$, and $( \gamma )$ involves two main steps:</p>
+<h4 id="step-1-baseline-network">Step 1: Baseline Network<a hidden class="anchor" aria-hidden="true" href="#step-1-baseline-network">#</a></h4>
+<p>Assume twice the resources are available and set $( \phi = 1 )$. Perform a small grid search for $( \alpha )$, $( \beta )$, and $( \gamma )$ based on equations 2 and 3 from the original paper. Specifically, the best values for EfficientNet-B0 are found to be $( \alpha = 1.2 )$, $( \beta = 1.1 )$, and $( \gamma = 1.15 )$ under the constraint:</p>
+<p>$[
+\alpha \cdot \beta^2 \cdot \gamma^2 \approx 2
+]$</p>
+<h4 id="step-2-compound-scaling">Step 2: Compound Scaling<a hidden class="anchor" aria-hidden="true" href="#step-2-compound-scaling">#</a></h4>
+<p>Fix $( \alpha )$, $( \beta )$, and $( \gamma )$ as constants and scale up the baseline network with different $( \phi )$ values using the equation:</p>
+<p>$[
+\text{New Depth} = \alpha^\phi \times \text{Baseline Depth}
+]$</p>
+<p>$[
+\text{New Width} = \beta^\phi \times \text{Baseline Width}
+]$</p>
+<p>$[
+\text{New Resolution} = \gamma^\phi \times \text{Baseline Resolution}
+]$</p>
+<p>This method is used to obtain EfficientNet-B1 to B7 models.</p>
+<h2 id="efficientnet-architecture">EfficientNet Architecture<a hidden class="anchor" aria-hidden="true" href="#efficientnet-architecture">#</a></h2>
+<p>EfficientNet uses Mobile Inverted Bottleneck (MBConv) layers, which combine depth-wise separable convolutions and inverted residual blocks. This architecture helps achieve high performance with fewer resources.</p>
+<h3 id="key-components">Key Components<a hidden class="anchor" aria-hidden="true" href="#key-components">#</a></h3>
+<ul>
+<li><strong>MBConv Layers:</strong> EfficientNet uses these layers for efficient feature extraction.</li>
+<li><strong>Compound Scaling:</strong> Scales width, depth, and resolution uniformly.</li>
+<li><strong>Inverted Residual Blocks:</strong> Help in maintaining efficiency and performance.</li>
+</ul>
+<h2 id="achievements-of-efficientnet">Achievements of EfficientNet<a hidden class="anchor" aria-hidden="true" href="#achievements-of-efficientnet">#</a></h2>
+<p>EfficientNet models have set new benchmarks for accuracy while being more resource-efficient than previous models. They are widely used for various computer vision tasks due to their balanced approach to scaling.</p>
+<h2 id="practical-applications-of-efficientnet">Practical Applications of EfficientNet<a hidden class="anchor" aria-hidden="true" href="#practical-applications-of-efficientnet">#</a></h2>
+<h3 id="image-classification">Image Classification<a hidden class="anchor" aria-hidden="true" href="#image-classification">#</a></h3>
+<p>EfficientNet models are highly effective for image classification tasks. Their architectures, such as EfficientNet-B0 to EfficientNet-B7, provide a range of options depending on the required accuracy and available computational resources.</p>
+<h3 id="object-detection">Object Detection<a hidden class="anchor" aria-hidden="true" href="#object-detection">#</a></h3>
+<p>EfficientNet serves as a backbone for many object detection frameworks, offering robust feature extraction capabilities that enhance detection accuracy.</p>
+<h3 id="medical-image-analysis">Medical Image Analysis<a hidden class="anchor" aria-hidden="true" href="#medical-image-analysis">#</a></h3>
+<p>EfficientNet models are used in medical imaging to detect anomalies in MRI scans, CT scans, and X-rays, aiding in diagnosis and treatment planning.</p>
+<h3 id="transfer-learning">Transfer Learning<a hidden class="anchor" aria-hidden="true" href="#transfer-learning">#</a></h3>
+<p>EfficientNet&rsquo;s pre-trained models are often used for transfer learning. A model trained on a large dataset like ImageNet can be fine-tuned for specific tasks with smaller datasets, significantly reducing training time and improving performance.</p>
+<h2 id="summary">Summary<a hidden class="anchor" aria-hidden="true" href="#summary">#</a></h2>
+<p>EfficientNet&rsquo;s innovative architecture has revolutionized deep learning by providing a method to balance model accuracy and resource efficiency. Its success in practical applications highlights its robustness and versatility. By introducing compound scaling, EfficientNet addresses significant challenges associated with traditional deep learning models, paving the way for further advancements in neural network design.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://bootleg-dev.github.io/blog/tags/deep-learning/">Deep Learning</a></li>
+      <li><a href="https://bootleg-dev.github.io/blog/tags/neural-networks/">Neural Networks</a></li>
+      <li><a href="https://bootleg-dev.github.io/blog/tags/cnn/">CNN</a></li>
+      <li><a href="https://bootleg-dev.github.io/blog/tags/efficientnet/">EfficientNet</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="https://bootleg-dev.github.io/blog/">Adil&#39;s Notes</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

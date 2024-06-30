@@ -66,7 +66,20 @@
 
 </head>
 
-<body class="list" id="top">
+<body class="list" id="top"><script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>
     if (localStorage.getItem("pref-theme") === "dark") {
         document.body.classList.add('dark');
@@ -81,7 +94,7 @@
 <header class="header sticky-header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://bootleg-dev.github.io/blog" accesskey="h" title="Adil&#39;s Notes (Alt + H)">Adil&#39;s Notes</a>
+            <a href="https://bootleg-dev.github.io/blog/" accesskey="h" title="Adil&#39;s Notes (Alt + H)">Adil&#39;s Notes</a>
             <span class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -135,7 +148,7 @@
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://bootleg-dev.github.io/blog">Home</a>&nbsp;»&nbsp;<a href="https://bootleg-dev.github.io/blog/tags/">Tags</a></div>
+<header class="page-header"><div class="breadcrumbs"><a href="https://bootleg-dev.github.io/blog/">Home</a>&nbsp;»&nbsp;<a href="https://bootleg-dev.github.io/blog/tags/">Tags</a></div>
   <h1>
     CNN
   </h1>
@@ -143,18 +156,50 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2>Convolutional Neural Networks - CNNs
+    <h2>Understanding EfficientNet
     </h2>
   </header>
   
   <div class="entry-content">
-    <p>What is the convolutional neural network?</p>
+    <p>Explore the EfficientNet architecture and its innovative compound scaling.</p>
   </div>
   <footer class="entry-footer">
 
 
-Date: 02 June, 2024</footer>
-  <a class="entry-link" aria-label="post link to Convolutional Neural Networks - CNNs" href="https://bootleg-dev.github.io/blog/posts/convolutional-neural-networks/"></a>
+Date: 23 March, 2024</footer>
+  <a class="entry-link" aria-label="post link to Understanding EfficientNet" href="https://bootleg-dev.github.io/blog/posts/effnet/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2>Understanding ResNet
+    </h2>
+  </header>
+  
+  <div class="entry-content">
+    <p>Dive into ResNet architecture and its innovative residual blocks.</p>
+  </div>
+  <footer class="entry-footer">
+
+
+Date: 22 March, 2024</footer>
+  <a class="entry-link" aria-label="post link to Understanding ResNet" href="https://bootleg-dev.github.io/blog/posts/resnet/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2>Visual Geometry Group - VGG Architecture
+    </h2>
+  </header>
+  
+  <div class="entry-content">
+    <p>VGG-16 and VGG-19.</p>
+  </div>
+  <footer class="entry-footer">
+
+
+Date: 19 March, 2024</footer>
+  <a class="entry-link" aria-label="post link to Visual Geometry Group - VGG Architecture" href="https://bootleg-dev.github.io/blog/posts/vgg/"></a>
 </article>
 
 <article class="post-entry tag-entry"> 
@@ -169,13 +214,13 @@ Date: 02 June, 2024</footer>
   <footer class="entry-footer">
 
 
-Date: 02 June, 2024</footer>
-  <a class="entry-link" aria-label="post link to Convolutional Neural Networks - CNNs" href="https://bootleg-dev.github.io/blog/posts/convolutional-neural-networks2/"></a>
+Date: 17 March, 2024</footer>
+  <a class="entry-link" aria-label="post link to Convolutional Neural Networks - CNNs" href="https://bootleg-dev.github.io/blog/posts/convolutional-neural-networks/"></a>
 </article>
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="https://bootleg-dev.github.io/blog">Adil&#39;s Notes</a></span>
+    <span>&copy; 2024 <a href="https://bootleg-dev.github.io/blog/">Adil&#39;s Notes</a></span>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">

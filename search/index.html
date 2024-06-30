@@ -71,10 +71,10 @@
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [, 
+  "itemListElement": [
     {
       "@type": "ListItem",
-      "position":  2 ,
+      "position":  1 ,
       "name": "Search",
       "item": "https://bootleg-dev.github.io/blog/search/"
     }
@@ -112,7 +112,20 @@
 </script>
 </head>
 
-<body class="list" id="top">
+<body class="list" id="top"><script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>
     if (localStorage.getItem("pref-theme") === "dark") {
         document.body.classList.add('dark');
@@ -127,7 +140,7 @@
 <header class="header sticky-header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://bootleg-dev.github.io/blog" accesskey="h" title="Adil&#39;s Notes (Alt + H)">Adil&#39;s Notes</a>
+            <a href="https://bootleg-dev.github.io/blog/" accesskey="h" title="Adil&#39;s Notes (Alt + H)">Adil&#39;s Notes</a>
             <span class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -200,7 +213,7 @@
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="https://bootleg-dev.github.io/blog">Adil&#39;s Notes</a></span>
+    <span>&copy; 2024 <a href="https://bootleg-dev.github.io/blog/">Adil&#39;s Notes</a></span>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">

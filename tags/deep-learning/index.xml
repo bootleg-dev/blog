@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Neural Networks on Adil&#39;s Notes</title>
-    <link>https://bootleg-dev.github.io/blog/tags/neural-networks/</link>
-    <description>Recent content in Neural Networks on Adil&#39;s Notes</description>
+    <title>Deep Learning on Adil&#39;s Notes</title>
+    <link>https://bootleg-dev.github.io/blog/tags/deep-learning/</link>
+    <description>Recent content in Deep Learning on Adil&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Mar 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://bootleg-dev.github.io/blog/tags/neural-networks/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Mar 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://bootleg-dev.github.io/blog/tags/deep-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Understanding Transfer Learning</title>
       <link>https://bootleg-dev.github.io/blog/posts/transfer-learning/</link>
@@ -41,15 +41,6 @@
       
       <guid>https://bootleg-dev.github.io/blog/posts/vgg/</guid>
       <description>VGG-16 and VGG-19.</description>
-    </item>
-    
-    <item>
-      <title>Convolutional Neural Networks - CNNs</title>
-      <link>https://bootleg-dev.github.io/blog/posts/convolutional-neural-networks/</link>
-      <pubDate>Sun, 17 Mar 2024 18:34:44 +0500</pubDate>
-      
-      <guid>https://bootleg-dev.github.io/blog/posts/convolutional-neural-networks/</guid>
-      <description>What is the convolutional neural network?</description>
     </item>
     
   </channel>
