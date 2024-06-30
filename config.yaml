@@ -1,4 +1,4 @@
-baseURL: "https://bootleg-dev.github.io/blog"
+baseURL: "https://bootleg-dev.github.io/blog/"
 languageCode: en-us
 title: Adil's Notes
 
@@ -36,6 +36,10 @@ params:
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: true
   hideMeta: false
+  math:
+    enable: true
+  highlight: true
+  katex: true
 
   # for enchanced SEO
   env: production
@@ -44,7 +48,7 @@ params:
   profileMode:
     enabled: true
     title: "👋 Welcome to Adil's Notes"
-    subtitle: Hey there, I'm Adil! Thanks for dropping by my digital nook. Here, I share everything I've learned so far and continue to discover as a Machine Learning Engineer. Enjoy! 😉
+    subtitle: Hey there! Thanks for dropping by my digital nook. Here, I share everything I've learned so far as a Machine Learning Engineer 😉
 
 
     imageUrl: "home/casual.jpg"
@@ -52,7 +56,7 @@ params:
     imageHeight: 220
     buttons:
        - name: Resume
-         url: "https://drive.google.com/file/d/1kJ4p0tbZlQOMUGTpPCCnAo5fHcag0fuE/view?usp=drive_link"
+         url: "https://drive.google.com/file/d/1Awx0BcAXBbYvrHZqxfAHVa9GPIR4V3Ve/view?usp=drive_link"
 
   # List View
   # description of a posts
@@ -94,3 +98,6 @@ markup:
   goldmark:
     renderer:
       unsafe: true
+    highlight:
+      style: "pygments"
+
