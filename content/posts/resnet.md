@@ -38,6 +38,9 @@ If the input is $ \( x \) $ and the desired output is $\( H(x) \) $, a residual 
 $\[ H(x) = F(x, \{W_i\}) + x \]$
 where $ \( F(x, \{W_i\}) \) $ represents the residual mapping to be learned.
 
+![ResNet](/blog/posts/resnet/img1.png)
+
+
 ## ResNet Architecture
 
 ResNet architectures come in various depths, such as ResNet-18, ResNet-34, ResNet-50, ResNet-101, and ResNet-152, indicating the number of layers. These architectures stack residual blocks to create deep networks that can effectively learn complex features.

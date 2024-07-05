@@ -21,6 +21,7 @@ Transfer learning leverages the knowledge gained while solving one problem and a
 ## Pre-trained Model Approach
 
 One common approach in transfer learning is to use a pre-trained model. Here's how it works:
+![Transfer-Learning](/blog/posts/transfer-learning/img1.png)
 
 ### Step 1: Select Source Model
 

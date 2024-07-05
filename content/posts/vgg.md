@@ -20,7 +20,7 @@ VGG networks are characterized by their deep architecture, which involves stacki
 
 ### Key Components of VGG
 
-![Sample Image and Landmarks from the Dataset](/blog/posts/vgg/img1.png)
+![VGG](/blog/posts/vgg/img1.png)
 
 - **Fixed Size Input:** The network accepts a fixed size of (224 x 224) RGB images.
 - **Preprocessing:** The only preprocessing step involves subtracting the mean RGB value from each pixel, computed over the entire training set (ImageNet).
