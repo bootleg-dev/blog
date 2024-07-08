@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>VGG on Adil&#39;s Notes</title>
-    <link>https://bootleg-dev.github.io/blog/tags/vgg/</link>
+    <link>https://bootleg-dev.github.io/tags/vgg/</link>
     <description>Recent content in VGG on Adil&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 19 Mar 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://bootleg-dev.github.io/blog/tags/vgg/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 Mar 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://bootleg-dev.github.io/tags/vgg/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Visual Geometry Group - VGG Architecture</title>
-      <link>https://bootleg-dev.github.io/blog/posts/vgg/</link>
+      <link>https://bootleg-dev.github.io/posts/vgg/</link>
       <pubDate>Tue, 19 Mar 2024 18:34:44 +0500</pubDate>
       
-      <guid>https://bootleg-dev.github.io/blog/posts/vgg/</guid>
+      <guid>https://bootleg-dev.github.io/posts/vgg/</guid>
       <description>VGG-16 and VGG-19.</description>
     </item>
     

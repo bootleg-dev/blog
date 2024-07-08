@@ -2,98 +2,98 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on Adil&#39;s Notes</title>
-    <link>https://bootleg-dev.github.io/blog/tags/</link>
+    <link>https://bootleg-dev.github.io/tags/</link>
     <description>Recent content in Tags on Adil&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Mar 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://bootleg-dev.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Mar 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://bootleg-dev.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Deep Learning</title>
-      <link>https://bootleg-dev.github.io/blog/tags/deep-learning/</link>
+      <link>https://bootleg-dev.github.io/tags/deep-learning/</link>
       <pubDate>Sun, 24 Mar 2024 18:34:44 +0500</pubDate>
       
-      <guid>https://bootleg-dev.github.io/blog/tags/deep-learning/</guid>
+      <guid>https://bootleg-dev.github.io/tags/deep-learning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Machine Learning</title>
-      <link>https://bootleg-dev.github.io/blog/tags/machine-learning/</link>
+      <link>https://bootleg-dev.github.io/tags/machine-learning/</link>
       <pubDate>Sun, 24 Mar 2024 18:34:44 +0500</pubDate>
       
-      <guid>https://bootleg-dev.github.io/blog/tags/machine-learning/</guid>
+      <guid>https://bootleg-dev.github.io/tags/machine-learning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Neural Networks</title>
-      <link>https://bootleg-dev.github.io/blog/tags/neural-networks/</link>
+      <link>https://bootleg-dev.github.io/tags/neural-networks/</link>
       <pubDate>Sun, 24 Mar 2024 18:34:44 +0500</pubDate>
       
-      <guid>https://bootleg-dev.github.io/blog/tags/neural-networks/</guid>
+      <guid>https://bootleg-dev.github.io/tags/neural-networks/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Transfer Learning</title>
-      <link>https://bootleg-dev.github.io/blog/tags/transfer-learning/</link>
+      <link>https://bootleg-dev.github.io/tags/transfer-learning/</link>
       <pubDate>Sun, 24 Mar 2024 18:34:44 +0500</pubDate>
       
-      <guid>https://bootleg-dev.github.io/blog/tags/transfer-learning/</guid>
+      <guid>https://bootleg-dev.github.io/tags/transfer-learning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>CNN</title>
-      <link>https://bootleg-dev.github.io/blog/tags/cnn/</link>
+      <link>https://bootleg-dev.github.io/tags/cnn/</link>
       <pubDate>Sat, 23 Mar 2024 18:34:44 +0500</pubDate>
       
-      <guid>https://bootleg-dev.github.io/blog/tags/cnn/</guid>
+      <guid>https://bootleg-dev.github.io/tags/cnn/</guid>
       <description></description>
     </item>
     
     <item>
       <title>EfficientNet</title>
-      <link>https://bootleg-dev.github.io/blog/tags/efficientnet/</link>
+      <link>https://bootleg-dev.github.io/tags/efficientnet/</link>
       <pubDate>Sat, 23 Mar 2024 18:34:44 +0500</pubDate>
       
-      <guid>https://bootleg-dev.github.io/blog/tags/efficientnet/</guid>
+      <guid>https://bootleg-dev.github.io/tags/efficientnet/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ResNet</title>
-      <link>https://bootleg-dev.github.io/blog/tags/resnet/</link>
+      <link>https://bootleg-dev.github.io/tags/resnet/</link>
       <pubDate>Fri, 22 Mar 2024 18:34:44 +0500</pubDate>
       
-      <guid>https://bootleg-dev.github.io/blog/tags/resnet/</guid>
+      <guid>https://bootleg-dev.github.io/tags/resnet/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Beginner</title>
-      <link>https://bootleg-dev.github.io/blog/tags/beginner/</link>
+      <link>https://bootleg-dev.github.io/tags/beginner/</link>
       <pubDate>Tue, 19 Mar 2024 18:34:44 +0500</pubDate>
       
-      <guid>https://bootleg-dev.github.io/blog/tags/beginner/</guid>
+      <guid>https://bootleg-dev.github.io/tags/beginner/</guid>
       <description></description>
     </item>
     
     <item>
       <title>VGG</title>
-      <link>https://bootleg-dev.github.io/blog/tags/vgg/</link>
+      <link>https://bootleg-dev.github.io/tags/vgg/</link>
       <pubDate>Tue, 19 Mar 2024 18:34:44 +0500</pubDate>
       
-      <guid>https://bootleg-dev.github.io/blog/tags/vgg/</guid>
+      <guid>https://bootleg-dev.github.io/tags/vgg/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Convolution</title>
-      <link>https://bootleg-dev.github.io/blog/tags/convolution/</link>
+      <link>https://bootleg-dev.github.io/tags/convolution/</link>
       <pubDate>Sun, 17 Mar 2024 18:34:44 +0500</pubDate>
       
-      <guid>https://bootleg-dev.github.io/blog/tags/convolution/</guid>
+      <guid>https://bootleg-dev.github.io/tags/convolution/</guid>
       <description></description>
     </item>
     

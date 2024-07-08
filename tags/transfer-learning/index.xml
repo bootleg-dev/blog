@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Transfer Learning on Adil&#39;s Notes</title>
-    <link>https://bootleg-dev.github.io/blog/tags/transfer-learning/</link>
+    <link>https://bootleg-dev.github.io/tags/transfer-learning/</link>
     <description>Recent content in Transfer Learning on Adil&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Mar 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://bootleg-dev.github.io/blog/tags/transfer-learning/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Mar 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://bootleg-dev.github.io/tags/transfer-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Understanding Transfer Learning</title>
-      <link>https://bootleg-dev.github.io/blog/posts/transfer-learning/</link>
+      <link>https://bootleg-dev.github.io/posts/transfer-learning/</link>
       <pubDate>Sun, 24 Mar 2024 18:34:44 +0500</pubDate>
       
-      <guid>https://bootleg-dev.github.io/blog/posts/transfer-learning/</guid>
+      <guid>https://bootleg-dev.github.io/posts/transfer-learning/</guid>
       <description>Concept of Transfer Learning and how it can be applied in various machine learning tasks.</description>
     </item>
     
