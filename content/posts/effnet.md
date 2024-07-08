@@ -24,7 +24,7 @@ Traditional deep learning models often face a trade-off between accuracy and res
 
 EfficientNet introduces compound scaling, which scales three critical dimensions of a neural network: width, depth, and resolution. This scaling method ensures that the model is both efficient and accurate.
 
-![EfficientNet](/blog/posts/effnet/img1.png)
+![EfficientNet](/posts/effnet/img1.png)
 
 
 ### Width Scaling

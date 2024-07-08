@@ -38,7 +38,7 @@ If the input is $ \( x \) $ and the desired output is $\( H(x) \) $, a residual 
 $\[ H(x) = F(x, \{W_i\}) + x \]$
 where $ \( F(x, \{W_i\}) \) $ represents the residual mapping to be learned.
 
-![ResNet](/blog/posts/resnet/img1.png)
+![ResNet](/posts/resnet/img1.png)
 
 
 ## ResNet Architecture
