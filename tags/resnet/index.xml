@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>ResNet on Adil&#39;s Notes</title>
-    <link>https://bootleg-dev.github.io/tags/resnet/</link>
+    <link>https://adilsarsenov.dev/tags/resnet/</link>
     <description>Recent content in ResNet on Adil&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 22 Mar 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://bootleg-dev.github.io/tags/resnet/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 22 Mar 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://adilsarsenov.dev/tags/resnet/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Understanding ResNet</title>
-      <link>https://bootleg-dev.github.io/posts/resnet/</link>
+      <link>https://adilsarsenov.dev/posts/resnet/</link>
       <pubDate>Fri, 22 Mar 2024 18:34:44 +0500</pubDate>
       
-      <guid>https://bootleg-dev.github.io/posts/resnet/</guid>
+      <guid>https://adilsarsenov.dev/posts/resnet/</guid>
       <description>Dive into ResNet architecture and its innovative residual blocks.</description>
     </item>
     

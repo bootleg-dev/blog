@@ -2,44 +2,44 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Deep Learning on Adil&#39;s Notes</title>
-    <link>https://bootleg-dev.github.io/tags/deep-learning/</link>
+    <link>https://adilsarsenov.dev/tags/deep-learning/</link>
     <description>Recent content in Deep Learning on Adil&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Mar 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://bootleg-dev.github.io/tags/deep-learning/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Mar 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://adilsarsenov.dev/tags/deep-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Understanding Transfer Learning</title>
-      <link>https://bootleg-dev.github.io/posts/transfer-learning/</link>
+      <link>https://adilsarsenov.dev/posts/transfer-learning/</link>
       <pubDate>Sun, 24 Mar 2024 18:34:44 +0500</pubDate>
       
-      <guid>https://bootleg-dev.github.io/posts/transfer-learning/</guid>
+      <guid>https://adilsarsenov.dev/posts/transfer-learning/</guid>
       <description>Concept of Transfer Learning and how it can be applied in various machine learning tasks.</description>
     </item>
     
     <item>
       <title>Understanding EfficientNet</title>
-      <link>https://bootleg-dev.github.io/posts/effnet/</link>
+      <link>https://adilsarsenov.dev/posts/effnet/</link>
       <pubDate>Sat, 23 Mar 2024 18:34:44 +0500</pubDate>
       
-      <guid>https://bootleg-dev.github.io/posts/effnet/</guid>
+      <guid>https://adilsarsenov.dev/posts/effnet/</guid>
       <description>Explore the EfficientNet architecture and its innovative compound scaling.</description>
     </item>
     
     <item>
       <title>Understanding ResNet</title>
-      <link>https://bootleg-dev.github.io/posts/resnet/</link>
+      <link>https://adilsarsenov.dev/posts/resnet/</link>
       <pubDate>Fri, 22 Mar 2024 18:34:44 +0500</pubDate>
       
-      <guid>https://bootleg-dev.github.io/posts/resnet/</guid>
+      <guid>https://adilsarsenov.dev/posts/resnet/</guid>
       <description>Dive into ResNet architecture and its innovative residual blocks.</description>
     </item>
     
     <item>
       <title>Visual Geometry Group - VGG Architecture</title>
-      <link>https://bootleg-dev.github.io/posts/vgg/</link>
+      <link>https://adilsarsenov.dev/posts/vgg/</link>
       <pubDate>Tue, 19 Mar 2024 18:34:44 +0500</pubDate>
       
-      <guid>https://bootleg-dev.github.io/posts/vgg/</guid>
+      <guid>https://adilsarsenov.dev/posts/vgg/</guid>
       <description>VGG-16 and VGG-19.</description>
     </item>
     

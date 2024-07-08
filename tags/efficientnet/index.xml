@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>EfficientNet on Adil&#39;s Notes</title>
-    <link>https://bootleg-dev.github.io/tags/efficientnet/</link>
+    <link>https://adilsarsenov.dev/tags/efficientnet/</link>
     <description>Recent content in EfficientNet on Adil&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 23 Mar 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://bootleg-dev.github.io/tags/efficientnet/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 23 Mar 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://adilsarsenov.dev/tags/efficientnet/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Understanding EfficientNet</title>
-      <link>https://bootleg-dev.github.io/posts/effnet/</link>
+      <link>https://adilsarsenov.dev/posts/effnet/</link>
       <pubDate>Sat, 23 Mar 2024 18:34:44 +0500</pubDate>
       
-      <guid>https://bootleg-dev.github.io/posts/effnet/</guid>
+      <guid>https://adilsarsenov.dev/posts/effnet/</guid>
       <description>Explore the EfficientNet architecture and its innovative compound scaling.</description>
     </item>
     
