@@ -48,7 +48,7 @@ params:
   profileMode:
     enabled: true
     title: "👋 Welcome to Adil's Notes"
-    subtitle: Hey there! Thanks for dropping by my digital nook. Here, I share everything I've learned so far as an ML/Software Engineer 😉
+    subtitle: Hey there! Here, I share everything I've learned so far as an ML/Software Engineer 😉
 
 
     imageUrl: "home/casual.jpg"
