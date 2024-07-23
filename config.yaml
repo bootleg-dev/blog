@@ -48,7 +48,7 @@ params:
   profileMode:
     enabled: true
     title: "👋 Welcome to Adil's Notes"
-    subtitle: Hey there! Here, I share everything I've learned so far as an ML/Software Engineer 😉
+    subtitle: Here, I share everything I've learned so far as a <br> Computer Vision / Software Engineer 😉
 
 
     imageUrl: "home/casual.jpg"
@@ -56,7 +56,7 @@ params:
     imageHeight: 220
     buttons:
        - name: Resume
-         url: "https://drive.google.com/file/d/1OOI118JL1XIajAGeVoDuFaOowZnxDVeE/view?usp=drive_link"
+         url: "https://drive.google.com/file/d/1jcgfWIMccMmefv8kMb7SZ1xPHsGZsqHT/view?usp=drive_link"
 
   # List View
   # description of a posts
