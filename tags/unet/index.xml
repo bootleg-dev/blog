@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Unet on Adil&#39;s Notes</title>
+    <link>https://adilsarsenov.dev/tags/unet/</link>
+    <description>Recent content in Unet on Adil&#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Apr 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://adilsarsenov.dev/tags/unet/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Image Segmentation Techniques: FCN and U-Net</title>
+      <link>https://adilsarsenov.dev/posts/fcn_unet/</link>
+      <pubDate>Mon, 01 Apr 2024 18:34:44 +0500</pubDate>
+      
+      <guid>https://adilsarsenov.dev/posts/fcn_unet/</guid>
+      <description>FCN and U-Net.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,13 +6,49 @@
     <description>Recent content in Tags on Adil&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Mar 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://adilsarsenov.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Apr 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://adilsarsenov.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Beginner</title>
+      <link>https://adilsarsenov.dev/tags/beginner/</link>
+      <pubDate>Mon, 01 Apr 2024 18:34:44 +0500</pubDate>
+      
+      <guid>https://adilsarsenov.dev/tags/beginner/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Deep Learning</title>
       <link>https://adilsarsenov.dev/tags/deep-learning/</link>
-      <pubDate>Sun, 24 Mar 2024 18:34:44 +0500</pubDate>
+      <pubDate>Mon, 01 Apr 2024 18:34:44 +0500</pubDate>
       
       <guid>https://adilsarsenov.dev/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>FCN</title>
+      <link>https://adilsarsenov.dev/tags/fcn/</link>
+      <pubDate>Mon, 01 Apr 2024 18:34:44 +0500</pubDate>
+      
+      <guid>https://adilsarsenov.dev/tags/fcn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Image Segmentation</title>
+      <link>https://adilsarsenov.dev/tags/image-segmentation/</link>
+      <pubDate>Mon, 01 Apr 2024 18:34:44 +0500</pubDate>
+      
+      <guid>https://adilsarsenov.dev/tags/image-segmentation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Unet</title>
+      <link>https://adilsarsenov.dev/tags/unet/</link>
+      <pubDate>Mon, 01 Apr 2024 18:34:44 +0500</pubDate>
+      
+      <guid>https://adilsarsenov.dev/tags/unet/</guid>
       <description></description>
     </item>
     
@@ -67,15 +103,6 @@
       <pubDate>Fri, 22 Mar 2024 18:34:44 +0500</pubDate>
       
       <guid>https://adilsarsenov.dev/tags/resnet/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Beginner</title>
-      <link>https://adilsarsenov.dev/tags/beginner/</link>
-      <pubDate>Tue, 19 Mar 2024 18:34:44 +0500</pubDate>
-      
-      <guid>https://adilsarsenov.dev/tags/beginner/</guid>
       <description></description>
     </item>
     

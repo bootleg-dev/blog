@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://adilsarsenov.dev/posts/fcn_unet/</loc>
+    <lastmod>2024-04-01T18:34:44+05:00</lastmod>
+  </url><url>
     <loc>https://adilsarsenov.dev/posts/transfer-learning/</loc>
     <lastmod>2024-03-24T18:34:44+05:00</lastmod>
   </url><url>
@@ -18,21 +21,33 @@
     <lastmod>2024-03-17T18:34:44+05:00</lastmod>
   </url><url>
     <loc>https://adilsarsenov.dev/</loc>
-    <lastmod>2024-03-24T18:34:44+05:00</lastmod>
+    <lastmod>2024-04-01T18:34:44+05:00</lastmod>
+  </url><url>
+    <loc>https://adilsarsenov.dev/tags/beginner/</loc>
+    <lastmod>2024-04-01T18:34:44+05:00</lastmod>
   </url><url>
     <loc>https://adilsarsenov.dev/tags/deep-learning/</loc>
-    <lastmod>2024-03-24T18:34:44+05:00</lastmod>
+    <lastmod>2024-04-01T18:34:44+05:00</lastmod>
+  </url><url>
+    <loc>https://adilsarsenov.dev/tags/fcn/</loc>
+    <lastmod>2024-04-01T18:34:44+05:00</lastmod>
+  </url><url>
+    <loc>https://adilsarsenov.dev/tags/image-segmentation/</loc>
+    <lastmod>2024-04-01T18:34:44+05:00</lastmod>
+  </url><url>
+    <loc>https://adilsarsenov.dev/posts/</loc>
+    <lastmod>2024-04-01T18:34:44+05:00</lastmod>
+  </url><url>
+    <loc>https://adilsarsenov.dev/tags/</loc>
+    <lastmod>2024-04-01T18:34:44+05:00</lastmod>
+  </url><url>
+    <loc>https://adilsarsenov.dev/tags/unet/</loc>
+    <lastmod>2024-04-01T18:34:44+05:00</lastmod>
   </url><url>
     <loc>https://adilsarsenov.dev/tags/machine-learning/</loc>
     <lastmod>2024-03-24T18:34:44+05:00</lastmod>
   </url><url>
     <loc>https://adilsarsenov.dev/tags/neural-networks/</loc>
-    <lastmod>2024-03-24T18:34:44+05:00</lastmod>
-  </url><url>
-    <loc>https://adilsarsenov.dev/posts/</loc>
-    <lastmod>2024-03-24T18:34:44+05:00</lastmod>
-  </url><url>
-    <loc>https://adilsarsenov.dev/tags/</loc>
     <lastmod>2024-03-24T18:34:44+05:00</lastmod>
   </url><url>
     <loc>https://adilsarsenov.dev/tags/transfer-learning/</loc>
@@ -46,9 +61,6 @@
   </url><url>
     <loc>https://adilsarsenov.dev/tags/resnet/</loc>
     <lastmod>2024-03-22T18:34:44+05:00</lastmod>
-  </url><url>
-    <loc>https://adilsarsenov.dev/tags/beginner/</loc>
-    <lastmod>2024-03-19T18:34:44+05:00</lastmod>
   </url><url>
     <loc>https://adilsarsenov.dev/tags/vgg/</loc>
     <lastmod>2024-03-19T18:34:44+05:00</lastmod>
