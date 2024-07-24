@@ -43,17 +43,17 @@ Resolution scaling adjusts the size of the input images. Higher-resolution image
 
 EfficientNet uses a simple yet effective method to scale up models. The scaling method is guided by a compound coefficient $\( \phi \)$ which uniformly scales network width, depth, and resolution:
 
-$\[
+$$\[
 \text{depth:} \quad d = \alpha^\phi
-\]$
+\]$$
 
-$\[
+$$\[
 \text{width:} \quad w = \beta^\phi
-\]$
+\]$$
 
-$\[
+$$\[
 \text{resolution:} \quad r = \gamma^\phi
-\]$
+\]$$
 
 where $\( \alpha \)$, $\( \beta \)$, and $\( \gamma \)$ are constants determined through a small grid search and $\( \phi \)$ is a user-specified coefficient that controls how much to scale each dimension. The idea is to balance all three dimensions rather than scaling one aspect alone.
 
@@ -65,25 +65,25 @@ The process of determining the constants $\( \alpha \)$, $\( \beta \)$, and $\( 
 
 Assume twice the resources are available and set $\( \phi = 1 \)$. Perform a small grid search for $\( \alpha \)$, $\( \beta \)$, and $\( \gamma \)$ based on equations 2 and 3 from the original paper. Specifically, the best values for EfficientNet-B0 are found to be $\( \alpha = 1.2 \)$, $\( \beta = 1.1 \)$, and $\( \gamma = 1.15 \)$ under the constraint: 
 
-$\[
+$$\[
 \alpha \cdot \beta^2 \cdot \gamma^2 \approx 2
-\]$
+\]$$
 
 #### Step 2: Compound Scaling
 
 Fix $\( \alpha \)$, $\( \beta \)$, and $\( \gamma \)$ as constants and scale up the baseline network with different $\( \phi \)$ values using the equation:
 
-$\[
+$$\[
 \text{New Depth} = \alpha^\phi \times \text{Baseline Depth}
-\]$
+\]$$
 
-$\[
+$$\[
 \text{New Width} = \beta^\phi \times \text{Baseline Width}
-\]$
+\]$$
 
-$\[
+$$\[
 \text{New Resolution} = \gamma^\phi \times \text{Baseline Resolution}
-\]$
+\]$$
 
 This method is used to obtain EfficientNet-B1 to B7 models.
 

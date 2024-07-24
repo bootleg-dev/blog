@@ -52,10 +52,10 @@ $$
 (I * K)(i, j) = \sum_{m=0}^{M-1} \sum_{n=0}^{N-1} I(i + m, j + n) K(m, n)
 $$
 
-  - \( I \): Input image
-  - \( K \): Kernel (filter)
-  - \( (i, j) \): Coordinates in the output feature map
-  - \( M, N \): Dimensions of the kernel
+  - $\( I \)$: Input image
+  - $\( K \)$: Kernel (filter)
+  - $\( (i, j) \)$: Coordinates in the output feature map
+  - $\( M, N \)$: Dimensions of the kernel
 
 This operation allows the network to learn spatial hierarchies of features automatically from low-level to high-level.
 
@@ -86,10 +86,10 @@ $$
 Y(i, j) = \max_{m,n} X(i \cdot s + m, j \cdot s + n)
 $$
 
-  - \( X \): Input feature map
-  - \( Y \): Output feature map
-  - \( s \): Stride
-  - \( m, n \): Window dimensions
+  - $\( X \)$: Input feature map
+  - $\( Y \)$: Output feature map
+  - $\( s \)$: Stride
+  - $\( m, n \)$: Window dimensions
 
 Pooling helps in reducing the complexity of the network and prevents overfitting.
 
@@ -102,10 +102,10 @@ $$
 y = f(W \cdot x + b)
 $$
 
-  - \( W \): Weight matrix
-  - \( x \): Input vector
-  - \( b \): Bias vector
-  - \( f \): Activation function
+  - $\( W \)$: Weight matrix
+  - $\( x \)$: Input vector
+  - $\( b \)$: Bias vector
+  - $\( f \)$: Activation function
 
 The fully connected layer combines the high-level features learned by the convolutional layers to output a final prediction.
 
@@ -118,8 +118,8 @@ $$
 \sigma(z_i) = \frac{e^{z_i}}{\sum_{j=1}^K e^{z_j}}
 $$
 
-- \( z_i \): The \(i\)-th element of the input vector \(z\)
-- \( K \): Number of classes
+- $\( z_i \)$: The \(i\)-th element of the input vector \$(z\)$
+- $\( K \)$: Number of classes
 
 
 The softmax function ensures that the output probabilities sum to 1, making it easier to interpret the results as the likelihood of each class.
