@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Evaluation on Adil&#39;s Notes</title>
+    <link>https://adilsarsenov.dev/tags/evaluation/</link>
+    <description>Recent content in Evaluation on Adil&#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 22 Apr 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://adilsarsenov.dev/tags/evaluation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Metrics in Machine Learning and Computer Vision</title>
+      <link>https://adilsarsenov.dev/posts/metrics/</link>
+      <pubDate>Mon, 22 Apr 2024 18:34:44 +0500</pubDate>
+      
+      <guid>https://adilsarsenov.dev/posts/metrics/</guid>
+      <description>Understanding essential metrics for evaluating machine learning models, particularly in computer vision.</description>
+    </item>
+    
+  </channel>
+</rss>

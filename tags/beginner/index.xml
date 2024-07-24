@@ -6,7 +6,16 @@
     <description>Recent content in Beginner on Adil&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Apr 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://adilsarsenov.dev/tags/beginner/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 22 Apr 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://adilsarsenov.dev/tags/beginner/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Metrics in Machine Learning and Computer Vision</title>
+      <link>https://adilsarsenov.dev/posts/metrics/</link>
+      <pubDate>Mon, 22 Apr 2024 18:34:44 +0500</pubDate>
+      
+      <guid>https://adilsarsenov.dev/posts/metrics/</guid>
+      <description>Understanding essential metrics for evaluating machine learning models, particularly in computer vision.</description>
+    </item>
+    
     <item>
       <title>Image Segmentation Techniques: FCN and U-Net</title>
       <link>https://adilsarsenov.dev/posts/fcn_unet/</link>

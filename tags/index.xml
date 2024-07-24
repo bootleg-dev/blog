@@ -6,13 +6,49 @@
     <description>Recent content in Tags on Adil&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Apr 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://adilsarsenov.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 22 Apr 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://adilsarsenov.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Beginner</title>
       <link>https://adilsarsenov.dev/tags/beginner/</link>
-      <pubDate>Mon, 01 Apr 2024 18:34:44 +0500</pubDate>
+      <pubDate>Mon, 22 Apr 2024 18:34:44 +0500</pubDate>
       
       <guid>https://adilsarsenov.dev/tags/beginner/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Computer Vision</title>
+      <link>https://adilsarsenov.dev/tags/computer-vision/</link>
+      <pubDate>Mon, 22 Apr 2024 18:34:44 +0500</pubDate>
+      
+      <guid>https://adilsarsenov.dev/tags/computer-vision/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Evaluation</title>
+      <link>https://adilsarsenov.dev/tags/evaluation/</link>
+      <pubDate>Mon, 22 Apr 2024 18:34:44 +0500</pubDate>
+      
+      <guid>https://adilsarsenov.dev/tags/evaluation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Machine Learning</title>
+      <link>https://adilsarsenov.dev/tags/machine-learning/</link>
+      <pubDate>Mon, 22 Apr 2024 18:34:44 +0500</pubDate>
+      
+      <guid>https://adilsarsenov.dev/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Metrics</title>
+      <link>https://adilsarsenov.dev/tags/metrics/</link>
+      <pubDate>Mon, 22 Apr 2024 18:34:44 +0500</pubDate>
+      
+      <guid>https://adilsarsenov.dev/tags/metrics/</guid>
       <description></description>
     </item>
     
@@ -49,15 +85,6 @@
       <pubDate>Mon, 01 Apr 2024 18:34:44 +0500</pubDate>
       
       <guid>https://adilsarsenov.dev/tags/unet/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Machine Learning</title>
-      <link>https://adilsarsenov.dev/tags/machine-learning/</link>
-      <pubDate>Sun, 24 Mar 2024 18:34:44 +0500</pubDate>
-      
-      <guid>https://adilsarsenov.dev/tags/machine-learning/</guid>
       <description></description>
     </item>
     
