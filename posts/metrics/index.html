@@ -98,8 +98,8 @@
   "keywords": [
     "Beginner", "Machine Learning", "Computer Vision", "Metrics", "Evaluation"
   ],
-  "articleBody": "Introduction In the realm of machine learning and computer vision, evaluating model performance is as critical as designing and training the models themselves. Metrics provide quantifiable measures to assess the effectiveness and accuracy of models, guiding decisions for improvement and deployment. This article explores key metrics used in machine learning, with a focus on computer vision applications. We’ll delve into their definitions, significance, practical implementation, and simple examples for clarity.\nClassification Metrics Accuracy Accuracy is the most straightforward metric, representing the ratio of correctly predicted instances to the total instances.\n$$ \\text{Accuracy} = \\frac{\\text{True Positives} + \\text{True Negatives}}{\\text{Total Instances}} $$\nExample Calculation:\nTrue Positives (TP) = 50 True Negatives (TN) = 40 False Positives (FP) = 10 False Negatives (FN) = 0 Total Instances = 100 $$ \\text{Accuracy} = \\frac{50 + 40}{100} = \\frac{90}{100} = 0.90 , \\text{or} , 90\\text{%} $$\nPrecision, Recall, and F1 Score Precision and recall provide deeper insights, especially in imbalanced datasets.\nPrecision: The ratio of true positive predictions to the total predicted positives. $$ \\text{Precision} = \\frac{\\text{True Positives}}{\\text{True Positives} + \\text{False Positives}} $$\nExample Calculation:\nTP = 30 FP = 10 $$ \\text{Precision} = \\frac{30}{30 + 10} = \\frac{30}{40} = 0.75 , \\text{or} , 75\\text{%} $$\nRecall: The ratio of true positive predictions to all actual positives. $$ \\text{Recall} = \\frac{\\text{True Positives}}{\\text{True Positives} + \\text{False Negatives}} $$\nExample Calculation:\nTP = 30 FN = 20 $$ \\text{Recall} = \\frac{30}{30 + 20} = \\frac{30}{50} = 0.60 , \\text{or} , 60\\text{%} $$\nF1 Score: The harmonic mean of precision and recall, balancing both metrics. $$ \\text{F1 Score} = 2 \\cdot \\frac{\\text{Precision} \\cdot \\text{Recall}}{\\text{Precision} + \\text{Recall}} $$\nExample Calculation:\nPrecision = 0.75 Recall = 0.60 $$ \\text{F1 Score} = 2 \\cdot \\frac{0.75 \\cdot 0.60}{0.75 + 0.60} = 2 \\cdot \\frac{0.45}{1.35} = \\frac{0.90}{1.35} = 0.67 , \\text{or} , 67\\text{%} $$\nSpecificity and Sensitivity Specificity: The ratio of true negative predictions to all actual negatives. It is used to measure the ability of the model to correctly identify negative instances. $$ \\text{Specificity} = \\frac{\\text{True Negatives}}{\\text{True Negatives} + \\text{False Positives}} $$\nExample Calculation:\nTN = 70 FP = 10 $$ \\text{Specificity} = \\frac{70}{70 + 10} = \\frac{70}{80} = 0.875 , \\text{or} , 87.5\\text{%} $$\nSensitivity: Also known as recall, it measures the ability of the model to correctly identify positive instances. $$ \\text{Sensitivity} = \\frac{\\text{True Positives}}{\\text{True Positives} + \\text{False Negatives}} $$\nConfusion Matrix A confusion matrix is a table that provides a detailed breakdown of the performance of a classification model. It shows the number of true positive, true negative, false positive, and false negative predictions.\nExample Calculation:\nPredicted Positive Predicted Negative Actual Positive True Positive (TP) = 50 False Negative (FN) = 10 Actual Negative False Positive (FP) = 5 True Negative (TN) = 35 ROC-AUC The Receiver Operating Characteristic (ROC) curve is a graphical representation of a model’s ability to discriminate between positive and negative classes across different threshold values. The Area Under the Curve (AUC) quantifies this ability into a single scalar value.\nROC Curve: Plots the true positive rate (recall) against the false positive rate (1 - specificity) at various threshold settings. AUC: The area under the ROC curve, where an AUC of 1 represents a perfect model, and an AUC of 0.5 represents a model with no discrimination capability. Example Calculation: Suppose we have the following TPR and FPR values at different thresholds:\nThreshold TPR (Recall) FPR (1 - Specificity) 0.1 0.95 0.50 0.2 0.90 0.30 0.3 0.85 0.20 0.4 0.80 0.15 0.5 0.75 0.10 Plotting these points on the ROC curve and calculating the area under this curve gives us the AUC.\nLog Loss (Cross-Entropy Loss) Log Loss evaluates the performance of a classification model where the prediction output is a probability value between 0 and 1.\n$$ \\text{Log Loss} = -\\frac{1}{N} \\sum_{i=1}^{N} [y_i \\log(\\hat{y}_i) + (1 - y_i) \\log(1 - \\hat{y}_i)] $$\nExample Calculation:\nSuppose we have 3 instances with the following actual and predicted probabilities: Instance 1: $( y_1 = 1 ), ( \\hat{y}_1 = 0.9 )$ Instance 2: $( y_2 = 0 ), ( \\hat{y}_2 = 0.2 )$ Instance 3: $( y_3 = 1 ), ( \\hat{y}_3 = 0.7 )$ $$ \\text{Log Loss} = -\\frac{1}{3} [(1 \\cdot \\log(0.9) + (1 - 1) \\cdot \\log(1 - 0.9)) + (0 \\cdot \\log(0.2) + (1 - 0) \\cdot \\log(1 - 0.2)) + (1 \\cdot \\log(0.7) + (1 - 1) \\cdot \\log(1 - 0.7))] $$\n$$ \\text{Log Loss} = -\\frac{1}{3} [(-0.105) + (-0.223) + (-0.357)] = -\\frac{1}{3} [-0.685] = 0.228 $$\nMatthews Correlation Coefficient (MCC) MCC is a balanced measure that can be used even if the classes are of very different sizes. It considers true and false positives and negatives.\n$$ \\text{MCC} = \\frac{TP \\cdot TN - FP \\cdot FN}{\\sqrt{(TP + FP)(TP + FN)(TN + FP)(TN + FN)}} $$\nExample Calculation:\nTP = 50, TN = 40, FP = 10, FN = 10 $$ \\text{MCC} = \\frac{(50 \\cdot 40) - (10 \\cdot 10)}{\\sqrt{(50 + 10)(50 + 10)(40 + 10)(40 + 10)}} = \\frac{2000 - 100}{\\sqrt{60 \\cdot 60 \\cdot 50 \\cdot 50}} = \\frac{1900}{150000} = 0.63 $$\nRegression Metrics Mean Absolute Error (MAE) MAE measures the average magnitude of errors in predictions without considering their direction.\n$$ \\text{MAE} = \\frac{1}{n} \\sum_{i=1}^{n} |y_i - \\hat{y}_i| $$\nExample Calculation:\nErrors = [1, 2, 3] $$ \\text{MAE} = \\frac{1 + 2 + 3}{3} = \\frac{6}{3} = 2 $$\nMean Squared Error (MSE) and Root Mean Squared Error (RMSE) MSE squares the errors before averaging, penalizing larger errors more significantly.\n$$ \\text{MSE} = \\frac{1}{n} \\sum_{i=1}^{n} (y_i - \\hat{y}_i)^2 $$\nExample Calculation:\nErrors = [1, 2, 3] $$ \\text{MSE} = \\frac{1^2 + 2^2 + 3^2}{3} = \\frac{1 + 4 + 9}{3} = \\frac{14}{3} \\approx 4.67 $$\nRMSE is the square root of MSE, bringing the units back to the original scale.\n$$ \\text{RMSE} = \\sqrt{\\text{MSE}} $$\nExample Calculation:\nMSE = 4.67 $$ \\text{RMSE} = \\sqrt{4.67} \\approx 2.16 $$\nR-Squared (R²) R-Squared represents the proportion of the variance in the dependent variable that is predictable from the independent variable(s).\n$$ R^2 = 1 - \\frac{\\sum_{i=1}^{n} (y_i - \\hat{y_i})^2}{\\sum_{i=1}^{n} (y_i - \\bar{y})^2} $$\nExample Calculation:\nTotal Sum of Squares (TSS) = 100 Residual Sum of Squares (RSS) = 20 $$ R^2 = 1 - \\frac{20}{100} = 1 - 0.20 = 0.80 , \\text{or} , 80\\text{%} $$\nMean Absolute Percentage Error (MAPE) MAPE measures the average absolute percentage error between predicted and actual values.\n$$ \\text{MAPE} = \\frac{1}{n} \\sum_{i=1}^{n} \\left| \\frac{y_i - \\hat{y}_i}{y_i} \\right| $$\nExample Calculation:\nActual values = [100, 200, 300] Predicted values = [110, 190, 310] $$ \\text{MAPE} = \\frac{1}{3} \\left( \\left| \\frac{100 - 110}{100} \\right| + \\left| \\frac{200 - 190}{200} \\right| + \\left| \\frac{300 - 310}{300} \\right| \\right) = \\frac{1}{3} \\left(0.10 + 0.05 + 0.033\\right) = \\frac{1}{3} \\left(0.183\\right) \\approx 0.061 , \\text{or} , 6.1\\text{%} $$\nExplained Variance Score Explained variance measures how much of the variance in the target variable is explained by the model.\n$$ \\text{Explained Variance} = 1 - \\frac{\\text{Var}(y - \\hat{y})}{\\text{Var}(y)} $$\nExample Calculation:\nVariance of residuals = 20 Variance of target = 100 $$ \\text{Explained Variance} = 1 - \\frac{20}{100} = 1 - 0.20 = 0.80 , \\text{or} , 80\\text{%} $$\nComputer Vision Metrics Intersection over Union (IoU) IoU is crucial for segmentation and object detection tasks, measuring the overlap between the predicted and ground truth bounding boxes or segments.\n$$ \\text{IoU} = \\frac{\\text{Area of Overlap}}{\\text{Area of Union}} $$\nExample Calculation:\nArea of Overlap = 30 Area of Union = 50 $$ \\text{IoU} = \\frac{30}{50} = 0.60 , \\text{or} , 60\\text{%} $$\nMean Average Precision (mAP) mAP is commonly used in object detection, summarizing the precision-recall curve across multiple classes.\nCalculate the precision-recall curve for each class. Compute the Average Precision (AP) for each class. Take the mean of AP values across all classes. Example Calculation:\nAP values for three classes = [0.8, 0.7, 0.9] $$ \\text{mAP} = \\frac{0.8 + 0.7 + 0.9}{3} = \\frac{2.4}{3} = 0.80 , \\text{or} , 80\\text{%} $$\nDice Coefficient The Dice Coefficient, similar to IoU, is another metric for segmentation tasks, focusing on the overlap between predicted and ground truth segments.\n$$ \\text{Dice Coefficient} = \\frac{2 \\times \\text{Area of Overlap}}{\\text{Total Area of Predicted} + \\text{Total Area of Ground Truth}} $$\nExample Calculation:\nArea of Overlap = 30 Total Area of Predicted = 40 Total Area of Ground Truth = 50 $$ \\text{Dice Coefficient} = \\frac{2 \\times 30}{40 + 50} = \\frac{60}{90} = 0.67 , \\text{or} , 67\\text{%} $$\nPixel Accuracy Pixel Accuracy measures the proportion of correctly classified pixels in the entire image.\n$$ \\text{Pixel Accuracy} = \\frac{\\text{Number of Correct Pixels}}{\\text{Total Number of Pixels}} $$\nExample Calculation:\nNumber of Correct Pixels = 900 Total Number of Pixels = 1000 $$ \\text{Pixel Accuracy} = \\frac{900}{1000} = 0.90 , \\text{or} , 90\\text{%} $$\nMean IoU (mIoU) mIoU is the mean of the Intersection over Union (IoU) for all classes. It is commonly used for semantic segmentation tasks.\n$$ \\text{mIoU} = \\frac{1}{N} \\sum_{i=1}^{N} \\frac{\\text{Area of Overlap}}{\\text{Area of Union}} $$\nExample Calculation:\nIoU values for three classes = [0.6, 0.7, 0.8] $$ \\text{mIoU} = \\frac{0.6 + 0.7 + 0.8}{3} = \\frac{2.1}{3} = 0.70 , \\text{or} , 70\\text{%} $$\nStructural Similarity Index (SSIM) SSIM measures the similarity between two images, considering luminance, contrast, and structure.\n$$ \\text{SSIM}(x, y) = \\frac{(2\\mu_x \\mu_y + C_1)(2\\sigma_{xy} + C_2)}{(\\mu_x^2 + \\mu_y^2 + C_1)(\\sigma_x^2 + \\sigma_y^2 + C_2)} $$\nExample Calculation: $$Assume ( \\mu_x = 100 ), ( \\mu_y = 105 ), ( \\sigma_x = 15 ), ( \\sigma_y = 20 ), ( \\sigma_{xy} = 18 ), ( C_1 = 6.5 ), ( C_2 = 58 )$$\n$$ \\text{SSIM} = \\frac{(2 \\cdot 100 \\cdot 105 + 6.5)(2 \\cdot 18 + 58)}{(100^2 + 105^2 + 6.5)(15^2 + 20^2 + 58)} $$\n$$ \\text{SSIM} = \\frac{(21000 + 6.5)(36 + 58)}{(10000 + 11025 + 6.5)(225 + 400 + 58)} $$\n$$ \\text{SSIM} = \\frac{21006.5 \\cdot 94}{21031.5 \\cdot 683} \\approx 0.42 $$\nPractical Implementation Below is a practical implementation of some of these metrics in Python using popular libraries like scikit-learn.\nfrom sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, confusion_matrix, mean_absolute_error, mean_squared_error, r2_score import numpy as np # Example ground truth and predictions y_true = np.array([0, 1, 0, 1, 1, 0, 1, 1]) y_pred = np.array([0, 1, 0, 0, 1, 0, 1, 0]) y_scores = np.array([0.1, 0.9, 0.2, 0.4, 0.8, 0.1, 0.7, 0.3]) # Classification metrics accuracy = accuracy_score(y_true, y_pred) precision = precision_score(y_true, y_pred) recall = recall_score(y_true, y_pred) f1 = f1_score(y_true, y_pred) roc_auc = roc_auc_score(y_true, y_scores) conf_matrix = confusion_matrix(y_true, y_pred) print(f\"Accuracy: {accuracy:.2f}\") print(f\"Precision: {precision:.2f}\") print(f\"Recall: {recall:.2f}\") print(f\"F1 Score: {f1:.2f}\") print(f\"ROC AUC: {roc_auc:.2f}\") print(f\"Confusion Matrix:\\n{conf_matrix}\") # Regression metrics example y_true_reg = np.array([3.0, -0.5, 2.0, 7.0]) y_pred_reg = np.array([2.5, 0.0, 2.0, 8.0]) mae = mean_absolute_error(y_true_reg, y_pred_reg) mse = mean_squared_error(y_true_reg, y_pred_reg) rmse = np.sqrt(mse) r2 = r2_score(y_true_reg, y_pred_reg) print(f\"MAE: {mae:.2f}\") print(f\"MSE: {mse:.2f}\") print(f\"RMSE: {rmse:.2f}\") print(f\"R2 Score: {r2:.2f}\") Summary Metrics are the cornerstone of model evaluation in machine learning and computer vision. By understanding and appropriately applying these metrics, practitioners can gain valuable insights into model performance, guiding improvements and ensuring the deployment of effective models. Whether working on classification, regression, or computer vision tasks, selecting the right metrics is essential for robust and meaningful evaluation.\n",
-  "wordCount" : "1847",
+  "articleBody": "Introduction Evaluating model performance is as critical as designing and training the models themselves. Metrics provide quantifiable measures to assess the effectiveness and accuracy of models, guiding decisions for improvement and deployment.\nClassification Metrics Accuracy Accuracy is the most straightforward metric, representing the ratio of correctly predicted instances to the total instances.\n$$ \\text{Accuracy} = \\frac{\\text{True Positives} + \\text{True Negatives}}{\\text{Total Instances}} $$\nExample Calculation:\nTrue Positives (TP) = 50 True Negatives (TN) = 40 False Positives (FP) = 10 False Negatives (FN) = 0 Total Instances = 100 $$ \\text{Accuracy} = \\frac{50 + 40}{100} = \\frac{90}{100} = 0.90 , \\text{or} , 90\\text{%} $$\nPrecision, Recall, and F1 Score Precision and recall provide deeper insights, especially in imbalanced datasets.\nPrecision: The ratio of true positive predictions to the total predicted positives. $$ \\text{Precision} = \\frac{\\text{True Positives}}{\\text{True Positives} + \\text{False Positives}} $$\nExample Calculation:\nTP = 30 FP = 10 $$ \\text{Precision} = \\frac{30}{30 + 10} = \\frac{30}{40} = 0.75 , \\text{or} , 75\\text{%} $$\nRecall: The ratio of true positive predictions to all actual positives. $$ \\text{Recall} = \\frac{\\text{True Positives}}{\\text{True Positives} + \\text{False Negatives}} $$\nExample Calculation:\nTP = 30 FN = 20 $$ \\text{Recall} = \\frac{30}{30 + 20} = \\frac{30}{50} = 0.60 , \\text{or} , 60\\text{%} $$\nF1 Score: The harmonic mean of precision and recall, balancing both metrics. $$ \\text{F1 Score} = 2 \\cdot \\frac{\\text{Precision} \\cdot \\text{Recall}}{\\text{Precision} + \\text{Recall}} $$\nExample Calculation:\nPrecision = 0.75 Recall = 0.60 $$ \\text{F1 Score} = 2 \\cdot \\frac{0.75 \\cdot 0.60}{0.75 + 0.60} = 2 \\cdot \\frac{0.45}{1.35} = \\frac{0.90}{1.35} = 0.67 , \\text{or} , 67\\text{%} $$\nSpecificity and Sensitivity Specificity: The ratio of true negative predictions to all actual negatives. It is used to measure the ability of the model to correctly identify negative instances. $$ \\text{Specificity} = \\frac{\\text{True Negatives}}{\\text{True Negatives} + \\text{False Positives}} $$\nExample Calculation:\nTN = 70 FP = 10 $$ \\text{Specificity} = \\frac{70}{70 + 10} = \\frac{70}{80} = 0.875 , \\text{or} , 87.5\\text{%} $$\nSensitivity: Also known as recall, it measures the ability of the model to correctly identify positive instances. $$ \\text{Sensitivity} = \\frac{\\text{True Positives}}{\\text{True Positives} + \\text{False Negatives}} $$\nConfusion Matrix A confusion matrix is a table that provides a detailed breakdown of the performance of a classification model. It shows the number of true positive, true negative, false positive, and false negative predictions.\nExample Calculation:\nPredicted Positive Predicted Negative Actual Positive True Positive (TP) = 50 Type 2 Error: False Negative (FN) = 10 Actual Negative Type 1 Error: False Positive (FP) = 5 True Negative (TN) = 35 ROC-AUC The Receiver Operating Characteristic (ROC) curve is a graphical representation of a model’s ability to discriminate between positive and negative classes across different threshold values. The Area Under the Curve (AUC) quantifies this ability into a single scalar value.\nROC Curve: Plots the true positive rate (recall) against the false positive rate (1 - specificity) at various threshold settings. AUC: The area under the ROC curve, where an AUC of 1 represents a perfect model, and an AUC of 0.5 represents a model with no discrimination capability. Example Calculation: Suppose we have the following TPR and FPR values at different thresholds:\nThreshold TPR (Recall) FPR (1 - Specificity) 0.1 0.95 0.50 0.2 0.90 0.30 0.3 0.85 0.20 0.4 0.80 0.15 0.5 0.75 0.10 Plotting these points on the ROC curve and calculating the area under this curve gives us the AUC.\nLog Loss (Cross-Entropy Loss) Log Loss evaluates the performance of a classification model where the prediction output is a probability value between 0 and 1.\n$$ \\text{Log Loss} = -\\frac{1}{N} \\sum_{i=1}^{N} [y_i \\log(\\hat{y}_i) + (1 - y_i) \\log(1 - \\hat{y}_i)] $$\nExample Calculation:\nSuppose we have 3 instances with the following actual and predicted probabilities: Instance 1: $( y_1 = 1 ), ( \\hat{y}_1 = 0.9 )$ Instance 2: $( y_2 = 0 ), ( \\hat{y}_2 = 0.2 )$ Instance 3: $( y_3 = 1 ), ( \\hat{y}_3 = 0.7 )$ $$ \\text{Log Loss} = -\\frac{1}{3} [(1 \\cdot \\log(0.9) + (1 - 1) \\cdot \\log(1 - 0.9)) + (0 \\cdot \\log(0.2) + (1 - 0) \\cdot \\log(1 - 0.2)) + (1 \\cdot \\log(0.7) + (1 - 1) \\cdot \\log(1 - 0.7))] $$\n$$ \\text{Log Loss} = -\\frac{1}{3} [(-0.105) + (-0.223) + (-0.357)] = -\\frac{1}{3} [-0.685] = 0.228 $$\nMatthews Correlation Coefficient (MCC) MCC is a balanced measure that can be used even if the classes are of very different sizes. It considers true and false positives and negatives.\n$$ \\text{MCC} = \\frac{TP \\cdot TN - FP \\cdot FN}{\\sqrt{(TP + FP)(TP + FN)(TN + FP)(TN + FN)}} $$\nExample Calculation:\nTP = 50, TN = 40, FP = 10, FN = 10 $$ \\text{MCC} = \\frac{(50 \\cdot 40) - (10 \\cdot 10)}{\\sqrt{(50 + 10)(50 + 10)(40 + 10)(40 + 10)}} = \\frac{2000 - 100}{\\sqrt{60 \\cdot 60 \\cdot 50 \\cdot 50}} = \\frac{1900}{150000} = 0.63 $$\nRegression Metrics Mean Absolute Error (MAE) MAE measures the average magnitude of errors in predictions without considering their direction.\n$$ \\text{MAE} = \\frac{1}{n} \\sum_{i=1}^{n} |y_i - \\hat{y}_i| $$\nExample Calculation:\nErrors = [1, 2, 3] $$ \\text{MAE} = \\frac{1 + 2 + 3}{3} = \\frac{6}{3} = 2 $$\nMean Squared Error (MSE) and Root Mean Squared Error (RMSE) MSE squares the errors before averaging, penalizing larger errors more significantly.\n$$ \\text{MSE} = \\frac{1}{n} \\sum_{i=1}^{n} (y_i - \\hat{y}_i)^2 $$\nExample Calculation:\nErrors = [1, 2, 3] $$ \\text{MSE} = \\frac{1^2 + 2^2 + 3^2}{3} = \\frac{1 + 4 + 9}{3} = \\frac{14}{3} \\approx 4.67 $$\nRMSE is the square root of MSE, bringing the units back to the original scale.\n$$ \\text{RMSE} = \\sqrt{\\text{MSE}} $$\nExample Calculation:\nMSE = 4.67 $$ \\text{RMSE} = \\sqrt{4.67} \\approx 2.16 $$\nR-Squared (R²) R-Squared represents the proportion of the variance in the dependent variable that is predictable from the independent variable(s).\n$$ R^2 = 1 - \\frac{\\sum_{i=1}^{n} (y_i - \\hat{y_i})^2}{\\sum_{i=1}^{n} (y_i - \\bar{y})^2} $$\nExample Calculation:\nTotal Sum of Squares (TSS) = 100 Residual Sum of Squares (RSS) = 20 $$ R^2 = 1 - \\frac{20}{100} = 1 - 0.20 = 0.80 , \\text{or} , 80\\text{%} $$\nMean Absolute Percentage Error (MAPE) MAPE measures the average absolute percentage error between predicted and actual values.\n$$ \\text{MAPE} = \\frac{1}{n} \\sum_{i=1}^{n} \\left| \\frac{y_i - \\hat{y}_i}{y_i} \\right| $$\nExample Calculation:\nActual values = [100, 200, 300] Predicted values = [110, 190, 310] $$ \\text{MAPE} = \\frac{1}{3} \\left( \\left| \\frac{100 - 110}{100} \\right| + \\left| \\frac{200 - 190}{200} \\right| + \\left| \\frac{300 - 310}{300} \\right| \\right) = \\frac{1}{3} \\left(0.10 + 0.05 + 0.033\\right) = \\frac{1}{3} \\left(0.183\\right) \\approx 0.061 , \\text{or} , 6.1\\text{%} $$\nExplained Variance Score Explained variance measures how much of the variance in the target variable is explained by the model.\n$$ \\text{Explained Variance} = 1 - \\frac{\\text{Var}(y - \\hat{y})}{\\text{Var}(y)} $$\nExample Calculation:\nVariance of residuals = 20 Variance of target = 100 $$ \\text{Explained Variance} = 1 - \\frac{20}{100} = 1 - 0.20 = 0.80 , \\text{or} , 80\\text{%} $$\nComputer Vision Metrics Intersection over Union (IoU) IoU is crucial for segmentation and object detection tasks, measuring the overlap between the predicted and ground truth bounding boxes or segments.\n$$ \\text{IoU} = \\frac{\\text{Area of Overlap}}{\\text{Area of Union}} $$\nExample Calculation:\nArea of Overlap = 30 Area of Union = 50 $$ \\text{IoU} = \\frac{30}{50} = 0.60 , \\text{or} , 60\\text{%} $$\nMean Average Precision (mAP) mAP is commonly used in object detection, summarizing the precision-recall curve across multiple classes.\nCalculate the precision-recall curve for each class. Compute the Average Precision (AP) for each class. Take the mean of AP values across all classes. Example Calculation:\nAP values for three classes = [0.8, 0.7, 0.9] $$ \\text{mAP} = \\frac{0.8 + 0.7 + 0.9}{3} = \\frac{2.4}{3} = 0.80 , \\text{or} , 80\\text{%} $$\nDice Coefficient The Dice Coefficient, similar to IoU, is another metric for segmentation tasks, focusing on the overlap between predicted and ground truth segments.\n$$ \\text{Dice Coefficient} = \\frac{2 \\times \\text{Area of Overlap}}{\\text{Total Area of Predicted} + \\text{Total Area of Ground Truth}} $$\nExample Calculation:\nArea of Overlap = 30 Total Area of Predicted = 40 Total Area of Ground Truth = 50 $$ \\text{Dice Coefficient} = \\frac{2 \\times 30}{40 + 50} = \\frac{60}{90} = 0.67 , \\text{or} , 67\\text{%} $$\nPixel Accuracy Pixel Accuracy measures the proportion of correctly classified pixels in the entire image.\n$$ \\text{Pixel Accuracy} = \\frac{\\text{Number of Correct Pixels}}{\\text{Total Number of Pixels}} $$\nExample Calculation:\nNumber of Correct Pixels = 900 Total Number of Pixels = 1000 $$ \\text{Pixel Accuracy} = \\frac{900}{1000} = 0.90 , \\text{or} , 90\\text{%} $$\nMean IoU (mIoU) mIoU is the mean of the Intersection over Union (IoU) for all classes. It is commonly used for semantic segmentation tasks.\n$$ \\text{mIoU} = \\frac{1}{N} \\sum_{i=1}^{N} \\frac{\\text{Area of Overlap}}{\\text{Area of Union}} $$\nExample Calculation:\nIoU values for three classes = [0.6, 0.7, 0.8] $$ \\text{mIoU} = \\frac{0.6 + 0.7 + 0.8}{3} = \\frac{2.1}{3} = 0.70 , \\text{or} , 70\\text{%} $$\nStructural Similarity Index (SSIM) SSIM measures the similarity between two images, considering luminance, contrast, and structure.\n$$ \\text{SSIM}(x, y) = \\frac{(2\\mu_x \\mu_y + C_1)(2\\sigma_{xy} + C_2)}{(\\mu_x^2 + \\mu_y^2 + C_1)(\\sigma_x^2 + \\sigma_y^2 + C_2)} $$\nExample Calculation: $$Assume ( \\mu_x = 100 ), ( \\mu_y = 105 ), ( \\sigma_x = 15 ), ( \\sigma_y = 20 ), ( \\sigma_{xy} = 18 ), ( C_1 = 6.5 ), ( C_2 = 58 )$$\n$$ \\text{SSIM} = \\frac{(2 \\cdot 100 \\cdot 105 + 6.5)(2 \\cdot 18 + 58)}{(100^2 + 105^2 + 6.5)(15^2 + 20^2 + 58)} $$\n$$ \\text{SSIM} = \\frac{(21000 + 6.5)(36 + 58)}{(10000 + 11025 + 6.5)(225 + 400 + 58)} $$\n$$ \\text{SSIM} = \\frac{21006.5 \\cdot 94}{21031.5 \\cdot 683} \\approx 0.42 $$\n",
+  "wordCount" : "1605",
   "inLanguage": "en",
   "datePublished": "2024-04-22T18:34:44.165668+05:00",
   "dateModified": "2024-04-22T18:34:44.165668+05:00",
@@ -272,23 +272,20 @@ Date: 22 April, 2024
                 <li>
                     <a href="#mean-iou-miou" aria-label="Mean IoU (mIoU)">Mean IoU (mIoU)</a></li>
                 <li>
-                    <a href="#structural-similarity-index-ssim" aria-label="Structural Similarity Index (SSIM)">Structural Similarity Index (SSIM)</a></li></ul>
+                    <a href="#structural-similarity-index-ssim" aria-label="Structural Similarity Index (SSIM)">Structural Similarity Index (SSIM)</a>
                 </li>
-                <li>
-                    <a href="#practical-implementation" aria-label="Practical Implementation">Practical Implementation</a></li>
-                <li>
-                    <a href="#summary" aria-label="Summary">Summary</a>
-                </li>
+            </ul>
+            </li>
             </ul>
         </div>
     </details>
 </div>
 
-  <div class="post-content"><h2 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h2>
-<p>In the realm of machine learning and computer vision, evaluating model performance is as critical as designing and training the models themselves. Metrics provide quantifiable measures to assess the effectiveness and accuracy of models, guiding decisions for improvement and deployment. This article explores key metrics used in machine learning, with a focus on computer vision applications. We&rsquo;ll delve into their definitions, significance, practical implementation, and simple examples for clarity.</p>
-<h2 id="classification-metrics">Classification Metrics<a hidden class="anchor" aria-hidden="true" href="#classification-metrics">#</a></h2>
-<h3 id="accuracy">Accuracy<a hidden class="anchor" aria-hidden="true" href="#accuracy">#</a></h3>
-<p>Accuracy is the most straightforward metric, representing the ratio of correctly predicted instances to the total instances.</p>
+  <div class="post-content"><h3 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h3>
+<p>Evaluating model performance is as critical as designing and training the models themselves. Metrics provide quantifiable measures to assess the effectiveness and accuracy of models, guiding decisions for improvement and deployment.</p>
+<h3 id="classification-metrics">Classification Metrics<a hidden class="anchor" aria-hidden="true" href="#classification-metrics">#</a></h3>
+<h4 id="accuracy">Accuracy<a hidden class="anchor" aria-hidden="true" href="#accuracy">#</a></h4>
+<p>Accuracy is the most straightforward metric, representing the <strong>ratio of correctly predicted instances to the total instances</strong>.</p>
 <p>$$
 \text{Accuracy} = \frac{\text{True Positives} + \text{True Negatives}}{\text{Total Instances}}
 $$</p>
@@ -303,8 +300,8 @@ $$</p>
 <p>$$
 \text{Accuracy} = \frac{50 + 40}{100} = \frac{90}{100} = 0.90 , \text{or} , 90\text{%}
 $$</p>
-<h3 id="precision-recall-and-f1-score">Precision, Recall, and F1 Score<a hidden class="anchor" aria-hidden="true" href="#precision-recall-and-f1-score">#</a></h3>
-<p>Precision and recall provide deeper insights, especially in imbalanced datasets.</p>
+<h4 id="precision-recall-and-f1-score">Precision, Recall, and F1 Score<a hidden class="anchor" aria-hidden="true" href="#precision-recall-and-f1-score">#</a></h4>
+<p>Precision and recall provide deeper insights, especially in <strong>imbalanced datasets</strong>.</p>
 <ul>
 <li><strong>Precision</strong>: The ratio of true positive predictions to the total predicted positives.</li>
 </ul>
@@ -347,7 +344,7 @@ $$</p>
 <p>$$
 \text{F1 Score} = 2 \cdot \frac{0.75 \cdot 0.60}{0.75 + 0.60} = 2 \cdot \frac{0.45}{1.35} = \frac{0.90}{1.35} = 0.67 , \text{or} , 67\text{%}
 $$</p>
-<h3 id="specificity-and-sensitivity">Specificity and Sensitivity<a hidden class="anchor" aria-hidden="true" href="#specificity-and-sensitivity">#</a></h3>
+<h4 id="specificity-and-sensitivity">Specificity and Sensitivity<a hidden class="anchor" aria-hidden="true" href="#specificity-and-sensitivity">#</a></h4>
 <ul>
 <li><strong>Specificity</strong>: The ratio of true negative predictions to all actual negatives. It is used to measure the ability of the model to correctly identify negative instances.</li>
 </ul>
@@ -368,7 +365,7 @@ $$</p>
 <p>$$
 \text{Sensitivity} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Negatives}}
 $$</p>
-<h3 id="confusion-matrix">Confusion Matrix<a hidden class="anchor" aria-hidden="true" href="#confusion-matrix">#</a></h3>
+<h4 id="confusion-matrix">Confusion Matrix<a hidden class="anchor" aria-hidden="true" href="#confusion-matrix">#</a></h4>
 <p>A confusion matrix is a table that provides a detailed breakdown of the performance of a classification model. It shows the number of true positive, true negative, false positive, and false negative predictions.</p>
 <p><strong>Example Calculation</strong>:</p>
 <table>
@@ -383,17 +380,18 @@ $$</p>
 <tr>
 <td>Actual Positive</td>
 <td>True Positive (TP) = 50</td>
-<td>False Negative (FN) = 10</td>
+<td><strong>Type 2 Error</strong>: False Negative (FN) = 10</td>
 </tr>
 <tr>
 <td>Actual Negative</td>
-<td>False Positive (FP) = 5</td>
+<td><strong>Type 1 Error</strong>: False Positive (FP) = 5</td>
 <td>True Negative (TN) = 35</td>
 </tr>
 </tbody>
 </table>
-<h3 id="roc-auc">ROC-AUC<a hidden class="anchor" aria-hidden="true" href="#roc-auc">#</a></h3>
-<p>The Receiver Operating Characteristic (ROC) curve is a graphical representation of a model&rsquo;s ability to discriminate between positive and negative classes across different threshold values. The Area Under the Curve (AUC) quantifies this ability into a single scalar value.</p>
+<h4 id="roc-auc">ROC-AUC<a hidden class="anchor" aria-hidden="true" href="#roc-auc">#</a></h4>
+<p>The Receiver Operating Characteristic <strong>(ROC) curve</strong> is a graphical representation of a model&rsquo;s ability to discriminate between
+<strong>positive and negative classes across different threshold values</strong>. The Area Under the Curve (AUC) quantifies this ability into a single scalar value.</p>
 <ul>
 <li><strong>ROC Curve</strong>: Plots the true positive rate (recall) against the false positive rate (1 - specificity) at various threshold settings.</li>
 <li><strong>AUC</strong>: The area under the ROC curve, where an AUC of 1 represents a perfect model, and an AUC of 0.5 represents a model with no discrimination capability.</li>
@@ -436,8 +434,8 @@ $$</p>
 </tbody>
 </table>
 <p>Plotting these points on the ROC curve and calculating the area under this curve gives us the AUC.</p>
-<h3 id="log-loss-cross-entropy-loss">Log Loss (Cross-Entropy Loss)<a hidden class="anchor" aria-hidden="true" href="#log-loss-cross-entropy-loss">#</a></h3>
-<p>Log Loss evaluates the performance of a classification model where the prediction output is a probability value between 0 and 1.</p>
+<h4 id="log-loss-cross-entropy-loss">Log Loss (Cross-Entropy Loss)<a hidden class="anchor" aria-hidden="true" href="#log-loss-cross-entropy-loss">#</a></h4>
+<p>Log Loss evaluates the performance of a classification model where the prediction output is a <strong>probability value between 0 and 1</strong>.</p>
 <p>$$
 \text{Log Loss} = -\frac{1}{N} \sum_{i=1}^{N} [y_i \log(\hat{y}_i) + (1 - y_i) \log(1 - \hat{y}_i)]
 $$</p>
@@ -457,7 +455,7 @@ $$</p>
 <p>$$
 \text{Log Loss} = -\frac{1}{3} [(-0.105) + (-0.223) + (-0.357)] = -\frac{1}{3} [-0.685] = 0.228
 $$</p>
-<h3 id="matthews-correlation-coefficient-mcc">Matthews Correlation Coefficient (MCC)<a hidden class="anchor" aria-hidden="true" href="#matthews-correlation-coefficient-mcc">#</a></h3>
+<h4 id="matthews-correlation-coefficient-mcc">Matthews Correlation Coefficient (MCC)<a hidden class="anchor" aria-hidden="true" href="#matthews-correlation-coefficient-mcc">#</a></h4>
 <p>MCC is a balanced measure that can be used even if the classes are of very different sizes. It considers true and false positives and negatives.</p>
 <p>$$
 \text{MCC} = \frac{TP \cdot TN - FP \cdot FN}{\sqrt{(TP + FP)(TP + FN)(TN + FP)(TN + FN)}}
@@ -469,8 +467,8 @@ $$</p>
 <p>$$
 \text{MCC} = \frac{(50 \cdot 40) - (10 \cdot 10)}{\sqrt{(50 + 10)(50 + 10)(40 + 10)(40 + 10)}} = \frac{2000 - 100}{\sqrt{60 \cdot 60 \cdot 50 \cdot 50}} = \frac{1900}{150000} = 0.63
 $$</p>
-<h2 id="regression-metrics">Regression Metrics<a hidden class="anchor" aria-hidden="true" href="#regression-metrics">#</a></h2>
-<h3 id="mean-absolute-error-mae">Mean Absolute Error (MAE)<a hidden class="anchor" aria-hidden="true" href="#mean-absolute-error-mae">#</a></h3>
+<h3 id="regression-metrics">Regression Metrics<a hidden class="anchor" aria-hidden="true" href="#regression-metrics">#</a></h3>
+<h4 id="mean-absolute-error-mae">Mean Absolute Error (MAE)<a hidden class="anchor" aria-hidden="true" href="#mean-absolute-error-mae">#</a></h4>
 <p>MAE measures the average magnitude of errors in predictions without considering their direction.</p>
 <p>$$
 \text{MAE} = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|
@@ -482,7 +480,7 @@ $$</p>
 <p>$$
 \text{MAE} = \frac{1 + 2 + 3}{3} = \frac{6}{3} = 2
 $$</p>
-<h3 id="mean-squared-error-mse-and-root-mean-squared-error-rmse">Mean Squared Error (MSE) and Root Mean Squared Error (RMSE)<a hidden class="anchor" aria-hidden="true" href="#mean-squared-error-mse-and-root-mean-squared-error-rmse">#</a></h3>
+<h4 id="mean-squared-error-mse-and-root-mean-squared-error-rmse">Mean Squared Error (MSE) and Root Mean Squared Error (RMSE)<a hidden class="anchor" aria-hidden="true" href="#mean-squared-error-mse-and-root-mean-squared-error-rmse">#</a></h4>
 <p>MSE squares the errors before averaging, penalizing larger errors more significantly.</p>
 <p>$$
 \text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
@@ -505,7 +503,7 @@ $$</p>
 <p>$$
 \text{RMSE} = \sqrt{4.67} \approx 2.16
 $$</p>
-<h3 id="r-squared-r">R-Squared (R²)<a hidden class="anchor" aria-hidden="true" href="#r-squared-r">#</a></h3>
+<h4 id="r-squared-r">R-Squared (R²)<a hidden class="anchor" aria-hidden="true" href="#r-squared-r">#</a></h4>
 <p>R-Squared represents the proportion of the variance in the dependent variable that is predictable from the independent variable(s).</p>
 <p>$$
 R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y_i})^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}
@@ -518,7 +516,7 @@ $$</p>
 <p>$$
 R^2 = 1 - \frac{20}{100} = 1 - 0.20 = 0.80 , \text{or} , 80\text{%}
 $$</p>
-<h3 id="mean-absolute-percentage-error-mape">Mean Absolute Percentage Error (MAPE)<a hidden class="anchor" aria-hidden="true" href="#mean-absolute-percentage-error-mape">#</a></h3>
+<h4 id="mean-absolute-percentage-error-mape">Mean Absolute Percentage Error (MAPE)<a hidden class="anchor" aria-hidden="true" href="#mean-absolute-percentage-error-mape">#</a></h4>
 <p>MAPE measures the average absolute percentage error between predicted and actual values.</p>
 <p>$$
 \text{MAPE} = \frac{1}{n} \sum_{i=1}^{n} \left| \frac{y_i - \hat{y}_i}{y_i} \right|
@@ -531,7 +529,7 @@ $$</p>
 <p>$$
 \text{MAPE} = \frac{1}{3} \left( \left| \frac{100 - 110}{100} \right| + \left| \frac{200 - 190}{200} \right| + \left| \frac{300 - 310}{300} \right| \right) = \frac{1}{3} \left(0.10 + 0.05 + 0.033\right) = \frac{1}{3} \left(0.183\right) \approx 0.061 , \text{or} , 6.1\text{%}
 $$</p>
-<h3 id="explained-variance-score">Explained Variance Score<a hidden class="anchor" aria-hidden="true" href="#explained-variance-score">#</a></h3>
+<h4 id="explained-variance-score">Explained Variance Score<a hidden class="anchor" aria-hidden="true" href="#explained-variance-score">#</a></h4>
 <p>Explained variance measures how much of the variance in the target variable is explained by the model.</p>
 <p>$$
 \text{Explained Variance} = 1 - \frac{\text{Var}(y - \hat{y})}{\text{Var}(y)}
@@ -544,8 +542,8 @@ $$</p>
 <p>$$
 \text{Explained Variance} = 1 - \frac{20}{100} = 1 - 0.20 = 0.80 , \text{or} , 80\text{%}
 $$</p>
-<h2 id="computer-vision-metrics">Computer Vision Metrics<a hidden class="anchor" aria-hidden="true" href="#computer-vision-metrics">#</a></h2>
-<h3 id="intersection-over-union-iou">Intersection over Union (IoU)<a hidden class="anchor" aria-hidden="true" href="#intersection-over-union-iou">#</a></h3>
+<h3 id="computer-vision-metrics">Computer Vision Metrics<a hidden class="anchor" aria-hidden="true" href="#computer-vision-metrics">#</a></h3>
+<h4 id="intersection-over-union-iou">Intersection over Union (IoU)<a hidden class="anchor" aria-hidden="true" href="#intersection-over-union-iou">#</a></h4>
 <p>IoU is crucial for segmentation and object detection tasks, measuring the overlap between the predicted and ground truth bounding boxes or segments.</p>
 <p>$$
 \text{IoU} = \frac{\text{Area of Overlap}}{\text{Area of Union}}
@@ -558,7 +556,7 @@ $$</p>
 <p>$$
 \text{IoU} = \frac{30}{50} = 0.60 , \text{or} , 60\text{%}
 $$</p>
-<h3 id="mean-average-precision-map">Mean Average Precision (mAP)<a hidden class="anchor" aria-hidden="true" href="#mean-average-precision-map">#</a></h3>
+<h4 id="mean-average-precision-map">Mean Average Precision (mAP)<a hidden class="anchor" aria-hidden="true" href="#mean-average-precision-map">#</a></h4>
 <p>mAP is commonly used in object detection, summarizing the precision-recall curve across multiple classes.</p>
 <ol>
 <li>Calculate the precision-recall curve for each class.</li>
@@ -572,7 +570,7 @@ $$</p>
 <p>$$
 \text{mAP} = \frac{0.8 + 0.7 + 0.9}{3} = \frac{2.4}{3} = 0.80 , \text{or} , 80\text{%}
 $$</p>
-<h3 id="dice-coefficient">Dice Coefficient<a hidden class="anchor" aria-hidden="true" href="#dice-coefficient">#</a></h3>
+<h4 id="dice-coefficient">Dice Coefficient<a hidden class="anchor" aria-hidden="true" href="#dice-coefficient">#</a></h4>
 <p>The Dice Coefficient, similar to IoU, is another metric for segmentation tasks, focusing on the overlap between predicted and ground truth segments.</p>
 <p>$$
 \text{Dice Coefficient} = \frac{2 \times \text{Area of Overlap}}{\text{Total Area of Predicted} + \text{Total Area of Ground Truth}}
@@ -586,7 +584,7 @@ $$</p>
 <p>$$
 \text{Dice Coefficient} = \frac{2 \times 30}{40 + 50} = \frac{60}{90} = 0.67 , \text{or} , 67\text{%}
 $$</p>
-<h3 id="pixel-accuracy">Pixel Accuracy<a hidden class="anchor" aria-hidden="true" href="#pixel-accuracy">#</a></h3>
+<h4 id="pixel-accuracy">Pixel Accuracy<a hidden class="anchor" aria-hidden="true" href="#pixel-accuracy">#</a></h4>
 <p>Pixel Accuracy measures the proportion of correctly classified pixels in the entire image.</p>
 <p>$$
 \text{Pixel Accuracy} = \frac{\text{Number of Correct Pixels}}{\text{Total Number of Pixels}}
@@ -599,7 +597,7 @@ $$</p>
 <p>$$
 \text{Pixel Accuracy} = \frac{900}{1000} = 0.90 , \text{or} , 90\text{%}
 $$</p>
-<h3 id="mean-iou-miou">Mean IoU (mIoU)<a hidden class="anchor" aria-hidden="true" href="#mean-iou-miou">#</a></h3>
+<h4 id="mean-iou-miou">Mean IoU (mIoU)<a hidden class="anchor" aria-hidden="true" href="#mean-iou-miou">#</a></h4>
 <p>mIoU is the mean of the Intersection over Union (IoU) for all classes. It is commonly used for semantic segmentation tasks.</p>
 <p>$$
 \text{mIoU} = \frac{1}{N} \sum_{i=1}^{N} \frac{\text{Area of Overlap}}{\text{Area of Union}}
@@ -611,7 +609,7 @@ $$</p>
 <p>$$
 \text{mIoU} = \frac{0.6 + 0.7 + 0.8}{3} = \frac{2.1}{3} = 0.70 , \text{or} , 70\text{%}
 $$</p>
-<h3 id="structural-similarity-index-ssim">Structural Similarity Index (SSIM)<a hidden class="anchor" aria-hidden="true" href="#structural-similarity-index-ssim">#</a></h3>
+<h4 id="structural-similarity-index-ssim">Structural Similarity Index (SSIM)<a hidden class="anchor" aria-hidden="true" href="#structural-similarity-index-ssim">#</a></h4>
 <p>SSIM measures the similarity between two images, considering luminance, contrast, and structure.</p>
 <p>$$
 \text{SSIM}(x, y) = \frac{(2\mu_x \mu_y + C_1)(2\sigma_{xy} + C_2)}{(\mu_x^2 + \mu_y^2 + C_1)(\sigma_x^2 + \sigma_y^2 + C_2)}
@@ -627,46 +625,6 @@ $$</p>
 <p>$$
 \text{SSIM} = \frac{21006.5 \cdot 94}{21031.5 \cdot 683} \approx 0.42
 $$</p>
-<h2 id="practical-implementation">Practical Implementation<a hidden class="anchor" aria-hidden="true" href="#practical-implementation">#</a></h2>
-<p>Below is a practical implementation of some of these metrics in Python using popular libraries like scikit-learn.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, confusion_matrix, mean_absolute_error, mean_squared_error, r2_score
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Example ground truth and predictions</span>
-</span></span><span style="display:flex;"><span>y_true <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>])
-</span></span><span style="display:flex;"><span>y_pred <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>])
-</span></span><span style="display:flex;"><span>y_scores <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">0.1</span>, <span style="color:#ae81ff">0.9</span>, <span style="color:#ae81ff">0.2</span>, <span style="color:#ae81ff">0.4</span>, <span style="color:#ae81ff">0.8</span>, <span style="color:#ae81ff">0.1</span>, <span style="color:#ae81ff">0.7</span>, <span style="color:#ae81ff">0.3</span>])
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Classification metrics</span>
-</span></span><span style="display:flex;"><span>accuracy <span style="color:#f92672">=</span> accuracy_score(y_true, y_pred)
-</span></span><span style="display:flex;"><span>precision <span style="color:#f92672">=</span> precision_score(y_true, y_pred)
-</span></span><span style="display:flex;"><span>recall <span style="color:#f92672">=</span> recall_score(y_true, y_pred)
-</span></span><span style="display:flex;"><span>f1 <span style="color:#f92672">=</span> f1_score(y_true, y_pred)
-</span></span><span style="display:flex;"><span>roc_auc <span style="color:#f92672">=</span> roc_auc_score(y_true, y_scores)
-</span></span><span style="display:flex;"><span>conf_matrix <span style="color:#f92672">=</span> confusion_matrix(y_true, y_pred)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Accuracy: </span><span style="color:#e6db74">{</span>accuracy<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Precision: </span><span style="color:#e6db74">{</span>precision<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Recall: </span><span style="color:#e6db74">{</span>recall<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;F1 Score: </span><span style="color:#e6db74">{</span>f1<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;ROC AUC: </span><span style="color:#e6db74">{</span>roc_auc<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Confusion Matrix:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">{</span>conf_matrix<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Regression metrics example</span>
-</span></span><span style="display:flex;"><span>y_true_reg <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">3.0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">2.0</span>, <span style="color:#ae81ff">7.0</span>])
-</span></span><span style="display:flex;"><span>y_pred_reg <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">2.5</span>, <span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">2.0</span>, <span style="color:#ae81ff">8.0</span>])
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>mae <span style="color:#f92672">=</span> mean_absolute_error(y_true_reg, y_pred_reg)
-</span></span><span style="display:flex;"><span>mse <span style="color:#f92672">=</span> mean_squared_error(y_true_reg, y_pred_reg)
-</span></span><span style="display:flex;"><span>rmse <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sqrt(mse)
-</span></span><span style="display:flex;"><span>r2 <span style="color:#f92672">=</span> r2_score(y_true_reg, y_pred_reg)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;MAE: </span><span style="color:#e6db74">{</span>mae<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;MSE: </span><span style="color:#e6db74">{</span>mse<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;RMSE: </span><span style="color:#e6db74">{</span>rmse<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;R2 Score: </span><span style="color:#e6db74">{</span>r2<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span></code></pre></div><h2 id="summary">Summary<a hidden class="anchor" aria-hidden="true" href="#summary">#</a></h2>
-<p>Metrics are the cornerstone of model evaluation in machine learning and computer vision. By understanding and appropriately applying these metrics, practitioners can gain valuable insights into model performance, guiding improvements and ensuring the deployment of effective models. Whether working on classification, regression, or computer vision tasks, selecting the right metrics is essential for robust and meaningful evaluation.</p>
 
 
   </div>

@@ -6,14 +6,23 @@
     <description>Recent content in Deep Learning on Adil&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Apr 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://adilsarsenov.dev/tags/deep-learning/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 May 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://adilsarsenov.dev/tags/deep-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Image Segmentation Techniques: FCN and U-Net</title>
+      <title>Generative Adversarial Networks (GANs) and CycleGANs</title>
+      <link>https://adilsarsenov.dev/posts/gans/</link>
+      <pubDate>Wed, 01 May 2024 18:34:44 +0500</pubDate>
+      
+      <guid>https://adilsarsenov.dev/posts/gans/</guid>
+      <description>Exploration of GANs and CycleGANs.</description>
+    </item>
+    
+    <item>
+      <title>FCN and U-Net</title>
       <link>https://adilsarsenov.dev/posts/fcn_unet/</link>
       <pubDate>Mon, 01 Apr 2024 18:34:44 +0500</pubDate>
       
       <guid>https://adilsarsenov.dev/posts/fcn_unet/</guid>
-      <description>FCN and U-Net.</description>
+      <description>Image Segmentation Techniques: FCN and U-Net.</description>
     </item>
     
     <item>
@@ -26,7 +35,7 @@
     </item>
     
     <item>
-      <title>Understanding EfficientNet</title>
+      <title>EfficientNet - Compound Scaling</title>
       <link>https://adilsarsenov.dev/posts/effnet/</link>
       <pubDate>Sat, 23 Mar 2024 18:34:44 +0500</pubDate>
       
@@ -35,7 +44,7 @@
     </item>
     
     <item>
-      <title>Understanding ResNet</title>
+      <title>ResNet - Residual Blocks</title>
       <link>https://adilsarsenov.dev/posts/resnet/</link>
       <pubDate>Fri, 22 Mar 2024 18:34:44 +0500</pubDate>
       

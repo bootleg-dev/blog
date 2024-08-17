@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Understanding ResNet | Adil&#39;s Notes</title>
+<title>ResNet - Residual Blocks | Adil&#39;s Notes</title>
 <meta name="keywords" content="Deep Learning, Neural Networks, CNN, ResNet">
 <meta name="description" content="Dive into ResNet architecture and its innovative residual blocks.">
 <meta name="author" content="">
@@ -56,7 +56,7 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="Understanding ResNet" />
+</noscript><meta property="og:title" content="ResNet - Residual Blocks" />
 <meta property="og:description" content="Dive into ResNet architecture and its innovative residual blocks." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://adilsarsenov.dev/posts/resnet/" /><meta property="article:section" content="posts" />
@@ -64,7 +64,7 @@
 <meta property="article:modified_time" content="2024-03-22T18:34:44&#43;05:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Understanding ResNet"/>
+<meta name="twitter:title" content="ResNet - Residual Blocks"/>
 <meta name="twitter:description" content="Dive into ResNet architecture and its innovative residual blocks."/>
 
 
@@ -82,7 +82,7 @@
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "Understanding ResNet",
+      "name": "ResNet - Residual Blocks",
       "item": "https://adilsarsenov.dev/posts/resnet/"
     }
   ]
@@ -92,14 +92,14 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Understanding ResNet",
-  "name": "Understanding ResNet",
+  "headline": "ResNet - Residual Blocks",
+  "name": "ResNet - Residual Blocks",
   "description": "Dive into ResNet architecture and its innovative residual blocks.",
   "keywords": [
     "Deep Learning", "Neural Networks", "CNN", "ResNet"
   ],
-  "articleBody": "Introduction ResNet, which stands for Residual Network, is a revolutionary deep learning model created by Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun in their 2015 paper “Deep Residual Learning for Image Recognition.” ResNet tackles big challenges in training very deep neural networks, like the vanishing gradient problem, and has achieved amazing results in various computer vision tasks.\nWhy ResNet? The Need for Deeper Networks Traditional Convolutional Neural Networks (CNNs) face performance issues when the network depth increases. This isn’t because of overfitting but rather an optimization challenge where adding more layers makes the network harder to train effectively.\nThe Vanishing Gradient Problem When neural networks get deeper, the gradients used to update weights during backpropagation become very small, leading to negligible updates. This is known as the vanishing gradient problem and it makes training very deep networks difficult.\nThe Solution: Residual Blocks ResNet introduces residual learning through residual blocks. Instead of expecting each layer to directly fit a desired mapping, residual blocks allow layers to fit a residual mapping. It’s easier to optimize the residual mapping than the original, unreferenced mapping.\nResidual Block Structure A typical residual block in ResNet has two or more convolutional layers followed by batch normalization and ReLU activation. The input to the block is added directly to the output of the stacked layers (this addition is the “shortcut connection”), creating a residual connection.\nMathematical Representation If the input is $ ( x ) $ and the desired output is $( H(x) ) $, a residual block models this as: $[ H(x) = F(x, {W_i}) + x ]$ where $ ( F(x, {W_i}) ) $ represents the residual mapping to be learned.\nResNet Architecture ResNet architectures come in various depths, such as ResNet-18, ResNet-34, ResNet-50, ResNet-101, and ResNet-152, indicating the number of layers. These architectures stack residual blocks to create deep networks that can effectively learn complex features.\nKey Components Convolutional Layers: Extract features from the input image. Batch Normalization: Normalizes the output of each convolutional layer, stabilizing and accelerating training. ReLU Activation: Introduces non-linearity. Residual Connections: Add the input of the block to the output, allowing the network to learn residual mappings. Achievements of ResNet ResNet won first place in the ILSVRC 2015 classification competition with a top-5 error rate of 3.57% using an ensemble model. It also won first place in the ImageNet Detection, ImageNet Localization, COCO Detection, and COCO Segmentation tasks in the ILSVRC and COCO 2015 competitions. Notably, replacing VGG-16 layers in Faster R-CNN with ResNet-101 layers led to a 28% relative improvement.\nPractical Applications of ResNet Image Classification ResNet is widely used for image classification tasks due to its ability to train very deep networks without degradation. Its architectures, such as ResNet-50 and ResNet-101, are standard benchmarks in the field.\nObject Detection ResNet serves as the backbone for many object detection frameworks like Faster R-CNN and Mask R-CNN, providing robust feature extraction capabilities that enhance detection accuracy.\nMedical Image Analysis In medical imaging, ResNet models are employed to detect anomalies in MRI scans, CT scans, and X-rays, aiding in diagnosis and treatment planning.\nTransfer Learning ResNet’s pre-trained models are often used for transfer learning, where a model trained on a large dataset like ImageNet is fine-tuned for specific tasks with smaller datasets. This approach significantly reduces training time and improves performance.\nSummary ResNet’s innovative architecture has transformed deep learning by enabling the training of very deep networks. Its success in competitions and practical applications highlights its robustness and versatility. By introducing residual connections, ResNet overcomes significant challenges associated with deep networks, paving the way for further advancements in neural network design.\n",
-  "wordCount" : "602",
+  "articleBody": "Introduction ResNet, which stands for Residual Network, is a revolutionary deep learning model created by Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun in their 2015 paper “Deep Residual Learning for Image Recognition.” ResNet tackles big challenges in training very deep neural networks, like the vanishing gradient problem, and has achieved amazing results in various computer vision tasks.\nWhy ResNet? The Need for Deeper Networks Traditional Convolutional Neural Networks (CNNs) face performance issues when the network depth increases. This isn’t because of overfitting but rather an optimization challenge where adding more layers makes the network harder to train effectively.\nThe Vanishing Gradient Problem It has been found that there is a maximum threshold for depth with the traditional CNN. When neural networks get deeper, the gradients used to update weights during backpropagation become very small, leading to negligible updates. This is known as the vanishing gradient problem and it makes training very deep networks difficult.\nThe Solution: Residual Blocks ResNet introduces residual learning through residual blocks. Instead of expecting each layer to directly fit a desired mapping, residual blocks allow layers to fit a residual mapping. It’s easier to optimize the residual mapping than the original, unreferenced mapping.\nResidual Block Structure A typical residual block in ResNet has two or more convolutional layers followed by batch normalization and ReLU activation. The input to the block is added directly to the output of the stacked layers (this addition is the “shortcut connection”), creating a residual connection.\nMathematical Representation If the input is $ ( x ) $ and the desired output is $( H(x) ) $, a residual block models this as: $\\ H(x) = F(x, {W_i}) + x $ where $ ( F(x, {W_i}) ) $ represents the residual mapping to be learned.\nResNet Architecture ResNet architectures come in various depths, such as ResNet-18, ResNet-34, ResNet-50, ResNet-101, and ResNet-152~201, indicating the number of layers. These architectures stack residual blocks to create deep networks that can effectively learn complex features.\nKey Components Convolutional Layers: Extract features from the input image. Batch Normalization: Normalizes the output of each convolutional layer, stabilizing and accelerating training. ReLU Activation: Introduces non-linearity. Residual Connections: Add the input of the block to the output, allowing the network to learn residual mappings. Achievements of ResNet ResNet won first place in the ILSVRC 2015 classification competition with a top-5 error rate of 3.57% using an ensemble model. It also won first place in the ImageNet Detection, ImageNet Localization, COCO Detection, and COCO Segmentation tasks in the ILSVRC and COCO 2015 competitions.\nNotably, replacing VGG-16 layers in Faster R-CNN with ResNet-101 layers led to a 28% relative improvement.\nTransfer Learning or Fine-tuning ResNet’s pre-trained models are often used for transfer learning, where a model trained on a large dataset like ImageNet is fine-tuned for specific tasks with smaller datasets.\nThis approach significantly reduces training time and improves performance.\n",
+  "wordCount" : "479",
   "inLanguage": "en",
   "datePublished": "2024-03-22T18:34:44.165668+05:00",
   "dateModified": "2024-03-22T18:34:44.165668+05:00",
@@ -206,7 +206,7 @@
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://adilsarsenov.dev/">Home</a>&nbsp;»&nbsp;<a href="https://adilsarsenov.dev/posts/">Posts</a></div>
     <h1 class="post-title">
-      Understanding ResNet
+      ResNet - Residual Blocks
     </h1>
     <div class="post-description">
       Dive into ResNet architecture and its innovative residual blocks.
@@ -251,64 +251,61 @@ Date: 22 March, 2024
                 <li>
                     <a href="#achievements-of-resnet" aria-label="Achievements of ResNet">Achievements of ResNet</a></li>
                 <li>
-                    <a href="#practical-applications-of-resnet" aria-label="Practical Applications of ResNet">Practical Applications of ResNet</a><ul>
-                        
-                <li>
-                    <a href="#image-classification" aria-label="Image Classification">Image Classification</a></li>
-                <li>
-                    <a href="#object-detection" aria-label="Object Detection">Object Detection</a></li>
-                <li>
-                    <a href="#medical-image-analysis" aria-label="Medical Image Analysis">Medical Image Analysis</a></li>
-                <li>
-                    <a href="#transfer-learning" aria-label="Transfer Learning">Transfer Learning</a></li></ul>
-                </li>
-                <li>
-                    <a href="#summary" aria-label="Summary">Summary</a>
+                    <a href="#transfer-learning-or-fine-tuning" aria-label="Transfer Learning or Fine-tuning">Transfer Learning or Fine-tuning</a>
                 </li>
             </ul>
         </div>
     </details>
 </div>
 
-  <div class="post-content"><h2 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h2>
-<p>ResNet, which stands for Residual Network, is a revolutionary deep learning model created by Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun in their 2015 paper &ldquo;Deep Residual Learning for Image Recognition.&rdquo; ResNet tackles big challenges in training very deep neural networks, like the vanishing gradient problem, and has achieved amazing results in various computer vision tasks.</p>
-<h2 id="why-resnet">Why ResNet?<a hidden class="anchor" aria-hidden="true" href="#why-resnet">#</a></h2>
-<h3 id="the-need-for-deeper-networks">The Need for Deeper Networks<a hidden class="anchor" aria-hidden="true" href="#the-need-for-deeper-networks">#</a></h3>
-<p>Traditional Convolutional Neural Networks (CNNs) face performance issues when the network depth increases. This isn&rsquo;t because of overfitting but rather an optimization challenge where adding more layers makes the network harder to train effectively.</p>
-<h3 id="the-vanishing-gradient-problem">The Vanishing Gradient Problem<a hidden class="anchor" aria-hidden="true" href="#the-vanishing-gradient-problem">#</a></h3>
-<p>When neural networks get deeper, the gradients used to update weights during backpropagation become very small, leading to negligible updates. This is known as the vanishing gradient problem and it makes training very deep networks difficult.</p>
-<h2 id="the-solution-residual-blocks">The Solution: Residual Blocks<a hidden class="anchor" aria-hidden="true" href="#the-solution-residual-blocks">#</a></h2>
-<p>ResNet introduces residual learning through residual blocks. Instead of expecting each layer to directly fit a desired mapping, residual blocks allow layers to fit a residual mapping. It&rsquo;s easier to optimize the residual mapping than the original, unreferenced mapping.</p>
-<h3 id="residual-block-structure">Residual Block Structure<a hidden class="anchor" aria-hidden="true" href="#residual-block-structure">#</a></h3>
-<p>A typical residual block in ResNet has two or more convolutional layers followed by batch normalization and ReLU activation. The input to the block is added directly to the output of the stacked layers (this addition is the &ldquo;shortcut connection&rdquo;), creating a residual connection.</p>
-<h3 id="mathematical-representation">Mathematical Representation<a hidden class="anchor" aria-hidden="true" href="#mathematical-representation">#</a></h3>
+  <div class="post-content"><h3 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h3>
+<p>ResNet, which stands for Residual Network, is a revolutionary deep learning model created by
+<strong>Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun in their 2015 paper &ldquo;Deep Residual Learning for Image Recognition.&rdquo;</strong>
+ResNet tackles big challenges in training very deep neural networks, like the vanishing gradient problem,
+and has achieved amazing results in various computer vision tasks.</p>
+<h3 id="why-resnet">Why ResNet?<a hidden class="anchor" aria-hidden="true" href="#why-resnet">#</a></h3>
+<h4 id="the-need-for-deeper-networks">The Need for Deeper Networks<a hidden class="anchor" aria-hidden="true" href="#the-need-for-deeper-networks">#</a></h4>
+<p>Traditional Convolutional Neural Networks (CNNs) face performance issues when the network depth increases.
+This <strong>isn&rsquo;t because of overfitting</strong> but rather an optimization challenge where adding more layers makes the network harder to train effectively.</p>
+<h4 id="the-vanishing-gradient-problem">The Vanishing Gradient Problem<a hidden class="anchor" aria-hidden="true" href="#the-vanishing-gradient-problem">#</a></h4>
+<p>It has been found that there is a <strong>maximum threshold</strong> for depth with the <strong>traditional CNN</strong>.
+When neural networks get deeper, the gradients used to <strong>update weights during backpropagation</strong> become very small,
+leading to negligible updates. This is known as the <strong>vanishing gradient problem</strong> and it makes training very deep networks difficult.</p>
+<p><img loading="lazy" src="/posts/resnet/img2.png" alt="Vanishing"  />
+</p>
+<h3 id="the-solution-residual-blocks">The Solution: Residual Blocks<a hidden class="anchor" aria-hidden="true" href="#the-solution-residual-blocks">#</a></h3>
+<p><strong>ResNet</strong> introduces residual learning through residual blocks. Instead of expecting each layer to directly fit a desired mapping,
+residual blocks allow layers to fit a residual mapping. <strong>It&rsquo;s easier to optimize the residual mapping</strong> than the original, unreferenced mapping.</p>
+<h4 id="residual-block-structure">Residual Block Structure<a hidden class="anchor" aria-hidden="true" href="#residual-block-structure">#</a></h4>
+<p>A typical residual block in ResNet has two or more convolutional layers followed by batch normalization and ReLU activation.
+<strong>The input to the block is added directly to the output of the stacked layers (this addition is the &ldquo;shortcut connection&rdquo;),
+creating a residual connection.</strong></p>
+<h4 id="mathematical-representation">Mathematical Representation<a hidden class="anchor" aria-hidden="true" href="#mathematical-representation">#</a></h4>
 <p>If the input is $ ( x ) $ and the desired output is $( H(x) ) $, a residual block models this as:
-$[ H(x) = F(x, {W_i}) + x ]$
+$\ H(x) = F(x, {W_i}) + x $
 where $ ( F(x, {W_i}) ) $ represents the residual mapping to be learned.</p>
 <p><img loading="lazy" src="/posts/resnet/img1.png" alt="ResNet"  />
 </p>
-<h2 id="resnet-architecture">ResNet Architecture<a hidden class="anchor" aria-hidden="true" href="#resnet-architecture">#</a></h2>
-<p>ResNet architectures come in various depths, such as ResNet-18, ResNet-34, ResNet-50, ResNet-101, and ResNet-152, indicating the number of layers. These architectures stack residual blocks to create deep networks that can effectively learn complex features.</p>
-<h3 id="key-components">Key Components<a hidden class="anchor" aria-hidden="true" href="#key-components">#</a></h3>
+<h3 id="resnet-architecture">ResNet Architecture<a hidden class="anchor" aria-hidden="true" href="#resnet-architecture">#</a></h3>
+<p>ResNet architectures come in various depths, such as <strong>ResNet-18, ResNet-34, ResNet-50, ResNet-101, and ResNet-152~201</strong>, indicating the number of layers. These architectures stack residual blocks to create deep networks that can effectively learn complex features.</p>
+<h4 id="key-components">Key Components<a hidden class="anchor" aria-hidden="true" href="#key-components">#</a></h4>
 <ul>
 <li><strong>Convolutional Layers:</strong> Extract features from the input image.</li>
 <li><strong>Batch Normalization:</strong> Normalizes the output of each convolutional layer, stabilizing and accelerating training.</li>
 <li><strong>ReLU Activation:</strong> Introduces non-linearity.</li>
 <li><strong>Residual Connections:</strong> Add the input of the block to the output, allowing the network to learn residual mappings.</li>
 </ul>
-<h2 id="achievements-of-resnet">Achievements of ResNet<a hidden class="anchor" aria-hidden="true" href="#achievements-of-resnet">#</a></h2>
-<p>ResNet won first place in the ILSVRC 2015 classification competition with a top-5 error rate of 3.57% using an ensemble model. It also won first place in the ImageNet Detection, ImageNet Localization, COCO Detection, and COCO Segmentation tasks in the ILSVRC and COCO 2015 competitions. Notably, replacing VGG-16 layers in Faster R-CNN with ResNet-101 layers led to a 28% relative improvement.</p>
-<h2 id="practical-applications-of-resnet">Practical Applications of ResNet<a hidden class="anchor" aria-hidden="true" href="#practical-applications-of-resnet">#</a></h2>
-<h3 id="image-classification">Image Classification<a hidden class="anchor" aria-hidden="true" href="#image-classification">#</a></h3>
-<p>ResNet is widely used for image classification tasks due to its ability to train very deep networks without degradation. Its architectures, such as ResNet-50 and ResNet-101, are standard benchmarks in the field.</p>
-<h3 id="object-detection">Object Detection<a hidden class="anchor" aria-hidden="true" href="#object-detection">#</a></h3>
-<p>ResNet serves as the backbone for many object detection frameworks like Faster R-CNN and Mask R-CNN, providing robust feature extraction capabilities that enhance detection accuracy.</p>
-<h3 id="medical-image-analysis">Medical Image Analysis<a hidden class="anchor" aria-hidden="true" href="#medical-image-analysis">#</a></h3>
-<p>In medical imaging, ResNet models are employed to detect anomalies in MRI scans, CT scans, and X-rays, aiding in diagnosis and treatment planning.</p>
-<h3 id="transfer-learning">Transfer Learning<a hidden class="anchor" aria-hidden="true" href="#transfer-learning">#</a></h3>
-<p>ResNet&rsquo;s pre-trained models are often used for transfer learning, where a model trained on a large dataset like ImageNet is fine-tuned for specific tasks with smaller datasets. This approach significantly reduces training time and improves performance.</p>
-<h2 id="summary">Summary<a hidden class="anchor" aria-hidden="true" href="#summary">#</a></h2>
-<p>ResNet&rsquo;s innovative architecture has transformed deep learning by enabling the training of very deep networks. Its success in competitions and practical applications highlights its robustness and versatility. By introducing residual connections, ResNet overcomes significant challenges associated with deep networks, paving the way for further advancements in neural network design.</p>
+<p><img loading="lazy" src="/posts/resnet/img3.png" alt="ResNetExample"  />
+</p>
+<h3 id="achievements-of-resnet">Achievements of ResNet<a hidden class="anchor" aria-hidden="true" href="#achievements-of-resnet">#</a></h3>
+<p>ResNet <strong>won first place</strong> in the <strong>ILSVRC 2015 classification competition</strong> with a top-5 error rate of 3.57% using an ensemble model.
+It also <strong>won first place in the ImageNet Detection, ImageNet Localization, COCO Detection, and COCO Segmentation tasks
+in the ILSVRC and COCO 2015 competitions</strong>.</p>
+<p>Notably, replacing VGG-16 layers in Faster R-CNN with ResNet-101 layers led to a 28% relative improvement.</p>
+<h3 id="transfer-learning-or-fine-tuning">Transfer Learning or Fine-tuning<a hidden class="anchor" aria-hidden="true" href="#transfer-learning-or-fine-tuning">#</a></h3>
+<p>ResNet&rsquo;s pre-trained models are often used for <strong>transfer learning</strong>, where a model trained on a <strong>large dataset like
+ImageNet</strong> is fine-tuned for specific tasks with smaller datasets.</p>
+<p>This approach <strong>significantly reduces training time</strong> and improves performance.</p>
 
 
   </div>
