@@ -10,43 +10,19 @@ cover:
     image: ""
 ---
 
-## Understanding Convolutional Neural Networks (CNNs)
+**Convolutional Neural Networks (CNNs)** are a class of deep learning models designed to process visual data. CNNs mimic the way the human brain processes visual information, making them incredibly powerful for visual tasks.
 
-### Introduction
-Convolutional Neural Networks (CNNs) are a class of deep learning models designed to process visual data. They have revolutionized computer vision, enabling applications like image classification, object detection, and facial recognition. CNNs mimic the way the human brain processes visual information, making them incredibly powerful for visual tasks.
 
-### Key Concepts in CNNs
+## Key Concepts of CNN Components
 
-#### Convolution Operation
+### Convolutional Layer
+The convolutional layer applies filter(kernel) to the input image to extract features like edges and textures.
+
 - **Convolutional Layer:** The primary building block of a CNN, responsible for feature extraction.
 - **Filter (Kernel):** A small matrix that slides over the input image, performing multiplications and summations to produce a feature map.
 - **Feature Map (Activation Map):** The result of the convolution operation, highlighting important features such as edges, textures, and patterns.
 
-#### Activation Function
-- **ReLU (Rectified Linear Unit):** Introduces non-linearity to the model. It replaces negative values with zero, allowing the network to learn complex patterns.
-
-$$
-\text{ReLU}(x) = \max(0, x)
-$$
-
-#### Pooling Layer
-- **Max-Pooling:** Reduces the spatial dimensions of the feature map while retaining the most important information by selecting the maximum value within each window.
-- **Purpose:** Reduces computational complexity and helps the network become invariant to small translations of the input image.
-
-#### Flattening
-- **Flatten Layer:** Converts the 2D pooled feature maps into a 1D vector for the fully connected layers.
-- **Purpose:** Prepares the data for final classification or regression tasks.
-
-#### Fully Connected Layer
-- **Dense Layer:** Connects every neuron in one layer to every neuron in the next layer.
-- **Purpose:** Combines the extracted features to make final decisions.
-
-### Detailed Explanation of CNN Components
-
-#### Convolutional Layer
-The convolutional layer applies filters to the input image to extract features like edges and textures.
-
-- **Formula:**
+**Convolution operation**  allows the network to learn spatial hierarchies of features automatically from low-level to high-level.
 
 $$
 (I * K)(i, j) = \sum_{m=0}^{M-1} \sum_{n=0}^{N-1} I(i + m, j + n) K(m, n)
@@ -57,15 +33,18 @@ $$
   - $\( (i, j) \)$: Coordinates in the output feature map
   - $\( M, N \)$: Dimensions of the kernel
 
-This operation allows the network to learn spatial hierarchies of features automatically from low-level to high-level.
 
-#### Understanding Hyperparameters
+![Convolution](/posts/convolutional-neural-networks/img2.png)
+
+
+### Understanding Hyperparameters
 - **Kernel Size:** Dimensions of the filter (e.g., 3x3, 5x5). Affects the amount of detail the filter can capture.
 - **Stride:** Step size of the filter movement. Larger strides reduce the output size but increase computational efficiency.
 - **Padding:** Adds zeros around the input image to maintain the output size. "Valid" means no padding, "same" keeps the output size the same as the input.
 
-#### Non-Linearity (ReLU)
-ReLU introduces non-linearity to help the network learn complex patterns.
+### Non-Linearity (ReLU) Activation Function
+- **ReLU (Rectified Linear Unit):** Introduces non-linearity to the model. It replaces negative values with zero, allowing the network to learn complex patterns.
+Activation function decides whether the neuron must be activated or not. So it means whether the neuron's input is important to the network or not.
 
 $$
 \text{ReLU}(x) = 
@@ -77,10 +56,17 @@ $$
 
 By setting negative values to zero, ReLU prevents the network from simply becoming a linear classifier.
 
-#### Pooling Layers
-Max-pooling reduces the spatial dimensions by selecting the maximum value in each window, effectively down-sampling the feature map.
+Another popular activation functions:
 
-- **Formula:**
+![Activation](/posts/convolutional-neural-networks/img1.png)
+
+
+### Pooling Layers
+Reduces computational complexity and helps the network become invariant to small translations of the input image.
+
+
+- **Max-Pooling:** operation requires selecting a kernel size and a stride length. Once selected, the operation slides the kernel with the specified stride over the input retaining the most important information by selecting the maximum value within each window, effectively down-sampling the feature map.
+
 
 $$
 Y(i, j) = \max_{m,n} X(i \cdot s + m, j \cdot s + n)
@@ -91,10 +77,24 @@ $$
   - $\( s \)$: Stride
   - $\( m, n \)$: Window dimensions
 
-Pooling helps in reducing the complexity of the network and prevents overfitting.
+![MaxPooling](/posts/convolutional-neural-networks/img3.png)
 
-#### Fully Connected Layer
-Fully connected layers make final decisions using the features extracted by the previous layers.
+Pooling prevents **overfitting**.
+
+
+### Flattening
+- **Flatten Layer:** Converts the 2D pooled feature maps into a 1D vector for the fully connected layers.
+The flattened vector is fed as input to the fully connected layer to classify the image.
+
+![Flattening](/posts/convolutional-neural-networks/img4.png)
+
+
+
+
+### Fully Connected Layer
+
+**The Fully Connected Layer**, also known as the dense layer, is the final layer that comes after the convolutional and pooling layers. 
+Its purpose is to perform classification or regression tasks based on the high-level features extracted by the earlier layers of the network. In FC, all the neurons of the input are connected to every neuron of the output layer.
 
 - **Formula:**
 
@@ -109,7 +109,10 @@ $$
 
 The fully connected layer combines the high-level features learned by the convolutional layers to output a final prediction.
 
-#### Output Layer
+![DenseLayer](/posts/convolutional-neural-networks/img5.png)
+
+
+### Output Layer
 The output layer is typically a softmax layer in classification tasks. The softmax function converts the raw output scores into probabilities.
 
 - **Softmax Function:**
@@ -125,26 +128,21 @@ $$
 The softmax function ensures that the output probabilities sum to 1, making it easier to interpret the results as the likelihood of each class.
 
 
-### Example CNN Architecture
+### Simple Example of CNN Architecture
 Here’s a simple CNN architecture for image classification:
 
-1. **Input Layer:** 224x224 RGB image
-2. **Convolutional Layer:** 32 filters of size 3x3, stride 1, ReLU activation
+1. **Input Layer:** 28x28 grayscale image
+2. **Convolutional Layer:** conv layer with filter of the size 5x5, with valid padding(no padding), the feature maps have a size of 24x24x**n1**, where **n1** is the number of filters used in this layer.
 3. **Max-Pooling Layer:** 2x2 window, stride 2
-4. **Convolutional Layer:** 64 filters of size 3x3, stride 1, ReLU activation
+4. **Convolutional Layer:** conv layer with filter of the size 5x5, with valid padding(no padding)
 5. **Max-Pooling Layer:** 2x2 window, stride 2
-6. **Flatten Layer:** Converts the feature maps into a 1D vector
-7. **Fully Connected Layer:** 128 neurons, ReLU activation
-8. **Output Layer:** Softmax activation for classification into multiple classes
+6. **Flatten Layer:** Converts the feature maps 4x4 into a 1D vector with total size of **4x4xn2**.
+7. **Fully Connected Layer:** the flattened vector is passed through a fully connected layer with **n3** units, with ReLU activation function.
+8. **Fully Connected Layer:** passed again, applies **Dropout** to prevent overfitting
+9. **Output Layer:** Final Fully Connected Layer, which has 10 units corresponding to the 10 possible digit classes (0-9).
+
+![ArchitectureCNN](/posts/convolutional-neural-networks/img6.jpeg)
+
 
 This example illustrates the typical workflow in a CNN, from input to final classification.
 
-### Applications of CNNs
-CNNs have a wide range of applications, including:
-- **Image Classification:** Identifying objects within an image (e.g., cats vs. dogs).
-- **Object Detection:** Detecting and localizing objects in an image.
-- **Semantic Segmentation:** Classifying each pixel of an image into different categories.
-- **Facial Recognition:** Identifying and verifying individuals based on facial features.
-- **Medical Image Analysis:** Detecting anomalies in medical scans, such as tumors in MRI images.
-
-By understanding these components and their functions, you can appreciate the power and versatility of CNNs in solving complex visual tasks.

@@ -10,15 +10,14 @@ cover:
     image: ""
 ---
 
-## Introduction
+### Introduction
 
-In the realm of machine learning and computer vision, evaluating model performance is as critical as designing and training the models themselves. Metrics provide quantifiable measures to assess the effectiveness and accuracy of models, guiding decisions for improvement and deployment. This article explores key metrics used in machine learning, with a focus on computer vision applications. We'll delve into their definitions, significance, practical implementation, and simple examples for clarity.
+Evaluating model performance is as critical as designing and training the models themselves. Metrics provide quantifiable measures to assess the effectiveness and accuracy of models, guiding decisions for improvement and deployment. 
+### Classification Metrics
 
-## Classification Metrics
+#### Accuracy
 
-### Accuracy
-
-Accuracy is the most straightforward metric, representing the ratio of correctly predicted instances to the total instances.
+Accuracy is the most straightforward metric, representing the **ratio of correctly predicted instances to the total instances**.
 
 $$
 \text{Accuracy} = \frac{\text{True Positives} + \text{True Negatives}}{\text{Total Instances}}
@@ -35,9 +34,9 @@ $$
 \text{Accuracy} = \frac{50 + 40}{100} = \frac{90}{100} = 0.90 \, \text{or} \, 90\text{%}
 $$
 
-### Precision, Recall, and F1 Score
+#### Precision, Recall, and F1 Score
 
-Precision and recall provide deeper insights, especially in imbalanced datasets.
+Precision and recall provide deeper insights, especially in **imbalanced datasets**.
 
 - **Precision**: The ratio of true positive predictions to the total predicted positives.
 
@@ -81,7 +80,7 @@ $$
 \text{F1 Score} = 2 \cdot \frac{0.75 \cdot 0.60}{0.75 + 0.60} = 2 \cdot \frac{0.45}{1.35} = \frac{0.90}{1.35} = 0.67 \, \text{or} \, 67\text{%}
 $$
 
-### Specificity and Sensitivity
+#### Specificity and Sensitivity
 
 - **Specificity**: The ratio of true negative predictions to all actual negatives. It is used to measure the ability of the model to correctly identify negative instances.
 
@@ -103,20 +102,21 @@ $$
 \text{Sensitivity} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Negatives}}
 $$
 
-### Confusion Matrix
+#### Confusion Matrix
 
 A confusion matrix is a table that provides a detailed breakdown of the performance of a classification model. It shows the number of true positive, true negative, false positive, and false negative predictions.
 
 **Example Calculation**:
 
-|               | Predicted Positive | Predicted Negative |
-|---------------|--------------------|--------------------|
-| Actual Positive | True Positive (TP) = 50 | False Negative (FN) = 10 |
-| Actual Negative | False Positive (FP) = 5 | True Negative (TN) = 35 |
+|               | Predicted Positive                        | Predicted Negative                         |
+|---------------|-------------------------------------------|--------------------------------------------|
+| Actual Positive | True Positive (TP) = 50                   | **Type 2 Error**: False Negative (FN) = 10 |
+| Actual Negative | **Type 1 Error**: False Positive (FP) = 5 | True Negative (TN) = 35                    |
 
-### ROC-AUC
+#### ROC-AUC
 
-The Receiver Operating Characteristic (ROC) curve is a graphical representation of a model's ability to discriminate between positive and negative classes across different threshold values. The Area Under the Curve (AUC) quantifies this ability into a single scalar value. 
+The Receiver Operating Characteristic **(ROC) curve** is a graphical representation of a model's ability to discriminate between 
+**positive and negative classes across different threshold values**. The Area Under the Curve (AUC) quantifies this ability into a single scalar value. 
 
 - **ROC Curve**: Plots the true positive rate (recall) against the false positive rate (1 - specificity) at various threshold settings.
 - **AUC**: The area under the ROC curve, where an AUC of 1 represents a perfect model, and an AUC of 0.5 represents a model with no discrimination capability.
@@ -133,9 +133,9 @@ The Receiver Operating Characteristic (ROC) curve is a graphical representation 
 
 Plotting these points on the ROC curve and calculating the area under this curve gives us the AUC.
 
-### Log Loss (Cross-Entropy Loss)
+#### Log Loss (Cross-Entropy Loss)
 
-Log Loss evaluates the performance of a classification model where the prediction output is a probability value between 0 and 1.
+Log Loss evaluates the performance of a classification model where the prediction output is a **probability value between 0 and 1**.
 
 $$
 \text{Log Loss} = -\frac{1}{N} \sum_{i=1}^{N} [y_i \log(\hat{y}_i) + (1 - y_i) \log(1 - \hat{y}_i)]
@@ -155,7 +155,7 @@ $$
 \text{Log Loss} = -\frac{1}{3} [(-0.105) + (-0.223) + (-0.357)] = -\frac{1}{3} [-0.685] = 0.228
 $$
 
-### Matthews Correlation Coefficient (MCC)
+#### Matthews Correlation Coefficient (MCC)
 
 MCC is a balanced measure that can be used even if the classes are of very different sizes. It considers true and false positives and negatives.
 
@@ -170,9 +170,9 @@ $$
 \text{MCC} = \frac{(50 \cdot 40) - (10 \cdot 10)}{\sqrt{(50 + 10)(50 + 10)(40 + 10)(40 + 10)}} = \frac{2000 - 100}{\sqrt{60 \cdot 60 \cdot 50 \cdot 50}} = \frac{1900}{150000} = 0.63
 $$
 
-## Regression Metrics
+### Regression Metrics
 
-### Mean Absolute Error (MAE)
+#### Mean Absolute Error (MAE)
 
 MAE measures the average magnitude of errors in predictions without considering their direction.
 
@@ -187,7 +187,7 @@ $$
 \text{MAE} = \frac{1 + 2 + 3}{3} = \frac{6}{3} = 2
 $$
 
-### Mean Squared Error (MSE) and Root Mean Squared Error (RMSE)
+#### Mean Squared Error (MSE) and Root Mean Squared Error (RMSE)
 
 MSE squares the errors before averaging, penalizing larger errors more significantly.
 
@@ -215,7 +215,7 @@ $$
 \text{RMSE} = \sqrt{4.67} \approx 2.16
 $$
 
-### R-Squared (R²)
+#### R-Squared (R²)
 
 R-Squared represents the proportion of the variance in the dependent variable that is predictable from the independent variable(s).
 
@@ -233,7 +233,7 @@ R^2 = 1 - \frac{20}{100} = 1 - 0.20 = 0.80 \, \text{or} \, 80\text{\%}
 $$
 
 
-### Mean Absolute Percentage Error (MAPE)
+#### Mean Absolute Percentage Error (MAPE)
 
 MAPE measures the average absolute percentage error between predicted and actual values.
 
@@ -249,7 +249,7 @@ $$
 \text{MAPE} = \frac{1}{3} \left( \left| \frac{100 - 110}{100} \right| + \left| \frac{200 - 190}{200} \right| + \left| \frac{300 - 310}{300} \right| \right) = \frac{1}{3} \left(0.10 + 0.05 + 0.033\right) = \frac{1}{3} \left(0.183\right) \approx 0.061 \, \text{or} \, 6.1\text{%}
 $$
 
-### Explained Variance Score
+#### Explained Variance Score
 
 Explained variance measures how much of the variance in the target variable is explained by the model.
 
@@ -265,9 +265,9 @@ $$
 \text{Explained Variance} = 1 - \frac{20}{100} = 1 - 0.20 = 0.80 \, \text{or} \, 80\text{%}
 $$
 
-## Computer Vision Metrics
+### Computer Vision Metrics
 
-### Intersection over Union (IoU)
+#### Intersection over Union (IoU)
 
 IoU is crucial for segmentation and object detection tasks, measuring the overlap between the predicted and ground truth bounding boxes or segments.
 
@@ -283,7 +283,7 @@ $$
 \text{IoU} = \frac{30}{50} = 0.60 \, \text{or} \, 60\text{%}
 $$
 
-### Mean Average Precision (mAP)
+#### Mean Average Precision (mAP)
 
 mAP is commonly used in object detection, summarizing the precision-recall curve across multiple classes.
 
@@ -298,7 +298,7 @@ $$
 \text{mAP} = \frac{0.8 + 0.7 + 0.9}{3} = \frac{2.4}{3} = 0.80 \, \text{or} \, 80\text{%}
 $$
 
-### Dice Coefficient
+#### Dice Coefficient
 
 The Dice Coefficient, similar to IoU, is another metric for segmentation tasks, focusing on the overlap between predicted and ground truth segments.
 
@@ -315,7 +315,7 @@ $$
 \text{Dice Coefficient} = \frac{2 \times 30}{40 + 50} = \frac{60}{90} = 0.67 \, \text{or} \, 67\text{%}
 $$
 
-### Pixel Accuracy
+#### Pixel Accuracy
 
 Pixel Accuracy measures the proportion of correctly classified pixels in the entire image.
 
@@ -331,7 +331,7 @@ $$
 \text{Pixel Accuracy} = \frac{900}{1000} = 0.90 \, \text{or} \, 90\text{%}
 $$
 
-### Mean IoU (mIoU)
+#### Mean IoU (mIoU)
 
 mIoU is the mean of the Intersection over Union (IoU) for all classes. It is commonly used for semantic segmentation tasks.
 
@@ -346,7 +346,7 @@ $$
 \text{mIoU} = \frac{0.6 + 0.7 + 0.8}{3} = \frac{2.1}{3} = 0.70 \, \text{or} \, 70\text{%}
 $$
 
-### Structural Similarity Index (SSIM)
+#### Structural Similarity Index (SSIM)
 
 SSIM measures the similarity between two images, considering luminance, contrast, and structure.
 
@@ -368,50 +368,3 @@ $$
 $$
 \text{SSIM} = \frac{21006.5 \cdot 94}{21031.5 \cdot 683} \approx 0.42
 $$
-
-## Practical Implementation
-
-Below is a practical implementation of some of these metrics in Python using popular libraries like scikit-learn.
-
-```python
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, confusion_matrix, mean_absolute_error, mean_squared_error, r2_score
-import numpy as np
-
-# Example ground truth and predictions
-y_true = np.array([0, 1, 0, 1, 1, 0, 1, 1])
-y_pred = np.array([0, 1, 0, 0, 1, 0, 1, 0])
-y_scores = np.array([0.1, 0.9, 0.2, 0.4, 0.8, 0.1, 0.7, 0.3])
-
-# Classification metrics
-accuracy = accuracy_score(y_true, y_pred)
-precision = precision_score(y_true, y_pred)
-recall = recall_score(y_true, y_pred)
-f1 = f1_score(y_true, y_pred)
-roc_auc = roc_auc_score(y_true, y_scores)
-conf_matrix = confusion_matrix(y_true, y_pred)
-
-print(f"Accuracy: {accuracy:.2f}")
-print(f"Precision: {precision:.2f}")
-print(f"Recall: {recall:.2f}")
-print(f"F1 Score: {f1:.2f}")
-print(f"ROC AUC: {roc_auc:.2f}")
-print(f"Confusion Matrix:\n{conf_matrix}")
-
-# Regression metrics example
-y_true_reg = np.array([3.0, -0.5, 2.0, 7.0])
-y_pred_reg = np.array([2.5, 0.0, 2.0, 8.0])
-
-mae = mean_absolute_error(y_true_reg, y_pred_reg)
-mse = mean_squared_error(y_true_reg, y_pred_reg)
-rmse = np.sqrt(mse)
-r2 = r2_score(y_true_reg, y_pred_reg)
-
-print(f"MAE: {mae:.2f}")
-print(f"MSE: {mse:.2f}")
-print(f"RMSE: {rmse:.2f}")
-print(f"R2 Score: {r2:.2f}")
-```
-
-## Summary
-Metrics are the cornerstone of model evaluation in machine learning and computer vision. By understanding and appropriately applying these metrics, practitioners can gain valuable insights into model performance, guiding improvements and ensuring the deployment of effective models. Whether working on classification, regression, or computer vision tasks, selecting the right metrics is essential for robust and meaningful evaluation.
-
