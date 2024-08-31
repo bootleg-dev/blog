@@ -48,7 +48,7 @@ params:
   profileMode:
     enabled: true
     title: "👋 Welcome to Adil's Notes"
-    subtitle: Here, I share everything I've learned so far as a <br> Computer Vision / Software Engineer 😉
+    subtitle: Here, I share everything I've learned so far as a <br> Machine Learning / Software Engineer 😉
 
 
     imageUrl: "home/casual.jpg"
