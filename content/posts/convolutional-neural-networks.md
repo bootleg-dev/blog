@@ -10,10 +10,22 @@ cover:
     image: ""
 ---
 
-**Convolutional Neural Networks (CNNs)** are a class of deep learning models designed to process visual data. CNNs mimic the way the human brain processes visual information, making them incredibly powerful for visual tasks.
+**Convolutional Neural Networks (CNNs)** are a class of deep learning models designed to process visual data. 
+
+**Tensors:** A tensor can be conceptualized as an **N-dimensional** matrix. 
+
+**Neurons:** A neuron functions as a computational unit, receiving **multiple inputs and generating a single output**.
+
+**Layers:** A layer consists of a **collection of neurons** that perform the same operation, sharing identical hyperparameters.
+
+**Kernel weights and biases:** Unique to each neuron, kernel weights and biases are adjusted during the training process, 
+enabling the classifier to adapt to the specific problem and dataset.
+
 
 
 ## Key Concepts of CNN Components
+
+
 
 ### Convolutional Layer
 The convolutional layer applies filter(kernel) to the input image to extract features like edges and textures.
@@ -141,8 +153,9 @@ Here’s a simple CNN architecture for image classification:
 8. **Fully Connected Layer:** passed again, applies **Dropout** to prevent overfitting
 9. **Output Layer:** Final Fully Connected Layer, which has 10 units corresponding to the 10 possible digit classes (0-9).
 
+This example illustrates the typical workflow in a CNN, from input to final classification.
+
 ![ArchitectureCNN](/posts/convolutional-neural-networks/img6.jpeg)
 
 
-This example illustrates the typical workflow in a CNN, from input to final classification.
 
