@@ -2,13 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://adilsarsenov.dev/posts/attention-transformers/</loc>
+    <lastmod>2024-06-02T18:34:44+05:00</lastmod>
+  </url><url>
+    <loc>https://adilsarsenov.dev/posts/recurrent-neural-networks/</loc>
+    <lastmod>2024-05-21T18:34:44+05:00</lastmod>
+  </url><url>
     <loc>https://adilsarsenov.dev/posts/gans/</loc>
     <lastmod>2024-05-01T18:34:44+05:00</lastmod>
   </url><url>
     <loc>https://adilsarsenov.dev/posts/metrics/</loc>
     <lastmod>2024-04-22T18:34:44+05:00</lastmod>
   </url><url>
-    <loc>https://adilsarsenov.dev/posts/fcn_unet/</loc>
+    <loc>https://adilsarsenov.dev/posts/fcn-unet/</loc>
     <lastmod>2024-04-01T18:34:44+05:00</lastmod>
   </url><url>
     <loc>https://adilsarsenov.dev/posts/transfer-learning/</loc>
@@ -27,7 +33,31 @@
     <lastmod>2024-03-17T18:34:44+05:00</lastmod>
   </url><url>
     <loc>https://adilsarsenov.dev/</loc>
-    <lastmod>2024-05-01T18:34:44+05:00</lastmod>
+    <lastmod>2024-06-02T18:34:44+05:00</lastmod>
+  </url><url>
+    <loc>https://adilsarsenov.dev/tags/attention/</loc>
+    <lastmod>2024-06-02T18:34:44+05:00</lastmod>
+  </url><url>
+    <loc>https://adilsarsenov.dev/tags/deep-learning/</loc>
+    <lastmod>2024-06-02T18:34:44+05:00</lastmod>
+  </url><url>
+    <loc>https://adilsarsenov.dev/posts/</loc>
+    <lastmod>2024-06-02T18:34:44+05:00</lastmod>
+  </url><url>
+    <loc>https://adilsarsenov.dev/tags/</loc>
+    <lastmod>2024-06-02T18:34:44+05:00</lastmod>
+  </url><url>
+    <loc>https://adilsarsenov.dev/tags/transformer/</loc>
+    <lastmod>2024-06-02T18:34:44+05:00</lastmod>
+  </url><url>
+    <loc>https://adilsarsenov.dev/tags/gru/</loc>
+    <lastmod>2024-05-21T18:34:44+05:00</lastmod>
+  </url><url>
+    <loc>https://adilsarsenov.dev/tags/lstm/</loc>
+    <lastmod>2024-05-21T18:34:44+05:00</lastmod>
+  </url><url>
+    <loc>https://adilsarsenov.dev/tags/rnn/</loc>
+    <lastmod>2024-05-21T18:34:44+05:00</lastmod>
   </url><url>
     <loc>https://adilsarsenov.dev/tags/computer-vision/</loc>
     <lastmod>2024-05-01T18:34:44+05:00</lastmod>
@@ -35,16 +65,7 @@
     <loc>https://adilsarsenov.dev/tags/cyclegans/</loc>
     <lastmod>2024-05-01T18:34:44+05:00</lastmod>
   </url><url>
-    <loc>https://adilsarsenov.dev/tags/deep-learning/</loc>
-    <lastmod>2024-05-01T18:34:44+05:00</lastmod>
-  </url><url>
     <loc>https://adilsarsenov.dev/tags/gans/</loc>
-    <lastmod>2024-05-01T18:34:44+05:00</lastmod>
-  </url><url>
-    <loc>https://adilsarsenov.dev/posts/</loc>
-    <lastmod>2024-05-01T18:34:44+05:00</lastmod>
-  </url><url>
-    <loc>https://adilsarsenov.dev/tags/</loc>
     <lastmod>2024-05-01T18:34:44+05:00</lastmod>
   </url><url>
     <loc>https://adilsarsenov.dev/tags/beginner/</loc>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Attention on Adil&#39;s Notes</title>
+    <link>https://adilsarsenov.dev/tags/attention/</link>
+    <description>Recent content in Attention on Adil&#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 02 Jun 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://adilsarsenov.dev/tags/attention/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Transformer Architecture</title>
+      <link>https://adilsarsenov.dev/posts/attention-transformers/</link>
+      <pubDate>Sun, 02 Jun 2024 18:34:44 +0500</pubDate>
+      
+      <guid>https://adilsarsenov.dev/posts/attention-transformers/</guid>
+      <description>Attention mechanism in Transformers.</description>
+    </item>
+    
+  </channel>
+</rss>

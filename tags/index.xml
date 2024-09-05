@@ -6,7 +6,61 @@
     <description>Recent content in Tags on Adil&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 01 May 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://adilsarsenov.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 02 Jun 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://adilsarsenov.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Attention</title>
+      <link>https://adilsarsenov.dev/tags/attention/</link>
+      <pubDate>Sun, 02 Jun 2024 18:34:44 +0500</pubDate>
+      
+      <guid>https://adilsarsenov.dev/tags/attention/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Deep Learning</title>
+      <link>https://adilsarsenov.dev/tags/deep-learning/</link>
+      <pubDate>Sun, 02 Jun 2024 18:34:44 +0500</pubDate>
+      
+      <guid>https://adilsarsenov.dev/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Transformer</title>
+      <link>https://adilsarsenov.dev/tags/transformer/</link>
+      <pubDate>Sun, 02 Jun 2024 18:34:44 +0500</pubDate>
+      
+      <guid>https://adilsarsenov.dev/tags/transformer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GRU</title>
+      <link>https://adilsarsenov.dev/tags/gru/</link>
+      <pubDate>Tue, 21 May 2024 18:34:44 +0500</pubDate>
+      
+      <guid>https://adilsarsenov.dev/tags/gru/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LSTM</title>
+      <link>https://adilsarsenov.dev/tags/lstm/</link>
+      <pubDate>Tue, 21 May 2024 18:34:44 +0500</pubDate>
+      
+      <guid>https://adilsarsenov.dev/tags/lstm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RNN</title>
+      <link>https://adilsarsenov.dev/tags/rnn/</link>
+      <pubDate>Tue, 21 May 2024 18:34:44 +0500</pubDate>
+      
+      <guid>https://adilsarsenov.dev/tags/rnn/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Computer Vision</title>
       <link>https://adilsarsenov.dev/tags/computer-vision/</link>
@@ -22,15 +76,6 @@
       <pubDate>Wed, 01 May 2024 18:34:44 +0500</pubDate>
       
       <guid>https://adilsarsenov.dev/tags/cyclegans/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Deep Learning</title>
-      <link>https://adilsarsenov.dev/tags/deep-learning/</link>
-      <pubDate>Wed, 01 May 2024 18:34:44 +0500</pubDate>
-      
-      <guid>https://adilsarsenov.dev/tags/deep-learning/</guid>
       <description></description>
     </item>
     

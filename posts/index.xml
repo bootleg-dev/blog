@@ -6,7 +6,25 @@
     <description>Recent content in Posts on Adil&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 01 May 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://adilsarsenov.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 02 Jun 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://adilsarsenov.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Transformer Architecture</title>
+      <link>https://adilsarsenov.dev/posts/attention-transformers/</link>
+      <pubDate>Sun, 02 Jun 2024 18:34:44 +0500</pubDate>
+      
+      <guid>https://adilsarsenov.dev/posts/attention-transformers/</guid>
+      <description>Attention mechanism in Transformers.</description>
+    </item>
+    
+    <item>
+      <title>Recurrent Neural Networks - RNN, LSTM, GRU</title>
+      <link>https://adilsarsenov.dev/posts/recurrent-neural-networks/</link>
+      <pubDate>Tue, 21 May 2024 18:34:44 +0500</pubDate>
+      
+      <guid>https://adilsarsenov.dev/posts/recurrent-neural-networks/</guid>
+      <description>Vanilla RNN, Long Short-Term Memory, Gated Recurrent Unit</description>
+    </item>
+    
     <item>
       <title>Generative Adversarial Networks (GANs) and CycleGANs</title>
       <link>https://adilsarsenov.dev/posts/gans/</link>
@@ -27,10 +45,10 @@
     
     <item>
       <title>FCN and U-Net</title>
-      <link>https://adilsarsenov.dev/posts/fcn_unet/</link>
+      <link>https://adilsarsenov.dev/posts/fcn-unet/</link>
       <pubDate>Mon, 01 Apr 2024 18:34:44 +0500</pubDate>
       
-      <guid>https://adilsarsenov.dev/posts/fcn_unet/</guid>
+      <guid>https://adilsarsenov.dev/posts/fcn-unet/</guid>
       <description>Image Segmentation Techniques: FCN and U-Net.</description>
     </item>
     
