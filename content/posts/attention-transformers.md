@@ -33,7 +33,7 @@ The architecture consists of two main components:
 1. **Encoder:** Processes the input sequence
 2. **Decoder:** Generates the output sequence
 
-![Attention](/posts/attention-transformers/img2.png)
+![Attention](/posts/attention-transformers/img1.png)
 
 
 Both the encoder and decoder are composed of a stack of identical layers, each containing two sub-layers:
@@ -122,7 +122,7 @@ This combination of normalization and residual connections is crucial for traini
 
 ### Intuition
 
-The attention mechanism is the heart of the Transformer architecture. But what exactly is attention? 
+The attention mechanism is the heart of the Transformer architecture. But what exactly is **Attention**? 
 In essence, **it's a way for the model to focus on different parts of the input when producing each part of the output**.
 
 Think about how you read a complex sentence. You don't give equal importance to all words; 
@@ -131,7 +131,10 @@ Think about how you read a complex sentence. You don't give equal importance to 
 
 ### Scaled Dot-Product Attention
 
-The basic building block of attention in Transformers is called Scaled Dot-Product Attention. It's defined as:
+![ScaledDotAttention](/posts/attention-transformers/img2.png)
+
+
+The basic building block of attention in Transformers is called **Scaled Dot-Product Attention**. It's defined as:
 
 $Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d_k}})V$
 
@@ -148,11 +151,15 @@ Let's break this down step by step:
 3. Apply a softmax function to obtain the weights on the values. This converts the scores to probabilities, ensuring they sum to 1.
 4. Multiply the values by their corresponding weights from the softmax. This gives us a weighted sum of the values, where the weights determine how much each value contributes to the output.
 
-The intuition here is that we're deciding how much to attend to different parts of the input (represented by the keys and values) based on what we're looking for (the query).
+The intuition here is that **we're deciding how much to attend to different parts of the input (represented by the keys and values) 
+based on what we're looking for (the query)**.
 
 ### Multi-Head Attention
 
-Instead of performing a single attention function, the Transformer uses multi-head attention. This allows the model to jointly attend to information from different representation subspaces at different positions.
+![MultiHeadAttention](/posts/attention-transformers/img3.png)
+
+Instead of performing a single attention function, the Transformer uses **multi-head attention**. 
+This allows the model to **jointly attend to information** from different representation subspaces at different positions.
 
 Multi-head attention consists of several attention layers running in parallel:
 
@@ -162,13 +169,17 @@ where $head_i = Attention(QW_i^Q, KW_i^K, VW_i^V)$
 
 Here, the $W$ matrices are learned parameters. Each head can learn to attend to different aspects of the input, allowing for a richer representation. 
 
-Why is this useful? Different heads can learn to focus on different aspects of the relationship between words. One head might learn to focus on syntactic relationships, while another might focus on semantic relationships. This multi-faceted approach allows the model to capture a more nuanced understanding of the input.
+**Why is this useful?** 
+
+**Different heads can learn to focus on different aspects of the relationship between words**. 
+One head might learn to focus on **syntactic relationships**, while another might focus on **semantic relationships**.
+This multi-faceted approach allows the model to capture a more nuanced understanding of the input.
 
 ### Types of Attention in Transformers
 
 1. **Encoder Self-Attention**: Each position in the encoder attends to all positions in the previous encoder layer. This allows each token to gather information from all other tokens in the input sequence.
 
-2. **Decoder Self-Attention**: Each position in the decoder attends to all previous positions in the decoder. This is made causal (masked) to prevent positions from attending to subsequent positions, which is necessary for autoregressive generation.
+2. **Decoder Self-Attention**: Each position in the decoder attends to all previous positions in the decoder. This is made **causal (masked)** to prevent positions from attending to subsequent positions, which is necessary for autoregressive generation.
 
 3. **Encoder-Decoder Attention**: Each position in the decoder attends to all positions in the encoder. This allows the decoder to focus on relevant parts of the input sequence for each decoding step.
 
@@ -229,5 +240,5 @@ This mathematical formulation allows the model to dynamically focus on different
 
 The Transformer architecture and its attention mechanism have become the backbone of many state-of-the-art models in NLP and beyond. 
 Their ability to process sequential data efficiently while capturing complex relationships has led to breakthroughs in various applications. 
-As research continues, we're seeing Transformers adapted for vision tasks, multi-modal learning, and even scientific applications like protein folding prediction. 
+As research continues, we're seeing Transformers adapted for **vision tasks, multi-modal learning, and even scientific applications like protein folding prediction**. 
 Understanding the fundamentals of this architecture is crucial for anyone working in modern machine learning and artificial intelligence.
