@@ -1,6 +1,6 @@
 ---
 title: "Recurrent Neural Networks - RNN, LSTM, GRU"
-description: "Vanilla RNN, Long Short-Term Memory, Gated Recurrent Unit"
+description: "Vanilla RNN, Long Short-Term Memory, Gated Recurrent Unit."
 dateString: "Date: 24 May, 2024"
 date: "2024-05-21T18:34:44.165668+0500"
 draft: false

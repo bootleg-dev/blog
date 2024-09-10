@@ -11,14 +11,14 @@ cover:
 ---
 
 
-## Introduction
+### Introduction
 
 The Transformer architecture, introduced in the seminal paper **"Attention Is All You Need" by Vaswani et al. in 2017**, 
 has revolutionized the field of natural language processing (NLP) and beyond with its key innovation: the **Attention** mechanism. 
 
-## The Transformer Architecture
+### The Transformer Architecture
 
-### Overview
+#### Overview
 
 The Transformer is a neural network architecture designed to handle **sequential data**, particularly in tasks like machine translation, 
 text summarization, and language understanding. Unlike its predecessors (RNNs and LSTMs), Transformers process entire **sequences simultaneously**, 
@@ -118,7 +118,7 @@ Layer normalization helps stabilize the learning process by normalizing the inpu
 
 This combination of normalization and residual connections is crucial for training very deep networks. It helps the model learn stably even with many layers, which is key to the power of large language models like GPT-3.
 
-## The Attention Mechanism
+### The Attention Mechanism
 
 ### Intuition
 
@@ -185,7 +185,7 @@ This multi-faceted approach allows the model to capture a more nuanced understan
 
 These different types of attention allow the model to capture various types of relationships within and between sequences, enabling it to perform complex language tasks.
 
-## Mathematical Deep Dive
+### Mathematical Deep Dive
 
 Let's break down the mathematics of the attention mechanism even further:
 
@@ -224,7 +224,7 @@ Let's break down the mathematics of the attention mechanism even further:
 
 This mathematical formulation allows the model to dynamically focus on different parts of the input for each part of the output, enabling it to capture complex relationships in the data.
 
-## Why Transformers Work So Well
+### Why Transformers Work So Well?
 
 1. **Parallelization**: Unlike RNNs, Transformers can process entire sequences in parallel, leading to faster training. This is because the self-attention operation can be computed for all positions simultaneously.
 
