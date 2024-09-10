@@ -8,6 +8,15 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 02 Jun 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://adilsarsenov.dev/tags/deep-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Vision Transformers - ViT</title>
+      <link>https://adilsarsenov.dev/posts/visual-transformers/</link>
+      <pubDate>Sun, 02 Jun 2024 18:34:44 +0500</pubDate>
+      
+      <guid>https://adilsarsenov.dev/posts/visual-transformers/</guid>
+      <description>Visual transformers.</description>
+    </item>
+    
+    <item>
       <title>Transformer Architecture</title>
       <link>https://adilsarsenov.dev/posts/attention-transformers/</link>
       <pubDate>Sun, 02 Jun 2024 18:34:44 +0500</pubDate>
@@ -22,7 +31,7 @@
       <pubDate>Tue, 21 May 2024 18:34:44 +0500</pubDate>
       
       <guid>https://adilsarsenov.dev/posts/recurrent-neural-networks/</guid>
-      <description>Vanilla RNN, Long Short-Term Memory, Gated Recurrent Unit</description>
+      <description>Vanilla RNN, Long Short-Term Memory, Gated Recurrent Unit.</description>
     </item>
     
     <item>
