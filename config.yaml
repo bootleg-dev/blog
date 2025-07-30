@@ -65,7 +65,7 @@ params:
 
   socialIcons:
     - name: "email"
-      url: "mailto:adil.sarsenov@alumni.nu.edu.kz"
+      url: "mailto:research@adilsarsenov.dev"
     - name: "linkedin"
       url: "https://www.linkedin.com/in/adil-sarsenov/"
     - name: "github"
