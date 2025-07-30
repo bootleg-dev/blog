@@ -1,7 +1,6 @@
 baseURL: "https://adilsarsenov.dev/"
 languageCode: en-us
-title: Adil's Notes
-
+title: ASR
 
 theme: PaperMod
 
@@ -28,7 +27,6 @@ menu:
       url: /tags
       weight: 50
 
-
 params:
   # theme
   showToc: true
@@ -41,15 +39,14 @@ params:
   highlight: true
   katex: true
 
-  # for enchanced SEO
+  # for enhanced SEO
   env: production
 
   # Home Page
   profileMode:
     enabled: true
-    title: "👋 Welcome to Adil's Notes"
-    subtitle: Here, I share everything I've learned so far as a <br> Machine Learning / Software Engineer 😉
-
+    title: "Adil Sarsenov Research"
+    subtitle: "ML Engineer and Biometric Recognition Researcher<br>Specializing in Face Recognition Systems & Computer Vision"
 
     imageUrl: "home/casual.jpg"
     imageWidth: 220
@@ -59,22 +56,20 @@ params:
          url: "https://drive.google.com/file/d/1FfTVfs3AcyIpPvapUCNgd43uz9QlsJH_/view?usp=sharing"
 
   # List View
-  # description of a posts
   hideDescriptionInList: false
 
   # cover image for posts
   cover:
-    hiddenInList: true # hide on list pages and home
-    hiddenInSingle: false # hide on single page
+    hiddenInList: true
+    hiddenInSingle: false
 
   socialIcons:
     - name: "email"
-      url: "mailto:trygrep@gmail.com"
+      url: "mailto:adil.sarsenov@alumni.nu.edu.kz"
     - name: "linkedin"
       url: "https://www.linkedin.com/in/adil-sarsenov/"
     - name: "github"
       url: "https://github.com/bootleg-dev"
-
 
   # text search
   fuseOpts:
