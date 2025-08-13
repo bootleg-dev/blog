@@ -1,6 +1,6 @@
 baseURL: "https://adilsarsenov.dev/"
 languageCode: en-us
-title: ASR
+title: ASR Engineering
 
 theme: PaperMod
 
@@ -11,7 +11,7 @@ menu:
       url: /
       weight: 10
     - identifier: posts
-      name: Posts
+      name: Recent
       url: /posts
       weight: 20
     - identifier: archives
@@ -30,7 +30,7 @@ menu:
 params:
   # theme
   showToc: true
-  TocOpen: false
+  TocOpen: true
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: true
   hideMeta: false

@@ -12,7 +12,12 @@ cover:
 
 ### Introduction
 
-Evaluating model performance is as critical as designing and training the models themselves. Metrics provide quantifiable measures to assess the effectiveness and accuracy of models, guiding decisions for improvement and deployment. 
+Evaluating model performance is as critical as designing and training the models themselves.
+Metrics provide quantifiable measures to assess the effectiveness and accuracy of models, guiding decisions for improvement and deployment.
+
+Basically there can be **threshold dependent metrics** and **threshold independent** ones. Threshold-based metrics these depend on a classification threshold and can be adjusted, 
+for instance: **F1, Precision, Accuracy and so on**. Whereas threshold independent ones are evaluate model performance across all possible thresholds: **Average Precision, AUC-ROC, AUC-PR.**
+
 ### Classification Metrics
 
 #### Accuracy
@@ -346,25 +351,3 @@ $$
 \text{mIoU} = \frac{0.6 + 0.7 + 0.8}{3} = \frac{2.1}{3} = 0.70 \, \text{or} \, 70\text{%}
 $$
 
-#### Structural Similarity Index (SSIM)
-
-SSIM measures the similarity between two images, considering luminance, contrast, and structure.
-
-$$
-\text{SSIM}(x, y) = \frac{(2\mu_x \mu_y + C_1)(2\sigma_{xy} + C_2)}{(\mu_x^2 + \mu_y^2 + C_1)(\sigma_x^2 + \sigma_y^2 + C_2)}
-$$
-
-**Example Calculation**: 
-$$Assume \( \mu_x = 100 \), \( \mu_y = 105 \), \( \sigma_x = 15 \), \( \sigma_y = 20 \), \( \sigma_{xy} = 18 \), \( C_1 = 6.5 \), \( C_2 = 58 \)$$
-
-$$
-\text{SSIM} = \frac{(2 \cdot 100 \cdot 105 + 6.5)(2 \cdot 18 + 58)}{(100^2 + 105^2 + 6.5)(15^2 + 20^2 + 58)}
-$$
-
-$$
-\text{SSIM} = \frac{(21000 + 6.5)(36 + 58)}{(10000 + 11025 + 6.5)(225 + 400 + 58)}
-$$
-
-$$
-\text{SSIM} = \frac{21006.5 \cdot 94}{21031.5 \cdot 683} \approx 0.42
-$$

@@ -25,7 +25,7 @@ text summarization, and language understanding. Unlike its predecessors (RNNs an
 allowing for more parallelization and, consequently, faster training on larger datasets.
 
 To understand why this is revolutionary, consider how we typically process language. Traditionally, we'd look at words one by one, 
-trying to understand each in the context of what came before. Transformers, however, **look at the entire sentence at once, weighing the
+trying to understand each in the context of what came before. Transformers, however, **look at the entire sentence at once, weighting the
 importance of each word in relation to all the others**. This is akin to understanding the meaning of a sentence by considering all words simultaneously rather than sequentially.
 
 The architecture consists of two main components:

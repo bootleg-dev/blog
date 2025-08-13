@@ -10,11 +10,23 @@ cover:
     image: ""
 ---
 
-**Convolutional Neural Networks (CNNs)** are a class of deep learning models designed to process visual data. 
+**Convolutional Neural Networks (CNNs)** are a class of deep learning models used to process and recognize patterns in images or any visual data.
 
-**Tensors:** A tensor can be conceptualized as an **N-dimensional** matrix. 
+We know that, **Neural Networks** in general are collection of neurons that are organized in layers, each with their own learnable weights and biases.
 
-**Neurons:** A neuron functions as a computational unit, receiving **multiple inputs and generating a single output**.
+So when we say **neurons**, in practice we mostly mean the **filters**. The neuron is a complete computational unit (filter + bias+ activation).
+At least in **PyTorch**, when we specify **filters=64**, it means we are creating 64 complete neurons (filter + bias + activation).
+
+```
+def cnn_neuron(input_patch, kernel_weights, bias):
+    feature_response = np.sum(input_patch * kernel_weights) + bias
+    output = max(0, feature_response)  # ReLU
+    return output
+```
+
+
+So below, we can see that a neuron receives multiple inputs and produces single output **y**.
+![Neuron](/posts/convolutional-neural-networks/img0.png)
 
 **Layers:** A layer consists of a **collection of neurons** that perform the same operation, sharing identical hyperparameters.
 

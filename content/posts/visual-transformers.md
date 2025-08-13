@@ -35,7 +35,7 @@ textures, or more complex patterns**. This approach is inherently local – each
 of the input at a time. While this is effective for many tasks, **it can miss important global context**.
 
 Transformers, on the other hand, were **initially designed for sequence-to-sequence tasks in natural language processing**.
-Their key innovation is the **self-attention mechanism**, which allows the model to **weigh the importance of different parts** 
+Their key innovation is the **self-attention mechanism**, which allows the model to **weight the importance of different parts** 
 of the input when processing each element. This mechanism enables transformers to capture **long-range dependencies effectively**.
 
 In the context of language, this means a **transformer can easily relate words at the beginning of a sentence to words 
