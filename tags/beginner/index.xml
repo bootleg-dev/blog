@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Beginner on ASR</title>
+    <title>Beginner on ASR Engineering</title>
     <link>https://adilsarsenov.dev/tags/beginner/</link>
-    <description>Recent content in Beginner on ASR</description>
+    <description>Recent content in Beginner on ASR Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 22 Apr 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://adilsarsenov.dev/tags/beginner/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 18 Mar 2025 18:34:44 +0500</lastBuildDate><atom:link href="https://adilsarsenov.dev/tags/beginner/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GitLab CI/CD</title>
+      <link>https://adilsarsenov.dev/posts/gitlab-cicd/</link>
+      <pubDate>Tue, 18 Mar 2025 18:34:44 +0500</pubDate>
+      
+      <guid>https://adilsarsenov.dev/posts/gitlab-cicd/</guid>
+      <description>How to configure Gitlab CI/CD?</description>
+    </item>
+    
     <item>
       <title>Metrics in Machine Learning and Computer Vision</title>
       <link>https://adilsarsenov.dev/posts/metrics/</link>

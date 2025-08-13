@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://adilsarsenov.dev/posts/gitlab-cicd/</loc>
+    <lastmod>2025-03-18T18:34:44+05:00</lastmod>
+  </url><url>
     <loc>https://adilsarsenov.dev/posts/visual-transformers/</loc>
     <lastmod>2024-06-02T18:34:44+05:00</lastmod>
   </url><url>
@@ -36,18 +39,27 @@
     <lastmod>2024-03-17T18:34:44+05:00</lastmod>
   </url><url>
     <loc>https://adilsarsenov.dev/</loc>
-    <lastmod>2024-06-02T18:34:44+05:00</lastmod>
+    <lastmod>2025-03-18T18:34:44+05:00</lastmod>
+  </url><url>
+    <loc>https://adilsarsenov.dev/tags/automation/</loc>
+    <lastmod>2025-03-18T18:34:44+05:00</lastmod>
+  </url><url>
+    <loc>https://adilsarsenov.dev/tags/beginner/</loc>
+    <lastmod>2025-03-18T18:34:44+05:00</lastmod>
+  </url><url>
+    <loc>https://adilsarsenov.dev/tags/gitlab/</loc>
+    <lastmod>2025-03-18T18:34:44+05:00</lastmod>
+  </url><url>
+    <loc>https://adilsarsenov.dev/posts/</loc>
+    <lastmod>2025-03-18T18:34:44+05:00</lastmod>
+  </url><url>
+    <loc>https://adilsarsenov.dev/tags/</loc>
+    <lastmod>2025-03-18T18:34:44+05:00</lastmod>
   </url><url>
     <loc>https://adilsarsenov.dev/tags/attention/</loc>
     <lastmod>2024-06-02T18:34:44+05:00</lastmod>
   </url><url>
     <loc>https://adilsarsenov.dev/tags/deep-learning/</loc>
-    <lastmod>2024-06-02T18:34:44+05:00</lastmod>
-  </url><url>
-    <loc>https://adilsarsenov.dev/posts/</loc>
-    <lastmod>2024-06-02T18:34:44+05:00</lastmod>
-  </url><url>
-    <loc>https://adilsarsenov.dev/tags/</loc>
     <lastmod>2024-06-02T18:34:44+05:00</lastmod>
   </url><url>
     <loc>https://adilsarsenov.dev/tags/transformer/</loc>
@@ -70,9 +82,6 @@
   </url><url>
     <loc>https://adilsarsenov.dev/tags/gans/</loc>
     <lastmod>2024-05-01T18:34:44+05:00</lastmod>
-  </url><url>
-    <loc>https://adilsarsenov.dev/tags/beginner/</loc>
-    <lastmod>2024-04-22T18:34:44+05:00</lastmod>
   </url><url>
     <loc>https://adilsarsenov.dev/tags/evaluation/</loc>
     <lastmod>2024-04-22T18:34:44+05:00</lastmod>
@@ -118,6 +127,8 @@
     <loc>https://adilsarsenov.dev/archives/</loc>
   </url><url>
     <loc>https://adilsarsenov.dev/categories/</loc>
+  </url><url>
+    <loc>https://adilsarsenov.dev/tags/ci/cd/</loc>
   </url><url>
     <loc>https://adilsarsenov.dev/search/</loc>
   </url>

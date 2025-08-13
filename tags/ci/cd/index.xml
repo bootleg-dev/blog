@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>CI/CD on ASR Engineering</title>
+    <link>https://adilsarsenov.dev/tags/ci/cd/</link>
+    <description>Recent content in CI/CD on ASR Engineering</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://adilsarsenov.dev/tags/ci/cd/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GitLab CI/CD</title>
+      <link>https://adilsarsenov.dev/posts/gitlab-cicd/</link>
+      <pubDate>Tue, 18 Mar 2025 18:34:44 +0500</pubDate>
+      
+      <guid>https://adilsarsenov.dev/posts/gitlab-cicd/</guid>
+      <description>How to configure Gitlab CI/CD?</description>
+    </item>
+    
+  </channel>
+</rss>

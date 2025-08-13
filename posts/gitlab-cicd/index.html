@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>GitLab CI/CD | ASR Engineering</title>
+<meta name="keywords" content="Beginner, GitLab, CI/CD, Automation">
+<meta name="description" content="How to configure Gitlab CI/CD?">
+<meta name="author" content="">
+<link rel="canonical" href="https://adilsarsenov.dev/posts/gitlab-cicd/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.a72801f0f40a8d7f71aa1cafd1c2f2a993a1f26ca1cfd38fdba65d5b9b0f08a0.css" integrity="sha256-pygB8PQKjX9xqhyv0cLyqZOh8myhz9OP26ZdW5sPCKA=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.b95bacdc39e37a332a9f883b1e78be4abc1fdca2bc1f2641f55e3cd3dabd4d61.js" integrity="sha256-uVus3DnjejMqn4g7Hni&#43;Srwf3KK8HyZB9V4809q9TWE="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://adilsarsenov.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://adilsarsenov.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://adilsarsenov.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://adilsarsenov.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://adilsarsenov.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="GitLab CI/CD" />
+<meta property="og:description" content="How to configure Gitlab CI/CD?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://adilsarsenov.dev/posts/gitlab-cicd/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-03-18T18:34:44&#43;05:00" />
+<meta property="article:modified_time" content="2025-03-18T18:34:44&#43;05:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="GitLab CI/CD"/>
+<meta name="twitter:description" content="How to configure Gitlab CI/CD?"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://adilsarsenov.dev/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "GitLab CI/CD",
+      "item": "https://adilsarsenov.dev/posts/gitlab-cicd/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "GitLab CI/CD",
+  "name": "GitLab CI\/CD",
+  "description": "How to configure Gitlab CI/CD?",
+  "keywords": [
+    "Beginner", "GitLab", "CI/CD", "Automation"
+  ],
+  "articleBody": "GitLab CI/CD: Complete Setup Guide with Docker GitLab CI/CD is a powerful tool that automates your software deployment process. In this guide, we’ll walk through setting up a complete CI/CD pipeline that builds Docker images and deploys your application automatically.\nWhat You’ll Learn How to set up GitLab Runner with Docker Creating a CI/CD pipeline configuration Building and deploying Docker containers Implementing health checks and monitoring Prerequisites A GitLab account and repository Docker installed on your server Basic knowledge of Git and Docker Step 1: Setting Up GitLab Runner First, we need to set up a GitLab Runner that can execute our CI/CD jobs.\nInitial Runner Setup Create a directory for the GitLab Runner configuration:\nmkdir -p $HOME/gitlab-runner/config Start the GitLab Runner container with Docker socket access:\ndocker run -d --name gitlab-runner --restart always \\ -v $HOME/gitlab-runner/config:/etc/gitlab-runner \\ -v /var/run/docker.sock:/var/run/docker.sock \\ gitlab/gitlab-runner:latest Registering the Runner Now register your runner with GitLab using your project’s registration token:\ndocker exec -it gitlab-runner gitlab-runner register \\ --non-interactive \\ --url \"https://gitlab.com/\" \\ --registration-token \"YOUR_PROJECT_TOKEN\" \\ --executor \"docker\" \\ --docker-image \"docker:24.0.5\" \\ --docker-volumes \"/var/run/docker.sock:/var/run/docker.sock\" \\ --description \"docker-runner\" \\ --tag-list \"docker\" Note: Replace YOUR_PROJECT_TOKEN with your actual project registration token from GitLab Settings \u003e CI/CD \u003e Runners.\nStep 2: Creating the Dockerfile Our Dockerfile uses a multi-stage build for optimized image size and security:\n# Multi-stage build for Python application FROM python:3.11-slim as builder # Set environment variables ENV PYTHONDONTWRITEBYTECODE=1 \\ PYTHONUNBUFFERED=1 \\ PIP_NO_CACHE_DIR=1 \\ PIP_DISABLE_PIP_VERSION_CHECK=1 # Install system dependencies RUN apt-get update \u0026\u0026 apt-get install -y \\ build-essential \\ curl \\ \u0026\u0026 rm -rf /var/lib/apt/lists/* # Create virtual environment RUN python -m venv /opt/venv ENV PATH=\"/opt/venv/bin:$PATH\" # Copy requirements and install Python dependencies COPY requirements.txt . RUN pip install --no-cache-dir -r requirements.txt # Production stage FROM python:3.11-slim as production # Set environment variables ENV PYTHONDONTWRITEBYTECODE=1 \\ PYTHONUNBUFFERED=1 \\ PATH=\"/opt/venv/bin:$PATH\" # Install runtime dependencies RUN apt-get update \u0026\u0026 apt-get install -y \\ curl \\ \u0026\u0026 rm -rf /var/lib/apt/lists/* \\ \u0026\u0026 groupadd -r appuser \u0026\u0026 useradd -r -g appuser appuser # Copy virtual environment from builder stage COPY --from=builder /opt/venv /opt/venv # Set working directory WORKDIR /app # Copy application code COPY . . # Change ownership to non-root user RUN chown -R appuser:appuser /app # Switch to non-root user USER appuser # Expose port EXPOSE 8000 # Health check HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \\ CMD curl -f http://localhost:8000/health || exit 1 # Run the application CMD [\"uvicorn\", \"app.main:app\", \"--host\", \"0.0.0.0\", \"--port\", \"8000\", \"--workers\", \"1\"] Key Features of This Dockerfile Multi-stage build: Separates build dependencies from runtime Security: Runs as non-root user Optimization: Removes unnecessary packages and cleans cache Health checks: Built-in container health monitoring Step 3: Creating the CI/CD Pipeline Create a .gitlab-ci.yml file in your project root:\nstages: - docker-build - deploy variables: PYTHON_VERSION: \"3.11\" PIP_CACHE_DIR: \"$CI_PROJECT_DIR/.cache/pip\" IMAGE_NAME: python-cicd-app:latest cache: key: ${CI_COMMIT_REF_SLUG} paths: - .cache/pip - venv/ docker-build: stage: docker-build image: docker:24.0.5 variables: DOCKER_HOST: unix:///var/run/docker.sock before_script: - docker info script: - echo \"Building Docker image with socket binding...\" - docker build -t $IMAGE_NAME . - echo \"Image built successfully!\" - docker images | grep python-cicd-app || echo \"Image not found in list\" rules: - if: $CI_COMMIT_BRANCH == \"main\" tags: - docker deploy: stage: deploy image: docker:24.0.5 variables: DOCKER_HOST: unix:///var/run/docker.sock before_script: - apk add --no-cache curl script: - echo \"Deploying Docker container with socket binding...\" - echo \"Stopping existing container...\" - docker stop python-cicd-app || true - docker rm python-cicd-app || true - echo \"Starting new container...\" - | docker run -d \\ --name python-cicd-app \\ --restart unless-stopped \\ -p 8000:8000 \\ -e ENVIRONMENT=production \\ -e CI_COMMIT_SHA=$CI_COMMIT_SHA \\ -e CI_RUNNER_DESCRIPTION=\"$CI_RUNNER_DESCRIPTION\" \\ $IMAGE_NAME - echo \"Deployment complete!\" - sleep 10 - echo \"Container status:\" - docker ps | grep python-cicd-app - echo \"\" - echo \"Application URLs:\" - echo \"http://localhost:8000\" - echo \"http://localhost:8000/docs\" - echo \"http://localhost:8000/health\" - echo \"\" - echo \"Testing deployment:\" - timeout 30 sh -c 'until curl -f http://localhost:8000/health; do echo \"Waiting for app...\"; sleep 2; done' \u0026\u0026 echo \"✅ App is healthy!\" || echo \"❌ Health check failed\" environment: name: production url: http://localhost:8000 dependencies: - docker-build rules: - if: $CI_COMMIT_BRANCH == \"main\" when: manual tags: - docker Understanding the Pipeline Pipeline Structure Our pipeline has two main stages:\ndocker-build: Builds the Docker image deploy: Deploys the container to production Key Components Explained Variables Section variables: PYTHON_VERSION: \"3.11\" PIP_CACHE_DIR: \"$CI_PROJECT_DIR/.cache/pip\" IMAGE_NAME: python-cicd-app:latest These are global variables used throughout the pipeline:\nPYTHON_VERSION: Specifies Python version PIP_CACHE_DIR: Directory for pip cache IMAGE_NAME: Name for our Docker image Caching cache: key: ${CI_COMMIT_REF_SLUG} paths: - .cache/pip - venv/ Caching speeds up builds by storing pip packages and virtual environments between runs.\nDocker Build Job docker-build: stage: docker-build image: docker:24.0.5 variables: DOCKER_HOST: unix:///var/run/docker.sock This job:\nUses Docker image to run commands Connects to Docker socket for building images Only runs on the main branch Requires a runner with docker tag Deploy Job deploy: stage: deploy when: manual dependencies: - docker-build The deployment job:\nRuns manually for safety Depends on successful build Stops old containers and starts new ones Includes health checking Step 4: Deployment Process What Happens During Deployment Stop Existing Container: Safely stops the running application Remove Old Container: Cleans up the stopped container Start New Container: Launches the updated application Health Check: Verifies the application is working correctly Environment Variables in Production The deployed container receives these environment variables:\nENVIRONMENT=production: Identifies the environment CI_COMMIT_SHA: Git commit hash for tracking CI_RUNNER_DESCRIPTION: Information about the runner Step 5: Testing Your Setup Initial Setup Push your code to GitLab: git add . git commit -m \"Add CI/CD pipeline configuration\" git push origin main The pipeline will automatically trigger and build your image\nManually trigger the deployment from GitLab’s CI/CD \u003e Pipelines page\nVerifying Deployment After deployment, you can verify your application is running:\n# Check container status docker ps | grep python-cicd-app # Test the application curl http://localhost:8000/health # View application logs docker logs python-cicd-app Common Use Cases Automatic Deployments To make deployments automatic, remove the when: manual line from the deploy job:\ndeploy: stage: deploy # Remove this line: when: manual Multiple Environments You can create separate deployment jobs for different environments:\ndeploy-staging: stage: deploy script: # Deployment script for staging environment: name: staging url: http://staging.localhost:8000 deploy-production: stage: deploy script: # Deployment script for production environment: name: production url: http://localhost:8000 when: manual Monitoring and Maintenance Checking Pipeline Status Monitor your pipelines in GitLab:\nGo to your project Navigate to CI/CD \u003e Pipelines Click on any pipeline to see detailed logs Container Health The Dockerfile includes a built-in health check that runs every 30 seconds:\nHEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \\ CMD curl -f http://localhost:8000/health || exit 1 Log Monitoring View application logs:\n# Real-time logs docker logs -f python-cicd-app # Recent logs docker logs --tail 100 python-cicd-app Troubleshooting Pipeline Fails to Start Check if your runner is active in GitLab Settings \u003e CI/CD \u003e Runners Verify the runner has the correct tags (docker) Build Fails Check the pipeline logs in GitLab Ensure your Dockerfile and requirements.txt are correct Verify Docker is running on the runner machine Deployment Issues Check if port 8000 is available Verify the application starts correctly locally Review container logs for errors Health Check Failures Ensure your application has a /health endpoint Check if the application is listening on the correct port Verify the health endpoint returns HTTP 200 Security Considerations Docker Socket Access This setup uses Docker socket binding (/var/run/docker.sock) which gives the runner access to the host’s Docker daemon. While convenient, be aware that:\nContainers can potentially access other containers Only use trusted code in your pipelines Consider using Docker-in-Docker for higher security in production Environment Variables Never commit secrets to your repository Use GitLab’s CI/CD variables for sensitive data Mark sensitive variables as “Protected” and “Masked” Conclusion You now have a working GitLab CI/CD pipeline that:\nAutomatically builds Docker images on code changes Deploys applications with health checking Provides monitoring and logging capabilities Uses caching for improved performance This setup provides a solid foundation for continuous deployment. You can extend it by adding testing stages, multiple environments, or notification systems based on your needs.\nThe pipeline ensures your application is always deployed with the latest code while maintaining reliability through health checks and manual deployment approval for production.\nConsider these enhancements for your CI/CD pipeline:\nAdd automated linting and testing stages before deployment stage Implement blue-green deployments for zero downtime Set up monitoring and alerting Remember to always test your pipeline changes in a non-production environment first!\n",
+  "wordCount" : "1405",
+  "inLanguage": "en",
+  "datePublished": "2025-03-18T18:34:44.165668+05:00",
+  "dateModified": "2025-03-18T18:34:44.165668+05:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://adilsarsenov.dev/posts/gitlab-cicd/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ASR Engineering",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://adilsarsenov.dev/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top"><script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header sticky-header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://adilsarsenov.dev/" accesskey="h" title="ASR Engineering (Alt + H)">ASR Engineering</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://adilsarsenov.dev/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://adilsarsenov.dev/posts" title="Recent">
+                    <span>Recent</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://adilsarsenov.dev/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://adilsarsenov.dev/search" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://adilsarsenov.dev/tags" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://adilsarsenov.dev/">Home</a>&nbsp;»&nbsp;<a href="https://adilsarsenov.dev/posts/">Posts</a></div>
+    <h1 class="post-title">
+      GitLab CI/CD
+    </h1>
+    <div class="post-description">
+      How to configure Gitlab CI/CD?
+    </div>
+    <div class="post-meta">
+
+
+Date: 10 August, 2025
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">‎ Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#gitlab-cicd-complete-setup-guide-with-docker" aria-label="GitLab CI/CD: Complete Setup Guide with Docker">GitLab CI/CD: Complete Setup Guide with Docker</a><ul>
+                        
+                <li>
+                    <a href="#what-youll-learn" aria-label="What You&amp;rsquo;ll Learn">What You&rsquo;ll Learn</a></li>
+                <li>
+                    <a href="#prerequisites" aria-label="Prerequisites">Prerequisites</a></li>
+                <li>
+                    <a href="#step-1-setting-up-gitlab-runner" aria-label="Step 1: Setting Up GitLab Runner">Step 1: Setting Up GitLab Runner</a><ul>
+                        
+                <li>
+                    <a href="#initial-runner-setup" aria-label="Initial Runner Setup">Initial Runner Setup</a></li>
+                <li>
+                    <a href="#registering-the-runner" aria-label="Registering the Runner">Registering the Runner</a></li></ul>
+                </li>
+                <li>
+                    <a href="#step-2-creating-the-dockerfile" aria-label="Step 2: Creating the Dockerfile">Step 2: Creating the Dockerfile</a><ul>
+                        
+                <li>
+                    <a href="#key-features-of-this-dockerfile" aria-label="Key Features of This Dockerfile">Key Features of This Dockerfile</a></li></ul>
+                </li>
+                <li>
+                    <a href="#step-3-creating-the-cicd-pipeline" aria-label="Step 3: Creating the CI/CD Pipeline">Step 3: Creating the CI/CD Pipeline</a></li>
+                <li>
+                    <a href="#understanding-the-pipeline" aria-label="Understanding the Pipeline">Understanding the Pipeline</a><ul>
+                        
+                <li>
+                    <a href="#pipeline-structure" aria-label="Pipeline Structure">Pipeline Structure</a></li>
+                <li>
+                    <a href="#key-components-explained" aria-label="Key Components Explained">Key Components Explained</a><ul>
+                        
+                <li>
+                    <a href="#variables-section" aria-label="Variables Section">Variables Section</a></li>
+                <li>
+                    <a href="#caching" aria-label="Caching">Caching</a></li>
+                <li>
+                    <a href="#docker-build-job" aria-label="Docker Build Job">Docker Build Job</a></li>
+                <li>
+                    <a href="#deploy-job" aria-label="Deploy Job">Deploy Job</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#step-4-deployment-process" aria-label="Step 4: Deployment Process">Step 4: Deployment Process</a><ul>
+                        
+                <li>
+                    <a href="#what-happens-during-deployment" aria-label="What Happens During Deployment">What Happens During Deployment</a></li>
+                <li>
+                    <a href="#environment-variables-in-production" aria-label="Environment Variables in Production">Environment Variables in Production</a></li></ul>
+                </li>
+                <li>
+                    <a href="#step-5-testing-your-setup" aria-label="Step 5: Testing Your Setup">Step 5: Testing Your Setup</a><ul>
+                        
+                <li>
+                    <a href="#initial-setup" aria-label="Initial Setup">Initial Setup</a></li>
+                <li>
+                    <a href="#verifying-deployment" aria-label="Verifying Deployment">Verifying Deployment</a></li></ul>
+                </li>
+                <li>
+                    <a href="#common-use-cases" aria-label="Common Use Cases">Common Use Cases</a><ul>
+                        
+                <li>
+                    <a href="#automatic-deployments" aria-label="Automatic Deployments">Automatic Deployments</a></li>
+                <li>
+                    <a href="#multiple-environments" aria-label="Multiple Environments">Multiple Environments</a></li></ul>
+                </li>
+                <li>
+                    <a href="#monitoring-and-maintenance" aria-label="Monitoring and Maintenance">Monitoring and Maintenance</a><ul>
+                        
+                <li>
+                    <a href="#checking-pipeline-status" aria-label="Checking Pipeline Status">Checking Pipeline Status</a></li>
+                <li>
+                    <a href="#container-health" aria-label="Container Health">Container Health</a></li>
+                <li>
+                    <a href="#log-monitoring" aria-label="Log Monitoring">Log Monitoring</a></li></ul>
+                </li>
+                <li>
+                    <a href="#troubleshooting" aria-label="Troubleshooting">Troubleshooting</a><ul>
+                        
+                <li>
+                    <a href="#pipeline-fails-to-start" aria-label="Pipeline Fails to Start">Pipeline Fails to Start</a></li>
+                <li>
+                    <a href="#build-fails" aria-label="Build Fails">Build Fails</a></li>
+                <li>
+                    <a href="#deployment-issues" aria-label="Deployment Issues">Deployment Issues</a></li>
+                <li>
+                    <a href="#health-check-failures" aria-label="Health Check Failures">Health Check Failures</a></li></ul>
+                </li>
+                <li>
+                    <a href="#security-considerations" aria-label="Security Considerations">Security Considerations</a><ul>
+                        
+                <li>
+                    <a href="#docker-socket-access" aria-label="Docker Socket Access">Docker Socket Access</a></li>
+                <li>
+                    <a href="#environment-variables" aria-label="Environment Variables">Environment Variables</a></li></ul>
+                </li>
+                <li>
+                    <a href="#conclusion" aria-label="Conclusion">Conclusion</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="gitlab-cicd-complete-setup-guide-with-docker">GitLab CI/CD: Complete Setup Guide with Docker<a hidden class="anchor" aria-hidden="true" href="#gitlab-cicd-complete-setup-guide-with-docker">#</a></h1>
+<p>GitLab CI/CD is a powerful tool that automates your software deployment process. In this guide, we&rsquo;ll walk through setting up a complete CI/CD pipeline that builds Docker images and deploys your application automatically.</p>
+<h2 id="what-youll-learn">What You&rsquo;ll Learn<a hidden class="anchor" aria-hidden="true" href="#what-youll-learn">#</a></h2>
+<ul>
+<li>How to set up GitLab Runner with Docker</li>
+<li>Creating a CI/CD pipeline configuration</li>
+<li>Building and deploying Docker containers</li>
+<li>Implementing health checks and monitoring</li>
+</ul>
+<h2 id="prerequisites">Prerequisites<a hidden class="anchor" aria-hidden="true" href="#prerequisites">#</a></h2>
+<ul>
+<li>A GitLab account and repository</li>
+<li>Docker installed on your server</li>
+<li>Basic knowledge of Git and Docker</li>
+</ul>
+<h2 id="step-1-setting-up-gitlab-runner">Step 1: Setting Up GitLab Runner<a hidden class="anchor" aria-hidden="true" href="#step-1-setting-up-gitlab-runner">#</a></h2>
+<p>First, we need to set up a GitLab Runner that can execute our CI/CD jobs.</p>
+<h3 id="initial-runner-setup">Initial Runner Setup<a hidden class="anchor" aria-hidden="true" href="#initial-runner-setup">#</a></h3>
+<p>Create a directory for the GitLab Runner configuration:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p $HOME/gitlab-runner/config
+</span></span></code></pre></div><p>Start the GitLab Runner container with Docker socket access:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -d --name gitlab-runner --restart always <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -v $HOME/gitlab-runner/config:/etc/gitlab-runner <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -v /var/run/docker.sock:/var/run/docker.sock <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  gitlab/gitlab-runner:latest
+</span></span></code></pre></div><h3 id="registering-the-runner">Registering the Runner<a hidden class="anchor" aria-hidden="true" href="#registering-the-runner">#</a></h3>
+<p>Now register your runner with GitLab using your project&rsquo;s registration token:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker exec -it gitlab-runner gitlab-runner register <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --non-interactive <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --url <span style="color:#e6db74">&#34;https://gitlab.com/&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --registration-token <span style="color:#e6db74">&#34;YOUR_PROJECT_TOKEN&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --executor <span style="color:#e6db74">&#34;docker&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --docker-image <span style="color:#e6db74">&#34;docker:24.0.5&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --docker-volumes <span style="color:#e6db74">&#34;/var/run/docker.sock:/var/run/docker.sock&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --description <span style="color:#e6db74">&#34;docker-runner&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --tag-list <span style="color:#e6db74">&#34;docker&#34;</span>
+</span></span></code></pre></div><p><strong>Note</strong>: Replace <code>YOUR_PROJECT_TOKEN</code> with your actual project registration token from GitLab Settings &gt; CI/CD &gt; Runners.</p>
+<h2 id="step-2-creating-the-dockerfile">Step 2: Creating the Dockerfile<a hidden class="anchor" aria-hidden="true" href="#step-2-creating-the-dockerfile">#</a></h2>
+<p>Our Dockerfile uses a multi-stage build for optimized image size and security:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#75715e"># Multi-stage build for Python application</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> python:3.11-slim as builder</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Set environment variables</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> PYTHONDONTWRITEBYTECODE<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    PYTHONUNBUFFERED<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    PIP_NO_CACHE_DIR<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    PIP_DISABLE_PIP_VERSION_CHECK<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Install system dependencies</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get install -y <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    build-essential <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    curl <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#f92672">&amp;&amp;</span> rm -rf /var/lib/apt/lists/*<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Create virtual environment</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> python -m venv /opt/venv<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/opt/venv/bin:</span>$PATH<span style="color:#e6db74">&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Copy requirements and install Python dependencies</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> requirements.txt .<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> pip install --no-cache-dir -r requirements.txt<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Production stage</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> python:3.11-slim as production</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Set environment variables</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> PYTHONDONTWRITEBYTECODE<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    PYTHONUNBUFFERED<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/opt/venv/bin:</span>$PATH<span style="color:#e6db74">&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Install runtime dependencies</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get install -y <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    curl <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#f92672">&amp;&amp;</span> rm -rf /var/lib/apt/lists/* <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#f92672">&amp;&amp;</span> groupadd -r appuser <span style="color:#f92672">&amp;&amp;</span> useradd -r -g appuser appuser<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Copy virtual environment from builder stage</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> --from<span style="color:#f92672">=</span>builder /opt/venv /opt/venv<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Set working directory</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /app</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Copy application code</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> . .<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Change ownership to non-root user</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> chown -R appuser:appuser /app<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Switch to non-root user</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">USER</span><span style="color:#e6db74"> appuser</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Expose port</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 8000</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Health check</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HEALTHCHECK --interval=30s --timeout=10s </span>--start-period<span style="color:#f92672">=</span>5s --retries<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    CMD curl -f http://localhost:8000/health <span style="color:#f92672">||</span> exit <span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Run the application</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;uvicorn&#34;</span>, <span style="color:#e6db74">&#34;app.main:app&#34;</span>, <span style="color:#e6db74">&#34;--host&#34;</span>, <span style="color:#e6db74">&#34;0.0.0.0&#34;</span>, <span style="color:#e6db74">&#34;--port&#34;</span>, <span style="color:#e6db74">&#34;8000&#34;</span>, <span style="color:#e6db74">&#34;--workers&#34;</span>, <span style="color:#e6db74">&#34;1&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><h3 id="key-features-of-this-dockerfile">Key Features of This Dockerfile<a hidden class="anchor" aria-hidden="true" href="#key-features-of-this-dockerfile">#</a></h3>
+<ul>
+<li><strong>Multi-stage build</strong>: Separates build dependencies from runtime</li>
+<li><strong>Security</strong>: Runs as non-root user</li>
+<li><strong>Optimization</strong>: Removes unnecessary packages and cleans cache</li>
+<li><strong>Health checks</strong>: Built-in container health monitoring</li>
+</ul>
+<h2 id="step-3-creating-the-cicd-pipeline">Step 3: Creating the CI/CD Pipeline<a hidden class="anchor" aria-hidden="true" href="#step-3-creating-the-cicd-pipeline">#</a></h2>
+<p>Create a <code>.gitlab-ci.yml</code> file in your project root:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">stages</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">docker-build</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">deploy</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">variables</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">PYTHON_VERSION</span>: <span style="color:#e6db74">&#34;3.11&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">PIP_CACHE_DIR</span>: <span style="color:#e6db74">&#34;$CI_PROJECT_DIR/.cache/pip&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">IMAGE_NAME</span>: <span style="color:#ae81ff">python-cicd-app:latest</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">cache</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">key</span>: <span style="color:#ae81ff">${CI_COMMIT_REF_SLUG}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">paths</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">.cache/pip</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">venv/</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">docker-build</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">stage</span>: <span style="color:#ae81ff">docker-build</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">image</span>: <span style="color:#ae81ff">docker:24.0.5</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">variables</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">DOCKER_HOST</span>: <span style="color:#ae81ff">unix:///var/run/docker.sock</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">before_script</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker info</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">script</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">echo &#34;Building Docker image with socket binding...&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker build -t $IMAGE_NAME .</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">echo &#34;Image built successfully!&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker images | grep python-cicd-app || echo &#34;Image not found in list&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">rules</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">if</span>: <span style="color:#ae81ff">$CI_COMMIT_BRANCH == &#34;main&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">tags</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">stage</span>: <span style="color:#ae81ff">deploy</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">image</span>: <span style="color:#ae81ff">docker:24.0.5</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">variables</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">DOCKER_HOST</span>: <span style="color:#ae81ff">unix:///var/run/docker.sock</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">before_script</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">apk add --no-cache curl</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">script</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">echo &#34;Deploying Docker container with socket binding...&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">echo &#34;Stopping existing container...&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker stop python-cicd-app || true</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker rm python-cicd-app || true</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">echo &#34;Starting new container...&#34;</span>
+</span></span><span style="display:flex;"><span>    - |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      docker run -d \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        --name python-cicd-app \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        --restart unless-stopped \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        -p 8000:8000 \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        -e ENVIRONMENT=production \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        -e CI_COMMIT_SHA=$CI_COMMIT_SHA \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        -e CI_RUNNER_DESCRIPTION=&#34;$CI_RUNNER_DESCRIPTION&#34; \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        $IMAGE_NAME</span>      
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">echo &#34;Deployment complete!&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">sleep 10</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">echo &#34;Container status:&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker ps | grep python-cicd-app</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">echo &#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">echo &#34;Application URLs:&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">echo &#34;http://localhost:8000&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">echo &#34;http://localhost:8000/docs&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">echo &#34;http://localhost:8000/health&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">echo &#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">echo &#34;Testing deployment:&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">timeout 30 sh -c &#39;until curl -f http://localhost:8000/health; do echo &#34;Waiting for app...&#34;; sleep 2; done&#39; &amp;&amp; echo &#34;✅ App is healthy!&#34; || echo &#34;❌ Health check failed&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">production</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">url</span>: <span style="color:#ae81ff">http://localhost:8000</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">dependencies</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker-build</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">rules</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">if</span>: <span style="color:#ae81ff">$CI_COMMIT_BRANCH == &#34;main&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">when</span>: <span style="color:#ae81ff">manual</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">tags</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker</span>
+</span></span></code></pre></div><h2 id="understanding-the-pipeline">Understanding the Pipeline<a hidden class="anchor" aria-hidden="true" href="#understanding-the-pipeline">#</a></h2>
+<h3 id="pipeline-structure">Pipeline Structure<a hidden class="anchor" aria-hidden="true" href="#pipeline-structure">#</a></h3>
+<p>Our pipeline has two main stages:</p>
+<ol>
+<li><strong>docker-build</strong>: Builds the Docker image</li>
+<li><strong>deploy</strong>: Deploys the container to production</li>
+</ol>
+<h3 id="key-components-explained">Key Components Explained<a hidden class="anchor" aria-hidden="true" href="#key-components-explained">#</a></h3>
+<h4 id="variables-section">Variables Section<a hidden class="anchor" aria-hidden="true" href="#variables-section">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">variables</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">PYTHON_VERSION</span>: <span style="color:#e6db74">&#34;3.11&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">PIP_CACHE_DIR</span>: <span style="color:#e6db74">&#34;$CI_PROJECT_DIR/.cache/pip&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">IMAGE_NAME</span>: <span style="color:#ae81ff">python-cicd-app:latest</span>
+</span></span></code></pre></div><p>These are global variables used throughout the pipeline:</p>
+<ul>
+<li><code>PYTHON_VERSION</code>: Specifies Python version</li>
+<li><code>PIP_CACHE_DIR</code>: Directory for pip cache</li>
+<li><code>IMAGE_NAME</code>: Name for our Docker image</li>
+</ul>
+<h4 id="caching">Caching<a hidden class="anchor" aria-hidden="true" href="#caching">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">cache</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">key</span>: <span style="color:#ae81ff">${CI_COMMIT_REF_SLUG}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">paths</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">.cache/pip</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">venv/</span>
+</span></span></code></pre></div><p>Caching speeds up builds by storing pip packages and virtual environments between runs.</p>
+<h4 id="docker-build-job">Docker Build Job<a hidden class="anchor" aria-hidden="true" href="#docker-build-job">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">docker-build</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">stage</span>: <span style="color:#ae81ff">docker-build</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">image</span>: <span style="color:#ae81ff">docker:24.0.5</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">variables</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">DOCKER_HOST</span>: <span style="color:#ae81ff">unix:///var/run/docker.sock</span>
+</span></span></code></pre></div><p>This job:</p>
+<ul>
+<li>Uses Docker image to run commands</li>
+<li>Connects to Docker socket for building images</li>
+<li>Only runs on the <code>main</code> branch</li>
+<li>Requires a runner with <code>docker</code> tag</li>
+</ul>
+<h4 id="deploy-job">Deploy Job<a hidden class="anchor" aria-hidden="true" href="#deploy-job">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">stage</span>: <span style="color:#ae81ff">deploy</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">when</span>: <span style="color:#ae81ff">manual</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">dependencies</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker-build</span>
+</span></span></code></pre></div><p>The deployment job:</p>
+<ul>
+<li>Runs manually for safety</li>
+<li>Depends on successful build</li>
+<li>Stops old containers and starts new ones</li>
+<li>Includes health checking</li>
+</ul>
+<h2 id="step-4-deployment-process">Step 4: Deployment Process<a hidden class="anchor" aria-hidden="true" href="#step-4-deployment-process">#</a></h2>
+<h3 id="what-happens-during-deployment">What Happens During Deployment<a hidden class="anchor" aria-hidden="true" href="#what-happens-during-deployment">#</a></h3>
+<ol>
+<li><strong>Stop Existing Container</strong>: Safely stops the running application</li>
+<li><strong>Remove Old Container</strong>: Cleans up the stopped container</li>
+<li><strong>Start New Container</strong>: Launches the updated application</li>
+<li><strong>Health Check</strong>: Verifies the application is working correctly</li>
+</ol>
+<h3 id="environment-variables-in-production">Environment Variables in Production<a hidden class="anchor" aria-hidden="true" href="#environment-variables-in-production">#</a></h3>
+<p>The deployed container receives these environment variables:</p>
+<ul>
+<li><code>ENVIRONMENT=production</code>: Identifies the environment</li>
+<li><code>CI_COMMIT_SHA</code>: Git commit hash for tracking</li>
+<li><code>CI_RUNNER_DESCRIPTION</code>: Information about the runner</li>
+</ul>
+<h2 id="step-5-testing-your-setup">Step 5: Testing Your Setup<a hidden class="anchor" aria-hidden="true" href="#step-5-testing-your-setup">#</a></h2>
+<h3 id="initial-setup">Initial Setup<a hidden class="anchor" aria-hidden="true" href="#initial-setup">#</a></h3>
+<ol>
+<li>Push your code to GitLab:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Add CI/CD pipeline configuration&#34;</span>
+</span></span><span style="display:flex;"><span>git push origin main
+</span></span></code></pre></div><ol start="2">
+<li>
+<p>The pipeline will automatically trigger and build your image</p>
+</li>
+<li>
+<p>Manually trigger the deployment from GitLab&rsquo;s CI/CD &gt; Pipelines page</p>
+</li>
+</ol>
+<h3 id="verifying-deployment">Verifying Deployment<a hidden class="anchor" aria-hidden="true" href="#verifying-deployment">#</a></h3>
+<p>After deployment, you can verify your application is running:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Check container status</span>
+</span></span><span style="display:flex;"><span>docker ps | grep python-cicd-app
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Test the application</span>
+</span></span><span style="display:flex;"><span>curl http://localhost:8000/health
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># View application logs</span>
+</span></span><span style="display:flex;"><span>docker logs python-cicd-app
+</span></span></code></pre></div><h2 id="common-use-cases">Common Use Cases<a hidden class="anchor" aria-hidden="true" href="#common-use-cases">#</a></h2>
+<h3 id="automatic-deployments">Automatic Deployments<a hidden class="anchor" aria-hidden="true" href="#automatic-deployments">#</a></h3>
+<p>To make deployments automatic, remove the <code>when: manual</code> line from the deploy job:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">stage</span>: <span style="color:#ae81ff">deploy</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Remove this line: when: manual</span>
+</span></span></code></pre></div><h3 id="multiple-environments">Multiple Environments<a hidden class="anchor" aria-hidden="true" href="#multiple-environments">#</a></h3>
+<p>You can create separate deployment jobs for different environments:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">deploy-staging</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">stage</span>: <span style="color:#ae81ff">deploy</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">script</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Deployment script for staging</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">staging</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">url</span>: <span style="color:#ae81ff">http://staging.localhost:8000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">deploy-production</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">stage</span>: <span style="color:#ae81ff">deploy</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">script</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Deployment script for production</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">production</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">url</span>: <span style="color:#ae81ff">http://localhost:8000</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">when</span>: <span style="color:#ae81ff">manual</span>
+</span></span></code></pre></div><h2 id="monitoring-and-maintenance">Monitoring and Maintenance<a hidden class="anchor" aria-hidden="true" href="#monitoring-and-maintenance">#</a></h2>
+<h3 id="checking-pipeline-status">Checking Pipeline Status<a hidden class="anchor" aria-hidden="true" href="#checking-pipeline-status">#</a></h3>
+<p>Monitor your pipelines in GitLab:</p>
+<ol>
+<li>Go to your project</li>
+<li>Navigate to CI/CD &gt; Pipelines</li>
+<li>Click on any pipeline to see detailed logs</li>
+</ol>
+<h3 id="container-health">Container Health<a hidden class="anchor" aria-hidden="true" href="#container-health">#</a></h3>
+<p>The Dockerfile includes a built-in health check that runs every 30 seconds:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">HEALTHCHECK --interval=30s --timeout=10s </span>--start-period<span style="color:#f92672">=</span>5s --retries<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    CMD curl -f http://localhost:8000/health <span style="color:#f92672">||</span> exit <span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><h3 id="log-monitoring">Log Monitoring<a hidden class="anchor" aria-hidden="true" href="#log-monitoring">#</a></h3>
+<p>View application logs:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Real-time logs</span>
+</span></span><span style="display:flex;"><span>docker logs -f python-cicd-app
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Recent logs</span>
+</span></span><span style="display:flex;"><span>docker logs --tail <span style="color:#ae81ff">100</span> python-cicd-app
+</span></span></code></pre></div><h2 id="troubleshooting">Troubleshooting<a hidden class="anchor" aria-hidden="true" href="#troubleshooting">#</a></h2>
+<h3 id="pipeline-fails-to-start">Pipeline Fails to Start<a hidden class="anchor" aria-hidden="true" href="#pipeline-fails-to-start">#</a></h3>
+<ul>
+<li>Check if your runner is active in GitLab Settings &gt; CI/CD &gt; Runners</li>
+<li>Verify the runner has the correct tags (<code>docker</code>)</li>
+</ul>
+<h3 id="build-fails">Build Fails<a hidden class="anchor" aria-hidden="true" href="#build-fails">#</a></h3>
+<ul>
+<li>Check the pipeline logs in GitLab</li>
+<li>Ensure your Dockerfile and requirements.txt are correct</li>
+<li>Verify Docker is running on the runner machine</li>
+</ul>
+<h3 id="deployment-issues">Deployment Issues<a hidden class="anchor" aria-hidden="true" href="#deployment-issues">#</a></h3>
+<ul>
+<li>Check if port 8000 is available</li>
+<li>Verify the application starts correctly locally</li>
+<li>Review container logs for errors</li>
+</ul>
+<h3 id="health-check-failures">Health Check Failures<a hidden class="anchor" aria-hidden="true" href="#health-check-failures">#</a></h3>
+<ul>
+<li>Ensure your application has a <code>/health</code> endpoint</li>
+<li>Check if the application is listening on the correct port</li>
+<li>Verify the health endpoint returns HTTP 200</li>
+</ul>
+<h2 id="security-considerations">Security Considerations<a hidden class="anchor" aria-hidden="true" href="#security-considerations">#</a></h2>
+<h3 id="docker-socket-access">Docker Socket Access<a hidden class="anchor" aria-hidden="true" href="#docker-socket-access">#</a></h3>
+<p>This setup uses Docker socket binding (<code>/var/run/docker.sock</code>) which gives the runner access to the host&rsquo;s Docker daemon. While convenient, be aware that:</p>
+<ul>
+<li>Containers can potentially access other containers</li>
+<li>Only use trusted code in your pipelines</li>
+<li>Consider using Docker-in-Docker for higher security in production</li>
+</ul>
+<h3 id="environment-variables">Environment Variables<a hidden class="anchor" aria-hidden="true" href="#environment-variables">#</a></h3>
+<ul>
+<li>Never commit secrets to your repository</li>
+<li>Use GitLab&rsquo;s CI/CD variables for sensitive data</li>
+<li>Mark sensitive variables as &ldquo;Protected&rdquo; and &ldquo;Masked&rdquo;</li>
+</ul>
+<h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
+<p>You now have a working GitLab CI/CD pipeline that:</p>
+<ul>
+<li>Automatically builds Docker images on code changes</li>
+<li>Deploys applications with health checking</li>
+<li>Provides monitoring and logging capabilities</li>
+<li>Uses caching for improved performance</li>
+</ul>
+<p>This setup provides a solid foundation for continuous deployment. You can extend it by adding testing stages, multiple environments, or notification systems based on your needs.</p>
+<p>The pipeline ensures your application is always deployed with the latest code while maintaining reliability through health checks and manual deployment approval for production.</p>
+<p>Consider these enhancements for your CI/CD pipeline:</p>
+<ul>
+<li>Add automated linting and testing stages before deployment stage</li>
+<li>Implement blue-green deployments for zero downtime</li>
+<li>Set up monitoring and alerting</li>
+</ul>
+<p>Remember to always test your pipeline changes in a non-production environment first!</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://adilsarsenov.dev/tags/beginner/">Beginner</a></li>
+      <li><a href="https://adilsarsenov.dev/tags/gitlab/">GitLab</a></li>
+      <li><a href="https://adilsarsenov.dev/tags/ci/cd/">CI/CD</a></li>
+      <li><a href="https://adilsarsenov.dev/tags/automation/">Automation</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2025 <a href="https://adilsarsenov.dev/">ASR Engineering</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

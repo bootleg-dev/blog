@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Convolutional Neural Networks - CNNs | ASR</title>
+<title>Convolutional Neural Networks - CNNs | ASR Engineering</title>
 <meta name="keywords" content="Beginner, Neural Networks, CNN, Convolution">
 <meta name="description" content="What is the convolutional neural network?">
 <meta name="author" content="">
@@ -98,8 +98,8 @@
   "keywords": [
     "Beginner", "Neural Networks", "CNN", "Convolution"
   ],
-  "articleBody": "Convolutional Neural Networks (CNNs) are a class of deep learning models designed to process visual data.\nTensors: A tensor can be conceptualized as an N-dimensional matrix.\nNeurons: A neuron functions as a computational unit, receiving multiple inputs and generating a single output.\nLayers: A layer consists of a collection of neurons that perform the same operation, sharing identical hyperparameters.\nKernel weights and biases: Unique to each neuron, kernel weights and biases are adjusted during the training process, enabling the classifier to adapt to the specific problem and dataset.\nKey Concepts of CNN Components Convolutional Layer The convolutional layer applies filter(kernel) to the input image to extract features like edges and textures.\nConvolutional Layer: The primary building block of a CNN, responsible for feature extraction. Filter (Kernel): A small matrix that slides over the input image, performing multiplications and summations to produce a feature map. Feature Map (Activation Map): The result of the convolution operation, highlighting important features such as edges, textures, and patterns. Convolution operation allows the network to learn spatial hierarchies of features automatically from low-level to high-level.\n$$ (I * K)(i, j) = \\sum_{m=0}^{M-1} \\sum_{n=0}^{N-1} I(i + m, j + n) K(m, n) $$\n$( I )$: Input image $( K )$: Kernel (filter) $( (i, j) )$: Coordinates in the output feature map $( M, N )$: Dimensions of the kernel Understanding Hyperparameters Kernel Size: Dimensions of the filter (e.g., 3x3, 5x5). Affects the amount of detail the filter can capture. Stride: Step size of the filter movement. Larger strides reduce the output size but increase computational efficiency. Padding: Adds zeros around the input image to maintain the output size. “Valid” means no padding, “same” keeps the output size the same as the input. Non-Linearity (ReLU) Activation Function ReLU (Rectified Linear Unit): Introduces non-linearity to the model. It replaces negative values with zero, allowing the network to learn complex patterns. Activation function decides whether the neuron must be activated or not. So it means whether the neuron’s input is important to the network or not. $$ \\text{ReLU}(x) = \\begin{cases} x \u0026 \\text{if } x \u003e 0 \\\\ 0 \u0026 \\text{otherwise} \\end{cases} $$\nBy setting negative values to zero, ReLU prevents the network from simply becoming a linear classifier.\nAnother popular activation functions:\nPooling Layers Reduces computational complexity and helps the network become invariant to small translations of the input image.\nMax-Pooling: operation requires selecting a kernel size and a stride length. Once selected, the operation slides the kernel with the specified stride over the input retaining the most important information by selecting the maximum value within each window, effectively down-sampling the feature map. $$ Y(i, j) = \\max_{m,n} X(i \\cdot s + m, j \\cdot s + n) $$\n$( X )$: Input feature map $( Y )$: Output feature map $( s )$: Stride $( m, n )$: Window dimensions Pooling prevents overfitting.\nFlattening Flatten Layer: Converts the 2D pooled feature maps into a 1D vector for the fully connected layers. The flattened vector is fed as input to the fully connected layer to classify the image. Fully Connected Layer The Fully Connected Layer, also known as the dense layer, is the final layer that comes after the convolutional and pooling layers. Its purpose is to perform classification or regression tasks based on the high-level features extracted by the earlier layers of the network. In FC, all the neurons of the input are connected to every neuron of the output layer.\nFormula: $$ y = f(W \\cdot x + b) $$\n$( W )$: Weight matrix $( x )$: Input vector $( b )$: Bias vector $( f )$: Activation function The fully connected layer combines the high-level features learned by the convolutional layers to output a final prediction.\nOutput Layer The output layer is typically a softmax layer in classification tasks. The softmax function converts the raw output scores into probabilities.\nSoftmax Function: $$ \\sigma(z_i) = \\frac{e^{z_i}}{\\sum_{j=1}^K e^{z_j}} $$\n$( z_i )$: The (i)-th element of the input vector $(z)$ $( K )$: Number of classes The softmax function ensures that the output probabilities sum to 1, making it easier to interpret the results as the likelihood of each class.\nSimple Example of CNN Architecture Here’s a simple CNN architecture for image classification:\nInput Layer: 28x28 grayscale image Convolutional Layer: conv layer with filter of the size 5x5, with valid padding(no padding), the feature maps have a size of 24x24xn1, where n1 is the number of filters used in this layer. Max-Pooling Layer: 2x2 window, stride 2 Convolutional Layer: conv layer with filter of the size 5x5, with valid padding(no padding) Max-Pooling Layer: 2x2 window, stride 2 Flatten Layer: Converts the feature maps 4x4 into a 1D vector with total size of 4x4xn2. Fully Connected Layer: the flattened vector is passed through a fully connected layer with n3 units, with ReLU activation function. Fully Connected Layer: passed again, applies Dropout to prevent overfitting Output Layer: Final Fully Connected Layer, which has 10 units corresponding to the 10 possible digit classes (0-9). This example illustrates the typical workflow in a CNN, from input to final classification.\n",
-  "wordCount" : "850",
+  "articleBody": "Convolutional Neural Networks (CNNs) are a class of deep learning models used to process and recognize patterns in images or any visual data.\nWe know that, Neural Networks in general are collection of neurons that are organized in layers, each with their own learnable weights and biases.\nSo when we say neurons, in practice we mostly mean the filters. The neuron is a complete computational unit (filter + bias+ activation). At least in PyTorch, when we specify filters=64, it means we are creating 64 complete neurons (filter + bias + activation).\ndef cnn_neuron(input_patch, kernel_weights, bias): feature_response = np.sum(input_patch * kernel_weights) + bias output = max(0, feature_response) # ReLU return output So below, we can see that a neuron receives multiple inputs and produces single output y. Layers: A layer consists of a collection of neurons that perform the same operation, sharing identical hyperparameters.\nKernel weights and biases: Unique to each neuron, kernel weights and biases are adjusted during the training process, enabling the classifier to adapt to the specific problem and dataset.\nKey Concepts of CNN Components Convolutional Layer The convolutional layer applies filter(kernel) to the input image to extract features like edges and textures.\nConvolutional Layer: The primary building block of a CNN, responsible for feature extraction. Filter (Kernel): A small matrix that slides over the input image, performing multiplications and summations to produce a feature map. Feature Map (Activation Map): The result of the convolution operation, highlighting important features such as edges, textures, and patterns. Convolution operation allows the network to learn spatial hierarchies of features automatically from low-level to high-level.\n$$ (I * K)(i, j) = \\sum_{m=0}^{M-1} \\sum_{n=0}^{N-1} I(i + m, j + n) K(m, n) $$\n$( I )$: Input image $( K )$: Kernel (filter) $( (i, j) )$: Coordinates in the output feature map $( M, N )$: Dimensions of the kernel Understanding Hyperparameters Kernel Size: Dimensions of the filter (e.g., 3x3, 5x5). Affects the amount of detail the filter can capture. Stride: Step size of the filter movement. Larger strides reduce the output size but increase computational efficiency. Padding: Adds zeros around the input image to maintain the output size. “Valid” means no padding, “same” keeps the output size the same as the input. Non-Linearity (ReLU) Activation Function ReLU (Rectified Linear Unit): Introduces non-linearity to the model. It replaces negative values with zero, allowing the network to learn complex patterns. Activation function decides whether the neuron must be activated or not. So it means whether the neuron’s input is important to the network or not. $$ \\text{ReLU}(x) = \\begin{cases} x \u0026 \\text{if } x \u003e 0 \\\\ 0 \u0026 \\text{otherwise} \\end{cases} $$\nBy setting negative values to zero, ReLU prevents the network from simply becoming a linear classifier.\nAnother popular activation functions:\nPooling Layers Reduces computational complexity and helps the network become invariant to small translations of the input image.\nMax-Pooling: operation requires selecting a kernel size and a stride length. Once selected, the operation slides the kernel with the specified stride over the input retaining the most important information by selecting the maximum value within each window, effectively down-sampling the feature map. $$ Y(i, j) = \\max_{m,n} X(i \\cdot s + m, j \\cdot s + n) $$\n$( X )$: Input feature map $( Y )$: Output feature map $( s )$: Stride $( m, n )$: Window dimensions Pooling prevents overfitting.\nFlattening Flatten Layer: Converts the 2D pooled feature maps into a 1D vector for the fully connected layers. The flattened vector is fed as input to the fully connected layer to classify the image. Fully Connected Layer The Fully Connected Layer, also known as the dense layer, is the final layer that comes after the convolutional and pooling layers. Its purpose is to perform classification or regression tasks based on the high-level features extracted by the earlier layers of the network. In FC, all the neurons of the input are connected to every neuron of the output layer.\nFormula: $$ y = f(W \\cdot x + b) $$\n$( W )$: Weight matrix $( x )$: Input vector $( b )$: Bias vector $( f )$: Activation function The fully connected layer combines the high-level features learned by the convolutional layers to output a final prediction.\nOutput Layer The output layer is typically a softmax layer in classification tasks. The softmax function converts the raw output scores into probabilities.\nSoftmax Function: $$ \\sigma(z_i) = \\frac{e^{z_i}}{\\sum_{j=1}^K e^{z_j}} $$\n$( z_i )$: The (i)-th element of the input vector $(z)$ $( K )$: Number of classes The softmax function ensures that the output probabilities sum to 1, making it easier to interpret the results as the likelihood of each class.\nSimple Example of CNN Architecture Here’s a simple CNN architecture for image classification:\nInput Layer: 28x28 grayscale image Convolutional Layer: conv layer with filter of the size 5x5, with valid padding(no padding), the feature maps have a size of 24x24xn1, where n1 is the number of filters used in this layer. Max-Pooling Layer: 2x2 window, stride 2 Convolutional Layer: conv layer with filter of the size 5x5, with valid padding(no padding) Max-Pooling Layer: 2x2 window, stride 2 Flatten Layer: Converts the feature maps 4x4 into a 1D vector with total size of 4x4xn2. Fully Connected Layer: the flattened vector is passed through a fully connected layer with n3 units, with ReLU activation function. Fully Connected Layer: passed again, applies Dropout to prevent overfitting Output Layer: Final Fully Connected Layer, which has 10 units corresponding to the 10 possible digit classes (0-9). This example illustrates the typical workflow in a CNN, from input to final classification.\n",
+  "wordCount" : "934",
   "inLanguage": "en",
   "datePublished": "2024-03-17T18:34:44.165668+05:00",
   "dateModified": "2024-03-17T18:34:44.165668+05:00",
@@ -109,7 +109,7 @@
   },
   "publisher": {
     "@type": "Organization",
-    "name": "ASR",
+    "name": "ASR Engineering",
     "logo": {
       "@type": "ImageObject",
       "url": "https://adilsarsenov.dev/favicon.ico"
@@ -147,7 +147,7 @@
 <header class="header sticky-header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://adilsarsenov.dev/" accesskey="h" title="ASR (Alt + H)">ASR</a>
+            <a href="https://adilsarsenov.dev/" accesskey="h" title="ASR Engineering (Alt + H)">ASR Engineering</a>
             <span class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -178,8 +178,8 @@
                 </a>
             </li>
             <li>
-                <a href="https://adilsarsenov.dev/posts" title="Posts">
-                    <span>Posts</span>
+                <a href="https://adilsarsenov.dev/posts" title="Recent">
+                    <span>Recent</span>
                 </a>
             </li>
             <li>
@@ -218,7 +218,7 @@ Date: 17 March, 2024
 
 </div>
   </header> <div class="toc">
-    <details >
+    <details  open>
         <summary accesskey="c" title="(Alt + C)">
             <span class="details">‎ Table of Contents</span>
         </summary>
@@ -251,9 +251,17 @@ Date: 17 March, 2024
     </details>
 </div>
 
-  <div class="post-content"><p><strong>Convolutional Neural Networks (CNNs)</strong> are a class of deep learning models designed to process visual data.</p>
-<p><strong>Tensors:</strong> A tensor can be conceptualized as an <strong>N-dimensional</strong> matrix.</p>
-<p><strong>Neurons:</strong> A neuron functions as a computational unit, receiving <strong>multiple inputs and generating a single output</strong>.</p>
+  <div class="post-content"><p><strong>Convolutional Neural Networks (CNNs)</strong> are a class of deep learning models used to process and recognize patterns in images or any visual data.</p>
+<p>We know that, <strong>Neural Networks</strong> in general are collection of neurons that are organized in layers, each with their own learnable weights and biases.</p>
+<p>So when we say <strong>neurons</strong>, in practice we mostly mean the <strong>filters</strong>. The neuron is a complete computational unit (filter + bias+ activation).
+At least in <strong>PyTorch</strong>, when we specify <strong>filters=64</strong>, it means we are creating 64 complete neurons (filter + bias + activation).</p>
+<pre tabindex="0"><code>def cnn_neuron(input_patch, kernel_weights, bias):
+    feature_response = np.sum(input_patch * kernel_weights) + bias
+    output = max(0, feature_response)  # ReLU
+    return output
+</code></pre><p>So below, we can see that a neuron receives multiple inputs and produces single output <strong>y</strong>.
+<img loading="lazy" src="/posts/convolutional-neural-networks/img0.png" alt="Neuron"  />
+</p>
 <p><strong>Layers:</strong> A layer consists of a <strong>collection of neurons</strong> that perform the same operation, sharing identical hyperparameters.</p>
 <p><strong>Kernel weights and biases:</strong> Unique to each neuron, kernel weights and biases are adjusted during the training process,
 enabling the classifier to adapt to the specific problem and dataset.</p>
@@ -386,7 +394,7 @@ $$</p>
     </main>
     
 <footer class="footer">
-    <span>&copy; 2025 <a href="https://adilsarsenov.dev/">ASR</a></span>
+    <span>&copy; 2025 <a href="https://adilsarsenov.dev/">ASR Engineering</a></span>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
