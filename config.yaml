@@ -45,8 +45,8 @@ params:
   # Home Page
   profileMode:
     enabled: true
-    title: "Adil Sarsenov Research"
-    subtitle: "ML Engineer and Biometric Recognition Researcher<br>Specializing in Face Recognition Systems & Computer Vision"
+    title: "Adil Sarsenov"
+    subtitle: "ML Engineer<br>Specializing in Computer Vision and MLOps"
 
     imageUrl: "home/casual.jpg"
     imageWidth: 220
