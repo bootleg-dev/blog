@@ -6,16 +6,7 @@
     <description>Recent content in Posts on ASR Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 18 Mar 2025 18:34:44 +0500</lastBuildDate><atom:link href="https://adilsarsenov.dev/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>GitLab CI/CD</title>
-      <link>https://adilsarsenov.dev/posts/gitlab-cicd/</link>
-      <pubDate>Tue, 18 Mar 2025 18:34:44 +0500</pubDate>
-      
-      <guid>https://adilsarsenov.dev/posts/gitlab-cicd/</guid>
-      <description>How to configure Gitlab CI/CD?</description>
-    </item>
-    
+    <lastBuildDate>Sun, 02 Jun 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://adilsarsenov.dev/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Vision Transformers - ViT</title>
       <link>https://adilsarsenov.dev/posts/visual-transformers/</link>
@@ -113,15 +104,6 @@
       
       <guid>https://adilsarsenov.dev/posts/convolutional-neural-networks/</guid>
       <description>What is the convolutional neural network?</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://adilsarsenov.dev/posts/leetcode-150-notes/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://adilsarsenov.dev/posts/leetcode-150-notes/</guid>
-      <description></description>
     </item>
     
   </channel>

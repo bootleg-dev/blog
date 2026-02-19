@@ -6,34 +6,7 @@
     <description>Recent content in Tags on ASR Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 18 Mar 2025 18:34:44 +0500</lastBuildDate><atom:link href="https://adilsarsenov.dev/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Automation</title>
-      <link>https://adilsarsenov.dev/tags/automation/</link>
-      <pubDate>Tue, 18 Mar 2025 18:34:44 +0500</pubDate>
-      
-      <guid>https://adilsarsenov.dev/tags/automation/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Beginner</title>
-      <link>https://adilsarsenov.dev/tags/beginner/</link>
-      <pubDate>Tue, 18 Mar 2025 18:34:44 +0500</pubDate>
-      
-      <guid>https://adilsarsenov.dev/tags/beginner/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>GitLab</title>
-      <link>https://adilsarsenov.dev/tags/gitlab/</link>
-      <pubDate>Tue, 18 Mar 2025 18:34:44 +0500</pubDate>
-      
-      <guid>https://adilsarsenov.dev/tags/gitlab/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Sun, 02 Jun 2024 18:34:44 +0500</lastBuildDate><atom:link href="https://adilsarsenov.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Attention</title>
       <link>https://adilsarsenov.dev/tags/attention/</link>
@@ -112,6 +85,15 @@
       <pubDate>Wed, 01 May 2024 18:34:44 +0500</pubDate>
       
       <guid>https://adilsarsenov.dev/tags/gans/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Beginner</title>
+      <link>https://adilsarsenov.dev/tags/beginner/</link>
+      <pubDate>Mon, 22 Apr 2024 18:34:44 +0500</pubDate>
+      
+      <guid>https://adilsarsenov.dev/tags/beginner/</guid>
       <description></description>
     </item>
     
@@ -229,15 +211,6 @@
       <pubDate>Sun, 17 Mar 2024 18:34:44 +0500</pubDate>
       
       <guid>https://adilsarsenov.dev/tags/convolution/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>CI/CD</title>
-      <link>https://adilsarsenov.dev/tags/ci/cd/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://adilsarsenov.dev/tags/ci/cd/</guid>
       <description></description>
     </item>
     
